@@ -10,7 +10,7 @@
     <ItemGroup>
         <Folder Include="Factory\ObjetosValor\Agenda\" />
         <Folder Include="Factory\ObjetosValor\Cobranca\" />
-        <Folder Include="Factory\ValueObject\" />
+        <Folder Include="Factory\ValueObject\Telefone\" />
         <Folder Include="ValueObject\" />
     </ItemGroup>
 

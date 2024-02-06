@@ -1,0 +1,14 @@
+/home/andre/RiderProjects/VinilProjeto/Domain/bin/Debug/net7.0/Domain.deps.json
+/home/andre/RiderProjects/VinilProjeto/Domain/bin/Debug/net7.0/Domain.runtimeconfig.json
+/home/andre/RiderProjects/VinilProjeto/Domain/bin/Debug/net7.0/Domain.dll
+/home/andre/RiderProjects/VinilProjeto/Domain/bin/Debug/net7.0/Domain.pdb
+/home/andre/RiderProjects/VinilProjeto/Domain/obj/Debug/net7.0/Domain.csproj.AssemblyReference.cache
+/home/andre/RiderProjects/VinilProjeto/Domain/obj/Debug/net7.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/andre/RiderProjects/VinilProjeto/Domain/obj/Debug/net7.0/Domain.AssemblyInfoInputs.cache
+/home/andre/RiderProjects/VinilProjeto/Domain/obj/Debug/net7.0/Domain.AssemblyInfo.cs
+/home/andre/RiderProjects/VinilProjeto/Domain/obj/Debug/net7.0/Domain.csproj.CoreCompileInputs.cache
+/home/andre/RiderProjects/VinilProjeto/Domain/obj/Debug/net7.0/Domain.dll
+/home/andre/RiderProjects/VinilProjeto/Domain/obj/Debug/net7.0/refint/Domain.dll
+/home/andre/RiderProjects/VinilProjeto/Domain/obj/Debug/net7.0/Domain.pdb
+/home/andre/RiderProjects/VinilProjeto/Domain/obj/Debug/net7.0/Domain.genruntimeconfig.cache
+/home/andre/RiderProjects/VinilProjeto/Domain/obj/Debug/net7.0/ref/Domain.dll
