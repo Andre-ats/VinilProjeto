@@ -8,10 +8,14 @@ public class Telefone
     
     private Telefone(){}
 
-    public Telefone(string codigo, string ddd, string numero)
+    public static Telefone createTelefone(string codigo, string ddd, string numero)
     {
-        this.codigo = codigo;
-        this.ddd = ddd;
-        this.numero = numero;
+        Telefone telefone = new Telefone()
+        {
+            codigo = codigo,
+            ddd = ddd,
+            numero = numero
+        };
+        return telefone;
     }
 }
