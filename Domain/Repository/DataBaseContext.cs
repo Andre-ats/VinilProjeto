@@ -26,12 +26,17 @@ public class DataBaseContext : DbContext
         {
             user.ToTable("Admin");
         });
-        
+
         modelBuilder.Entity<UsuarioComprador>(user =>
         {
             user.ToTable("UsuarioComprador");
         });
-        
+
+        modelBuilder.Entity<UsuarioComprador>()
+            .OwnsOne(x => x.telefone);
+
+        modelBuilder.Entity<UsuarioComprador>()
+            .OwnsOne(x => x.endereco);
     }
     
     public DbSet<Admin> adminDB { get; set; }

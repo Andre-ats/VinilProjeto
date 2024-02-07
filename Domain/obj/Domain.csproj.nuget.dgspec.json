@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/andre/RiderProjects/VinilProjeto/Domain/Domain.csproj": {}
+    "/home/alunos/Desktop/projetoSistemasDistribuidos/solucaoSocket/bacen/VinilProjeto/Domain/Domain.csproj": {}
   },
   "projects": {
-    "/home/andre/RiderProjects/VinilProjeto/Domain/Domain.csproj": {
+    "/home/alunos/Desktop/projetoSistemasDistribuidos/solucaoSocket/bacen/VinilProjeto/Domain/Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/andre/RiderProjects/VinilProjeto/Domain/Domain.csproj",
+        "projectUniqueName": "/home/alunos/Desktop/projetoSistemasDistribuidos/solucaoSocket/bacen/VinilProjeto/Domain/Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "/home/andre/RiderProjects/VinilProjeto/Domain/Domain.csproj",
-        "packagesPath": "/home/andre/.nuget/packages/",
-        "outputPath": "/home/andre/RiderProjects/VinilProjeto/Domain/obj/",
+        "projectPath": "/home/alunos/Desktop/projetoSistemasDistribuidos/solucaoSocket/bacen/VinilProjeto/Domain/Domain.csproj",
+        "packagesPath": "/home/alunos/.nuget/packages/",
+        "outputPath": "/home/alunos/Desktop/projetoSistemasDistribuidos/solucaoSocket/bacen/VinilProjeto/Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/andre/.nuget/NuGet/NuGet.Config"
+          "/home/alunos/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -108,12 +108,22 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.10, 7.0.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.10, 7.0.10]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.115/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.400/RuntimeIdentifierGraph.json"
         }
       }
     }

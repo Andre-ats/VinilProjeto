@@ -15,9 +15,8 @@ public class UsuarioCompradorFactory
     {
         _email = null;
         _senha = null;
-        _telefone = new Telefone(null, null, null);
-        _endereco = new Endereco(null, null, 
-            null, null, null, null, null, null);
+        _telefone = null;
+        _endereco = null;
     }
 
     public UsuarioCompradorFactory setEmail(string email)
