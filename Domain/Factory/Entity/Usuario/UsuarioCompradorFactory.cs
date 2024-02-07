@@ -20,25 +20,25 @@ public class UsuarioCompradorFactory
             null, null, null, null, null, null);
     }
 
-    private UsuarioCompradorFactory setEmail(string email)
+    public UsuarioCompradorFactory setEmail(string email)
     {
         this._email = email;
         return this;
     }
     
-    private UsuarioCompradorFactory setSenha(string senha)
+    public UsuarioCompradorFactory setSenha(string senha)
     {
         this._senha = senha;
         return this;
     }
     
-    private UsuarioCompradorFactory setTelefone(Telefone telefone)
+    public UsuarioCompradorFactory setTelefone(Telefone telefone)
     {
         this._telefone = telefone;
         return this;
     }
     
-    private UsuarioCompradorFactory setEndereco(Endereco endereco)
+    public UsuarioCompradorFactory setEndereco(Endereco endereco)
     {
         this._endereco = endereco;
         return this;
