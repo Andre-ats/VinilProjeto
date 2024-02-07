@@ -13,13 +13,13 @@ public class AdminFactory
         _senha = null;
     }
 
-    private AdminFactory setEmail(string email)
+    public AdminFactory setEmail(string email)
     {
         this._email = email;
         return this;
     }
 
-    private AdminFactory setSenha(string senha)
+    public AdminFactory setSenha(string senha)
     {
         this._senha = senha;
         return this;

@@ -10,6 +10,7 @@
     <ItemGroup>
         <Folder Include="Factory\ObjetosValor\Agenda\" />
         <Folder Include="Factory\ObjetosValor\Cobranca\" />
+        <Folder Include="UseCase\UsuarioCompradorUseCase\" />
         <Folder Include="ValueObject\" />
     </ItemGroup>
 
