@@ -7,5 +7,5 @@ namespace VinilProjeto.UseCase.UsuarioCompradorUseCase.GetUsuarioComprador;
 
 public class IGetUsuarioCompradorUseCaseOutput : IUseCaseOutput
 {
-    public List<UsuarioCompradorFactory> getUsuarioCompradorUseCaseOutputs { get; set; } = null;
+    public List<UsuarioCompradorFactory> getUsuarioCompradorUseCaseOutputs = new List<UsuárioComprador>(){}
 }
