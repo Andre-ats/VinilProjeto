@@ -7,11 +7,12 @@ public enum EstiloMusical
     Jazz,
     Rap,
     Trap,
-    Hip-Hop,
+    HipHop,
     Eletronica,
     Reggae,
-    R&B,
+    RB,
     Blues,
+    Vazio
 }
 
 public class VinilEntity : IEntity
