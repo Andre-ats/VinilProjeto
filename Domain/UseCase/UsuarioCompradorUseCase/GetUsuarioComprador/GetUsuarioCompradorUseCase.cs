@@ -16,21 +16,8 @@ public class GetUsuarioCompradorUseCase : IGetUsuarioCompradorUseCase
 
             var outputs = new List<UsuarioCompradorFactory>();
             
-            var usuarioComprador = _usuarioCompradorRepository.getUsuarioComprador() 
+            outputs = _usuarioCompradorRepository.getUsuarioComprador() 
                                    ?? throw new Exception("Erro ao encontrar usuarios!");
-
-            foreach (var usuario in usuarioComprador)
-            {
-                var usuarioCompradorFactory = new UsuarioCompradorFactory();
-                usuarioCompradorFactory.setEmail(usuario.email)
-                    .setSenha(usuario.senha)
-                    .setEndereco(usuario.endereco)
-                    .setTelefone(usuario.telefone)
-                    .build();
-                
-                
-                outputs.Add(usuarioCompradorFactory);
-            }
 
             return new IGetUsuarioCompradorUseCaseOutput()
             {
