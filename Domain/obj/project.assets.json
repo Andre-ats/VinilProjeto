@@ -4663,6 +4663,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "EntityFramework >= 6.4.4",
       "Microsoft.Data.SqlClient >= 5.2.0-preview2.23159.1",
       "Microsoft.Data.SqlClient.SNI.runtime >= 5.1.0",
       "Microsoft.Data.Sqlite.Core >= 7.0.0",
@@ -4680,19 +4681,19 @@
     ]
   },
   "packageFolders": {
-    "/home/alunos/.nuget/packages/": {}
+    "/home/andre/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/alunos/Desktop/projetoSistemasDistribuidos/solucaoSocket/bacen/VinilProjeto/Domain/Domain.csproj",
+      "projectUniqueName": "/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "/home/alunos/Desktop/projetoSistemasDistribuidos/solucaoSocket/bacen/VinilProjeto/Domain/Domain.csproj",
-      "packagesPath": "/home/alunos/.nuget/packages/",
-      "outputPath": "/home/alunos/Desktop/projetoSistemasDistribuidos/solucaoSocket/bacen/VinilProjeto/Domain/obj/",
+      "projectPath": "/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/Domain.csproj",
+      "packagesPath": "/home/andre/.nuget/packages/",
+      "outputPath": "/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/alunos/.nuget/NuGet/NuGet.Config"
+        "/home/andre/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -4716,6 +4717,10 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "EntityFramework": {
+            "target": "Package",
+            "version": "[6.4.4, )"
+          },
           "Microsoft.Data.SqlClient": {
             "target": "Package",
             "version": "[5.2.0-preview2.23159.1, )"
@@ -4786,22 +4791,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[7.0.10, 7.0.10]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[7.0.10, 7.0.10]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.400/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.115/RuntimeIdentifierGraph.json"
       }
     }
   }

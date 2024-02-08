@@ -12,3 +12,17 @@
 /home/andre/RiderProjects/VinilProjeto/Domain/obj/Debug/net7.0/Domain.pdb
 /home/andre/RiderProjects/VinilProjeto/Domain/obj/Debug/net7.0/Domain.genruntimeconfig.cache
 /home/andre/RiderProjects/VinilProjeto/Domain/obj/Debug/net7.0/ref/Domain.dll
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/bin/Debug/net7.0/Domain.deps.json
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/bin/Debug/net7.0/Domain.runtimeconfig.json
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/bin/Debug/net7.0/Domain.dll
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/bin/Debug/net7.0/Domain.pdb
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/obj/Debug/net7.0/Domain.csproj.AssemblyReference.cache
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/obj/Debug/net7.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/obj/Debug/net7.0/Domain.AssemblyInfoInputs.cache
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/obj/Debug/net7.0/Domain.AssemblyInfo.cs
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/obj/Debug/net7.0/Domain.csproj.CoreCompileInputs.cache
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/obj/Debug/net7.0/Domain.dll
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/obj/Debug/net7.0/refint/Domain.dll
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/obj/Debug/net7.0/Domain.pdb
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/obj/Debug/net7.0/Domain.genruntimeconfig.cache
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/obj/Debug/net7.0/ref/Domain.dll

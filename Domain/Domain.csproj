@@ -8,12 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Factory\ObjetosValor\Agenda\" />
-        <Folder Include="Factory\ObjetosValor\Cobranca\" />
         <Folder Include="ValueObject\" />
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="EntityFramework" Version="6.4.4" />
         <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0-preview2.23159.1" />
         <PackageReference Include="Microsoft.Data.SqlClient.SNI.runtime" Version="5.1.0" />
         <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.0" />

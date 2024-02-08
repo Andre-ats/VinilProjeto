@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using VinilProjeto.Entity.Usuario;
 
 namespace VinilProjeto.Repository.UsuarioCompradorRepository;
@@ -16,5 +17,10 @@ public class EFCoreUsuarioCompradorRepository : IUsuarioCompradorRepository
     {
         _dataBaseContext.UsuarioCompradorDB.Add(usuarioComprador);
         return _dataBaseContext.SaveChanges() > 0;
+    }
+
+    public List<UsuarioComprador> getUsuarioComprador()
+    {
+       return _dataBaseContext.UsuarioCompradorDB.ToList();
     }
 }
