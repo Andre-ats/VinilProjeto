@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ya9hEcGo1H/qgIHfBKGzr6ohEJtDBOknbC1Y6PHXMcyaI06DbiolIRqP6dCY7nNIbzCVFIS651IRBRIzBN9i7g==",
+  "dgSpecHash": "oMKzTznAIS5ssPHsqQxOc1tesQd/1U6yao5QYN7cTezIEsDhCEouPknvLrz+e61q+5yYuB0yY9Ov31PB8d9mxg==",
   "success": true,
   "projectFilePath": "/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/Domain.csproj",
   "expectedPackageFiles": [
@@ -45,6 +45,7 @@
     "/home/andre/.nuget/packages/microsoft.identitymodel.tokens/6.24.0/microsoft.identitymodel.tokens.6.24.0.nupkg.sha512",
     "/home/andre/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "/home/andre/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "/home/andre/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
     "/home/andre/.nuget/packages/microsoft.sqlserver.server/1.0.0/microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "/home/andre/.nuget/packages/microsoft.win32.registry/4.7.0/microsoft.win32.registry.4.7.0.nupkg.sha512",
     "/home/andre/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
@@ -63,6 +64,7 @@
     "/home/andre/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.1.2/sqlitepclraw.lib.e_sqlite3.2.1.2.nupkg.sha512",
     "/home/andre/.nuget/packages/sqlitepclraw.provider.e_sqlite3/2.1.2/sqlitepclraw.provider.e_sqlite3.2.1.2.nupkg.sha512",
     "/home/andre/.nuget/packages/stub.system.data.sqlite.core.netstandard/1.0.118/stub.system.data.sqlite.core.netstandard.1.0.118.nupkg.sha512",
+    "/home/andre/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "/home/andre/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
     "/home/andre/.nuget/packages/system.codedom/4.7.0/system.codedom.4.7.0.nupkg.sha512",
     "/home/andre/.nuget/packages/system.componentmodel.annotations/4.7.0/system.componentmodel.annotations.4.7.0.nupkg.sha512",

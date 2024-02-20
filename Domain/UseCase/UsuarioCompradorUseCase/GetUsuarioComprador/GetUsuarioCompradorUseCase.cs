@@ -1,3 +1,4 @@
+using VinilProjeto.Entity.Usuario;
 using VinilProjeto.Factory.Entity.Usuario;
 using VinilProjeto.Repository.UsuarioCompradorRepository;
 
@@ -14,7 +15,7 @@ public class GetUsuarioCompradorUseCase : IGetUsuarioCompradorUseCase
         try
         {
 
-            var outputs = new List<UsuarioCompradorFactory>();
+            var outputs = new List<UsuarioComprador>();
             
             outputs = _usuarioCompradorRepository.getUsuarioComprador() 
                                    ?? throw new Exception("Erro ao encontrar usuarios!");

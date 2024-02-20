@@ -1,3 +1,4 @@
+using VinilProjeto.Entity.Usuario;
 using VinilProjeto.Entity.Usuario.Endereco;
 using VinilProjeto.Entity.Usuario.Telefone;
 using VinilProjeto.Factory.Entity.Usuario;
@@ -7,5 +8,5 @@ namespace VinilProjeto.UseCase.UsuarioCompradorUseCase.GetUsuarioComprador;
 
 public class IGetUsuarioCompradorUseCaseOutput : IUseCaseOutput
 {
-    public List<UsuarioCompradorFactory> getUsuarioCompradorUseCaseOutputs = new List<UsuárioComprador>(){}
+    public List<UsuarioComprador> getUsuarioCompradorUseCaseOutputs = new List<UsuarioComprador>() { };
 }
