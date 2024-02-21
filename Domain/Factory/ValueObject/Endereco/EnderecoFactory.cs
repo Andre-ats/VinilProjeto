@@ -40,6 +40,12 @@ public class EnderecoFactory
         this._numero = numero;
         return this;
     }
+
+    public EnderecoFactory setComplemento(string complemento)
+    {
+        this._complemento = complemento;
+        return this;
+    }
     public EnderecoFactory setReferencia(string referencia)
     {
         this._referencia = referencia;

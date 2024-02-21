@@ -5,7 +5,9 @@ using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Converters;
 using VinilProjeto.Repository;
 using VinilProjeto.Repository.AdminRepository;
+using VinilProjeto.Repository.UsuarioCompradorRepository;
 using VinilProjeto.UseCase.AdminUseCase.CadastrarAdmin;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.CadastrarUsuarioComprador;
 using WebAPIs.Config;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,8 +26,14 @@ builder.Services.AddCors(opt =>
 });
 
 builder.Services.AddScoped<DataBaseContext, DataBaseContext>();
+
+
 builder.Services.AddScoped<IAdminRepository, EFCoreAdminRepository>();
 builder.Services.AddScoped<ICadastrarAdminUseCase, CadastrarAdminUseCase>();
+
+
+builder.Services.AddScoped<IUsuarioCompradorRepository, EFCoreUsuarioCompradorRepository>();
+builder.Services.AddScoped<ICadastrarUsuarioCompradorUseCase, CadastrarUsuarioCompradorUseCase>();
 
 // Add services to the container.
 builder.Services.AddControllers();
