@@ -29,7 +29,7 @@ public class CadastrarUsuarioCompradorUseCase : ICadastrarUsuarioCompradorUseCas
             return new ICadastrarUsuarioCompradorUseCaseOutput()
             {
                 resposta = $"Usuario {usuarioComprador.email} criado!"
-            };
+            };  
         }
         catch (Exception e)
         {

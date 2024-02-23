@@ -1,0 +1,15 @@
+/home/alunos/Desktop/VinilProjeto/Domain/bin/Debug/net8.0/Domain.deps.json
+/home/alunos/Desktop/VinilProjeto/Domain/bin/Debug/net8.0/Domain.runtimeconfig.json
+/home/alunos/Desktop/VinilProjeto/Domain/bin/Debug/net8.0/Domain.dll
+/home/alunos/Desktop/VinilProjeto/Domain/bin/Debug/net8.0/Domain.pdb
+/home/alunos/Desktop/VinilProjeto/Domain/obj/Debug/net8.0/Domain.csproj.AssemblyReference.cache
+/home/alunos/Desktop/VinilProjeto/Domain/obj/Debug/net8.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/alunos/Desktop/VinilProjeto/Domain/obj/Debug/net8.0/Domain.AssemblyInfoInputs.cache
+/home/alunos/Desktop/VinilProjeto/Domain/obj/Debug/net8.0/Domain.AssemblyInfo.cs
+/home/alunos/Desktop/VinilProjeto/Domain/obj/Debug/net8.0/Domain.csproj.CoreCompileInputs.cache
+/home/alunos/Desktop/VinilProjeto/Domain/obj/Debug/net8.0/Domain.sourcelink.json
+/home/alunos/Desktop/VinilProjeto/Domain/obj/Debug/net8.0/Domain.dll
+/home/alunos/Desktop/VinilProjeto/Domain/obj/Debug/net8.0/refint/Domain.dll
+/home/alunos/Desktop/VinilProjeto/Domain/obj/Debug/net8.0/Domain.pdb
+/home/alunos/Desktop/VinilProjeto/Domain/obj/Debug/net8.0/Domain.genruntimeconfig.cache
+/home/alunos/Desktop/VinilProjeto/Domain/obj/Debug/net8.0/ref/Domain.dll

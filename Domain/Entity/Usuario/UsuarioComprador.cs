@@ -1,5 +1,6 @@
 namespace VinilProjeto.Entity.Usuario;
 
+[Serializable]
 public class UsuarioComprador : IEntity
 {
     public string email { get; protected set; }

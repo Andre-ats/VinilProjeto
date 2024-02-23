@@ -1,5 +1,6 @@
 namespace VinilProjeto.Entity.Usuario;
 
+[Serializable]
 public class Admin : IEntity
 {
     public string email { get; protected set; }
