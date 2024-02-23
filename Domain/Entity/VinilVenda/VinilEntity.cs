@@ -14,7 +14,7 @@ public enum EstiloMusical
     Blues,
     Vazio
 }
-
+[Serializable]
 public class VinilEntity : IEntity
 {
     public string nomeVinil { get; protected set; }
