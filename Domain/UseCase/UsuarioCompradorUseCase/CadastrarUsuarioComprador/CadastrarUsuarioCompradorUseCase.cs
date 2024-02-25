@@ -21,6 +21,7 @@ public class CadastrarUsuarioCompradorUseCase : ICadastrarUsuarioCompradorUseCas
                 .setEndereco(_useCaseInput.Endereco)
                 .setTelefone(_useCaseInput.Telefone)
                 .build();
+            
 
             _ = _usuarioCompradorRepository.createUsuario(usuarioComprador)
                 ? true

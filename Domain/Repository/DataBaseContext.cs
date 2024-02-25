@@ -34,11 +34,18 @@ public class DataBaseContext : DbContext
         });
         
         modelBuilder.Entity<UsuarioComprador>()
-            .OwnsOne(x => x.telefone).Property(x => x);
+            .OwnsOne(x => x.telefone)
+            .Property(x => x.codigo);
+        modelBuilder.Entity<UsuarioComprador>()
+            .OwnsOne(x => x.telefone)
+            .Property(x => x.ddd);
+        modelBuilder.Entity<UsuarioComprador>()
+            .OwnsOne(x => x.telefone)
+            .Property(x => x.numero);
 
 
         modelBuilder.Entity<UsuarioComprador>()
-            .OwnsOne(x => x.endereco).Property(x => x);
+            .OwnsOne(x => x.endereco);
 
         modelBuilder.Entity<Vinil>(user =>
         {
@@ -53,5 +60,5 @@ public class DataBaseContext : DbContext
     
     public DbSet<Admin> adminDB { get; set; }
     public DbSet<UsuarioComprador> UsuarioCompradorDB { get; set; }
-    public System.Data.Entity.DbSet<Vinil> VinilDB { get; set; }
+    public DbSet<Vinil> VinilDB { get; set; }
 }

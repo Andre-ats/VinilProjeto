@@ -6,9 +6,11 @@ using Newtonsoft.Json.Converters;
 using VinilProjeto.Repository;
 using VinilProjeto.Repository.AdminRepository;
 using VinilProjeto.Repository.UsuarioCompradorRepository;
+using VinilProjeto.Repository.VinilRepository;
 using VinilProjeto.UseCase.AdminUseCase.CadastrarAdmin;
 using VinilProjeto.UseCase.AdminUseCase.GetAdmin;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.CadastrarUsuarioComprador;
+using VinilProjeto.UseCase.VinilUseCase.CadastrarVinil;
 using WebAPIs.Config;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,6 +38,9 @@ builder.Services.AddScoped<IGetAdminUseCase, GetAdminUseCase>();
 
 builder.Services.AddScoped<IUsuarioCompradorRepository, EFCoreUsuarioCompradorRepository>();
 builder.Services.AddScoped<ICadastrarUsuarioCompradorUseCase, CadastrarUsuarioCompradorUseCase>();
+
+builder.Services.AddScoped<IVinilRespository, EFCoreVinilRepository>();
+builder.Services.AddScoped<ICadastrarVinilUseCase, CadastrarVinilUseCase>();
 
 // Add services to the container.
 builder.Services.AddControllers();
