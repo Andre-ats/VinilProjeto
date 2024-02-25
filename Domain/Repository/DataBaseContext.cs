@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using VinilProjeto.Entity.Usuario;
+using VinilProjeto.Entity.VinilVenda;
 
 namespace VinilProjeto.Repository;
 
@@ -31,15 +32,26 @@ public class DataBaseContext : DbContext
         {
             user.ToTable("UsuarioComprador");
         });
+        
+        modelBuilder.Entity<UsuarioComprador>()
+            .OwnsOne(x => x.telefone).Property(x => x);
+
 
         modelBuilder.Entity<UsuarioComprador>()
-            .OwnsOne(x => x.telefone);
-            
+            .OwnsOne(x => x.endereco).Property(x => x);
 
-        modelBuilder.Entity<UsuarioComprador>()
-            .OwnsOne(x => x.endereco);
+        modelBuilder.Entity<Vinil>(user =>
+        {
+            user.ToTable("Vinil");
+        });
+        modelBuilder.Entity<Vinil>()
+            .Property(x => x.estiloMusical)
+            .HasConversion(x => x.ToString(),
+                x => (EstiloMusical)Enum.Parse(typeof(EstiloMusical), x))
+            .HasColumnName("text");
     }
     
     public DbSet<Admin> adminDB { get; set; }
     public DbSet<UsuarioComprador> UsuarioCompradorDB { get; set; }
+    public System.Data.Entity.DbSet<Vinil> VinilDB { get; set; }
 }
