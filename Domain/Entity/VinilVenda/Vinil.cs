@@ -16,7 +16,7 @@ public enum EstiloMusical
     Vazio
 }
 [Serializable]
-public class VinilEntity : IEntity
+public class Vinil : IEntity
 {
     public string nomeVinil { get; protected set; }
     public string descricaoVinil { get; protected set; }
@@ -24,13 +24,13 @@ public class VinilEntity : IEntity
     public string quantiaVinil { get; protected set; }
     public EstiloMusical estiloMusical { get; protected set; }
     
-    public VinilEntity(){}
+    public Vinil(){}
 
-    public static VinilEntity createVinilEntity(string nome, string descricao, string preco, string quantia,
+    public static Vinil createVinilEntity(string nome, string descricao, string preco, string quantia,
         EstiloMusical estiloMusical)
     {
         
-        VinilEntity vinilEntity = new VinilEntity()
+        Vinil vinil = new Vinil()
         {
             nomeVinil = nome,
             descricaoVinil = descricao,
@@ -39,7 +39,7 @@ public class VinilEntity : IEntity
             estiloMusical = estiloMusical
         };
         
-        return vinilEntity;
+        return vinil;
         
     }
 }
