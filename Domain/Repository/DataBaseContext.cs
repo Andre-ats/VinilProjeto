@@ -34,6 +34,7 @@ public class DataBaseContext : DbContext
 
         modelBuilder.Entity<UsuarioComprador>()
             .OwnsOne(x => x.telefone);
+            
 
         modelBuilder.Entity<UsuarioComprador>()
             .OwnsOne(x => x.endereco);

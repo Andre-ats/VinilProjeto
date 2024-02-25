@@ -3,14 +3,14 @@ namespace VinilProjeto.Entity.Usuario.Endereco;
 [Serializable]
 public class Endereco
 {
-    public string cep { get; protected set; }
-    public string logradouro { get; protected set; }
-    public string numero { get; protected set; }
-    public string complemento { get; protected set; }
-    public string referencia { get; protected set; }
-    public string bairro { get; protected set; }
-    public string cidade { get; protected set; }
-    public string estado { get; protected set; }
+    public virtual string cep { get; protected set; }
+    public virtual string logradouro { get; protected set; }
+    public virtual string numero { get; protected set; }
+    public virtual string complemento { get; protected set; }
+    public virtual string referencia { get; protected set; }
+    public virtual string bairro { get; protected set; }
+    public virtual string cidade { get; protected set; }
+    public virtual string estado { get; protected set; }
 
     public Endereco(){}
     

@@ -3,9 +3,9 @@ namespace VinilProjeto.Entity.Usuario.Telefone;
 [Serializable]
 public class Telefone
 {
-    public string codigo { get; protected set; } 
-    public string ddd { get; protected set; }
-    public string numero { get; protected set; }
+    public virtual string codigo { get; protected set; } 
+    public virtual string ddd { get; protected set; }
+    public virtual string numero { get; protected set; }
     
     private Telefone(){}
     
