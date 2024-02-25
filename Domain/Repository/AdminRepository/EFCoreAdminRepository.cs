@@ -23,4 +23,9 @@ public class EFCoreAdminRepository : IAdminRepository
     {
         return _dataBaseContext.adminDB.ToList();
     }
+
+    public Admin getAdminByEmail(string email)
+    {
+        return _dataBaseContext.adminDB.SingleOrDefault(x => x.email.Equals(email));
+    }
 }
