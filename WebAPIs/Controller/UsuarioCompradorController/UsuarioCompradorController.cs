@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.CadastrarUsuarioComprador;
 
@@ -13,7 +14,8 @@ public class UsuarioCompradorController
     {
         _cadastrarUsuarioCompradorUseCase = usuarioCompradorUseCase;
     }
-
+    
+    [AllowAnonymous]
     [ProducesResponseType(201)]
     [ProducesResponseType(401)]
     [ProducesResponseType(400)]

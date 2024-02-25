@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VinilProjeto.Entity.Usuario;
 using VinilProjeto.UseCase.AdminUseCase.CadastrarAdmin;
@@ -13,7 +14,7 @@ namespace WebAPIs.Controller.AdminController;
 
 [ApiController]
 [Route("[controller]/[action]")]
-public class AdminController
+public class AdminController : ControllerBase
 {
     private readonly ICadastrarAdminUseCase _cadastrarAdminUseCase;
     private readonly IGetAdminUseCase _getAdminUseCase;
@@ -27,7 +28,7 @@ public class AdminController
         _vinilUseCase = cadastrarVinilUseCase;
         _login = login;
     }
-    
+    [AllowAnonymous]
     [ProducesResponseType(201)]
     [ProducesResponseType(401)]
     [ProducesResponseType(400)]
@@ -43,12 +44,13 @@ public class AdminController
         }
 
         TokenGenerator gerar = new TokenGenerator();
-        string token = gerar.generate(new UsuarioToken { email = input.email, senha = input.senha });
+        string token = gerar.generate(new UsuarioToken { email = input.email, senha = input.senha, role = "Admin"});
         DateTime dateTime = gerar.getExpiration();
 
         return new UsuarioLoginOutput(token, dateTime);
     }
     
+    [Authorize(Roles = "Admin")]
     [ProducesResponseType(201)]
     [ProducesResponseType(401)]
     [ProducesResponseType(400)]
@@ -59,6 +61,7 @@ public class AdminController
         return _cadastrarAdminUseCase.executeUseCase(input);
     }
     
+    [Authorize(Roles = "Admin")]
     [ProducesResponseType(201)]
     [ProducesResponseType(401)]
     [ProducesResponseType(400)]
@@ -69,6 +72,7 @@ public class AdminController
         return _vinilUseCase.executeUseCase(input);
     }
 
+    [Authorize(Roles = "Admin")]
     [ProducesResponseType(201)]
     [ProducesResponseType(401)]
     [ProducesResponseType(400)]
