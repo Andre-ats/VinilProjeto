@@ -1,5 +1,6 @@
 namespace VinilProjeto.Entity.Usuario.Telefone;
 
+[Serializable]
 public class Telefone
 {
     public string codigo { get; protected set; } 

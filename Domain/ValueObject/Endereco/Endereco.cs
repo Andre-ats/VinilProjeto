@@ -1,5 +1,6 @@
 namespace VinilProjeto.Entity.Usuario.Endereco;
 
+[Serializable]
 public class Endereco
 {
     public string cep { get; protected set; }
