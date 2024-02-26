@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using VinilProjeto.Entity.Usuario;
 using VinilProjeto.UseCase.AdminUseCase.CadastrarAdmin;
 using VinilProjeto.UseCase.AdminUseCase.GetAdmin;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetUsuarioComprador;
 using VinilProjeto.UseCase.VinilUseCase.CadastrarVinil;
 using WebApi.Services;
 using WebAPIs.DTO;
@@ -20,11 +21,14 @@ public class AdminController : ControllerBase
     private readonly IGetAdminUseCase _getAdminUseCase;
     private readonly ICadastrarVinilUseCase _vinilUseCase;
     private readonly ILoginServiceAdmin _login;
+    private readonly IGetUsuarioCompradorUseCase _getUsuarioCompradorUseCase;
 
-    public AdminController(ICadastrarAdminUseCase cadastrarAdminUseCase, IGetAdminUseCase GetAdminUseCase, ICadastrarVinilUseCase cadastrarVinilUseCase, ILoginServiceAdmin login)
+    public AdminController(ICadastrarAdminUseCase cadastrarAdminUseCase, IGetAdminUseCase GetAdminUseCase, ICadastrarVinilUseCase cadastrarVinilUseCase, 
+        ILoginServiceAdmin login, IGetUsuarioCompradorUseCase getUsuarioCompradorUseCase)
     {
         _cadastrarAdminUseCase = cadastrarAdminUseCase;
         _getAdminUseCase = GetAdminUseCase;
+        _getUsuarioCompradorUseCase = getUsuarioCompradorUseCase;
         _vinilUseCase = cadastrarVinilUseCase;
         _login = login;
     }
@@ -81,6 +85,17 @@ public class AdminController : ControllerBase
     public IGetAdminUseCaseOutput getTodosAdmins()
     {
         return _getAdminUseCase.executeUseCase(new IGetAdminUseCaseInput());
+    }
+    
+    [Authorize(Roles = "Admin")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpGet(Name = "GetTodosUsuarios")]
+    public IGetUsuarioCompradorUseCaseOutput getTodosUsuarios()
+    {
+        return _getUsuarioCompradorUseCase.executeUseCase(new IGetUsuarioCompradorUseCaseInput());
     }
     
 }

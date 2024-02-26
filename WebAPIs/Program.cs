@@ -10,6 +10,7 @@ using VinilProjeto.Repository.VinilRepository;
 using VinilProjeto.UseCase.AdminUseCase.CadastrarAdmin;
 using VinilProjeto.UseCase.AdminUseCase.GetAdmin;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.CadastrarUsuarioComprador;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetUsuarioComprador;
 using VinilProjeto.UseCase.VinilUseCase.CadastrarVinil;
 using WebAPIs.Config;
 using WebAPIs.Service.LoginServiceAdmin;
@@ -40,6 +41,7 @@ builder.Services.AddScoped<IGetAdminUseCase, GetAdminUseCase>();
 
 builder.Services.AddScoped<IUsuarioCompradorRepository, EFCoreUsuarioCompradorRepository>();
 builder.Services.AddScoped<ICadastrarUsuarioCompradorUseCase, CadastrarUsuarioCompradorUseCase>();
+builder.Services.AddScoped<IGetUsuarioCompradorUseCase, GetUsuarioCompradorUseCase>();
 
 builder.Services.AddScoped<IVinilRespository, EFCoreVinilRepository>();
 builder.Services.AddScoped<ICadastrarVinilUseCase, CadastrarVinilUseCase>();
