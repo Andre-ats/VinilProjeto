@@ -1,6 +1,5 @@
 namespace VinilProjeto.Factory.ValueObject.Endereco;
-
-using VinilProjeto.Entity.Usuario.Endereco;
+using VinilProjeto.ValueObject.Endereco;
 
 public class EnderecoFactory
 {

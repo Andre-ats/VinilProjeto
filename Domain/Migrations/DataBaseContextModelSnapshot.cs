@@ -94,7 +94,7 @@ namespace VinilProjeto.Migrations
 
             modelBuilder.Entity("VinilProjeto.Entity.Usuario.UsuarioComprador", b =>
                 {
-                    b.OwnsOne("VinilProjeto.Entity.Usuario.Endereco.Endereco", "endereco", b1 =>
+                    b.OwnsOne("VinilProjeto.ValueObject.Endereco.Endereco", "endereco", b1 =>
                         {
                             b1.Property<Guid>("UsuarioCompradorid")
                                 .HasColumnType("uuid");
@@ -139,7 +139,7 @@ namespace VinilProjeto.Migrations
                                 .HasForeignKey("UsuarioCompradorid");
                         });
 
-                    b.OwnsOne("VinilProjeto.Entity.Usuario.Telefone.Telefone", "telefone", b1 =>
+                    b.OwnsOne("VinilProjeto.ValueObject.Telefone.Telefone", "telefone", b1 =>
                         {
                             b1.Property<Guid>("UsuarioCompradorid")
                                 .HasColumnType("uuid");

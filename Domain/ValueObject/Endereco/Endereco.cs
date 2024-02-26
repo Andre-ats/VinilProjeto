@@ -1,4 +1,4 @@
-namespace VinilProjeto.Entity.Usuario.Endereco;
+namespace VinilProjeto.ValueObject.Endereco;
 
 [Serializable]
 public class Endereco

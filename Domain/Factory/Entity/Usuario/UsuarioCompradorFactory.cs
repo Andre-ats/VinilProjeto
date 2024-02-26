@@ -1,6 +1,6 @@
 using VinilProjeto.Entity.Usuario;
-using VinilProjeto.Entity.Usuario.Endereco;
-using VinilProjeto.Entity.Usuario.Telefone;
+using VinilProjeto.ValueObject.Endereco;
+using VinilProjeto.ValueObject.Telefone;
 
 namespace VinilProjeto.Factory.Entity.Usuario;
 

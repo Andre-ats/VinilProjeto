@@ -12,7 +12,7 @@ using VinilProjeto.Repository;
 namespace VinilProjeto.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20240207210003_Migration01")]
+    [Migration("20240226022116_Migration01")]
     partial class Migration01
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace VinilProjeto.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("ProductVersion", "9.0.0-preview.1.24081.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -63,9 +63,41 @@ namespace VinilProjeto.Migrations
                     b.ToTable("UsuarioComprador", (string)null);
                 });
 
+            modelBuilder.Entity("VinilProjeto.Entity.VinilVenda.Vinil", b =>
+                {
+                    b.Property<Guid>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("descricaoVinil")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("estiloMusical")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("text");
+
+                    b.Property<string>("nomeVinil")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("precoVinil")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("quantiaVinil")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Vinil", (string)null);
+                });
+
             modelBuilder.Entity("VinilProjeto.Entity.Usuario.UsuarioComprador", b =>
                 {
-                    b.OwnsOne("VinilProjeto.Entity.Usuario.Endereco.Endereco", "endereco", b1 =>
+                    b.OwnsOne("VinilProjeto.ValueObject.Endereco.Endereco", "endereco", b1 =>
                         {
                             b1.Property<Guid>("UsuarioCompradorid")
                                 .HasColumnType("uuid");
@@ -110,7 +142,7 @@ namespace VinilProjeto.Migrations
                                 .HasForeignKey("UsuarioCompradorid");
                         });
 
-                    b.OwnsOne("VinilProjeto.Entity.Usuario.Telefone.Telefone", "telefone", b1 =>
+                    b.OwnsOne("VinilProjeto.ValueObject.Telefone.Telefone", "telefone", b1 =>
                         {
                             b1.Property<Guid>("UsuarioCompradorid")
                                 .HasColumnType("uuid");

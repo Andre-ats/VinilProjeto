@@ -1,16 +1,14 @@
-using VinilProjeto.Repository.AdminRepository;
 using VinilProjeto.Repository.UsuarioCompradorRepository;
-using VinilProjeto.UseCase.AdminUseCase.CadastrarAdmin;
 using VinilProjeto.UseCase.UseCaseInterfaces;
 
 namespace VinilProjeto.UseCase.UsuarioCompradorUseCase.CadastrarUsuarioComprador;
 
 public abstract class ICadastrarUsuarioCompradorUseCase : IUseCase<ICadastrarUsuarioCompradorUseCaseInput, ICadastrarUsuarioCompradorUseCaseOutput>
 {
-    protected IUsuarioCompradorRepository _usuarioCompradorRepository;
+    protected IUsuarioCompradorRepository _compradorRepository;
 
-    public ICadastrarUsuarioCompradorUseCase(IUsuarioCompradorRepository usuarioCompradorRepository)
+    public ICadastrarUsuarioCompradorUseCase(IUsuarioCompradorRepository repository)
     {
-        _usuarioCompradorRepository = usuarioCompradorRepository;
+        _compradorRepository = repository;
     }
 }

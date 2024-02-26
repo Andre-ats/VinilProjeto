@@ -5,7 +5,7 @@
 namespace VinilProjeto.Migrations
 {
     /// <inheritdoc />
-    public partial class migracao02 : Migration
+    public partial class Migration01 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -1,6 +1,6 @@
 namespace VinilProjeto.Factory.ValueObject.Telefone;
 
-using VinilProjeto.Entity.Usuario.Telefone;
+using VinilProjeto.ValueObject.Telefone;
 
 public class TelefoneFactory
 {
@@ -42,7 +42,7 @@ public class TelefoneFactory
 
     public Telefone build()
     {
-        _=this.validar() ? true : throw new Exception();
+        _ = this.validar() ? true : throw new Exception();
 
         Telefone telefone = Telefone.createTelefone(
             _codigo,

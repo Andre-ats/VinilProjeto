@@ -1,4 +1,4 @@
-namespace VinilProjeto.Entity.Usuario.Telefone;
+namespace VinilProjeto.ValueObject.Telefone;
 
 [Serializable]
 public class Telefone
