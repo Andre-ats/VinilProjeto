@@ -1,6 +1,8 @@
 using VinilProjeto.Entity.Usuario;
 using VinilProjeto.Factory.Entity.Usuario;
+using VinilProjeto.Factory.ValueObject.Endereco;
 using VinilProjeto.Factory.ValueObject.Telefone;
+using VinilProjeto.Repository.DTO.ValueObject;
 using VinilProjeto.Repository.UsuarioCompradorRepository;
 using VinilProjeto.UseCase.UseCaseInterfaces;
 
@@ -20,11 +22,21 @@ public class CadastrarUsuarioCompradorUseCase : ICadastrarUsuarioCompradorUseCas
             UsuarioComprador user = new UsuarioCompradorFactory()
                 .setEmail(_useCaseInput.email)
                 .setSenha(_useCaseInput.senha)
-                .setEndereco(_useCaseInput.endereco)
                 .setTelefone(new TelefoneFactory()
                     .setCodigo(_useCaseInput.telefone.codigo)
-                    .setDDD(_useCaseInput.telefone.ddd)
                     .setNumero(_useCaseInput.telefone.numero)
+                    .setDDD(_useCaseInput.telefone.ddd)
+                    .build()
+                )
+                .setEndereco(new EnderecoFactory()
+                    .setNumero(_useCaseInput.endereco.numero)
+                    .setBairro(_useCaseInput.endereco.bairro)
+                    .setCep(_useCaseInput.endereco.cep)
+                    .setCidade(_useCaseInput.endereco.cidade)
+                    .setComplemento(_useCaseInput.endereco.complemento)
+                    .setEstado(_useCaseInput.endereco.estado)
+                    .setLogradouro(_useCaseInput.endereco.logradouro)
+                    .setReferencia(_useCaseInput.endereco.referencia)
                     .build()
                 )
                 .build();
