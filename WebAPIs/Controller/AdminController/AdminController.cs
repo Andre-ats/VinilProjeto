@@ -1,8 +1,10 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VinilProjeto.Entity.Usuario;
 using VinilProjeto.UseCase.AdminUseCase.CadastrarAdmin;
 using VinilProjeto.UseCase.AdminUseCase.GetAdmin;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetAdminPerfil;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetUsuarioComprador;
 using VinilProjeto.UseCase.VinilUseCase.CadastrarVinil;
 using WebApi.Services;
@@ -22,15 +24,23 @@ public class AdminController : ControllerBase
     private readonly ICadastrarVinilUseCase _vinilUseCase;
     private readonly ILoginServiceAdmin _login;
     private readonly IGetUsuarioCompradorUseCase _getUsuarioCompradorUseCase;
+    private readonly IGetAdminPerfilUseCase _getAdminPerfilUseCase;
 
-    public AdminController(ICadastrarAdminUseCase cadastrarAdminUseCase, IGetAdminUseCase GetAdminUseCase, ICadastrarVinilUseCase cadastrarVinilUseCase, 
-        ILoginServiceAdmin login, IGetUsuarioCompradorUseCase getUsuarioCompradorUseCase)
+    public AdminController(
+            ICadastrarAdminUseCase cadastrarAdminUseCase, 
+            IGetAdminUseCase GetAdminUseCase, 
+            ICadastrarVinilUseCase cadastrarVinilUseCase, 
+            ILoginServiceAdmin login, 
+            IGetUsuarioCompradorUseCase getUsuarioCompradorUseCase, 
+            IGetAdminPerfilUseCase getAdminPerfilUseCase
+        )
     {
         _cadastrarAdminUseCase = cadastrarAdminUseCase;
         _getAdminUseCase = GetAdminUseCase;
         _getUsuarioCompradorUseCase = getUsuarioCompradorUseCase;
         _vinilUseCase = cadastrarVinilUseCase;
         _login = login;
+        _getAdminPerfilUseCase = getAdminPerfilUseCase;
     }
     [AllowAnonymous]
     [ProducesResponseType(201)]
@@ -98,4 +108,14 @@ public class AdminController : ControllerBase
         return _getUsuarioCompradorUseCase.executeUseCase(new IGetUsuarioCompradorUseCaseInput());
     }
     
+    [Authorize(Roles = "Admin")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpGet(Name = "GetPerfilAdmin")]
+    public IGetAdminPerfilUseCaseOutput getAdminPerfil()
+    {
+        return _getAdminPerfilUseCase.executeUseCase(new IGetAdminPerfilUseCaseInput(Guid.Parse(User.FindFirstValue("id"))));
+    }
 }

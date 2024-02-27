@@ -23,4 +23,5 @@ public class EFCoreUsuarioCompradorRepository : IUsuarioCompradorRepository
     {
        return _dataBaseContext.UsuarioCompradorDB.ToList();
     }
+    
 }

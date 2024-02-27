@@ -28,4 +28,8 @@ public class EFCoreAdminRepository : IAdminRepository
     {
         return _dataBaseContext.adminDB.SingleOrDefault(x => x.email.Equals(email));
     }
+    public Admin getAdminByID(Guid id)
+    {
+        return _dataBaseContext.adminDB.SingleOrDefault(x => x.id.Equals(id));   
+    }
 }
