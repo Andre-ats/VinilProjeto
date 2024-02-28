@@ -30,6 +30,6 @@ public class EFCoreAdminRepository : IAdminRepository
     }
     public Admin getAdminByID(Guid id)
     {
-        return _dataBaseContext.adminDB.SingleOrDefault(x => x.id.Equals(id));   
+        return _dataBaseContext.adminDB.SingleOrDefault(x => x.id.Equals(id)) ?? null;   
     }
 }

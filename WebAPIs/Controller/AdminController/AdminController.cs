@@ -58,7 +58,7 @@ public class AdminController : ControllerBase
         }
 
         TokenGenerator gerar = new TokenGenerator();
-        string token = gerar.generate(new UsuarioToken { email = input.email, senha = input.senha, role = "Admin"});
+        string token = gerar.generate(new UsuarioToken { email = input.email, senha = input.senha, role = "Admin", id = admin.id});
         DateTime dateTime = gerar.getExpiration();
 
         return new UsuarioLoginOutput(token, dateTime);

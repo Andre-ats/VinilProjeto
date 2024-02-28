@@ -17,4 +17,9 @@ public class EFCoreVinilRepository : IVinilRespository
         _dataBaseContext.VinilDB.Add(vinil);
         return _dataBaseContext.SaveChanges() > 0;
     }
+
+    public List<Vinil> getTodosVinil()
+    {
+        return _dataBaseContext.VinilDB.ToList();
+    }
 }

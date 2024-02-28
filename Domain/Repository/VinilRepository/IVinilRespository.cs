@@ -5,4 +5,5 @@ namespace VinilProjeto.Repository.VinilRepository;
 public interface IVinilRespository
 {
     public bool createVinil(Vinil vinil);
+    public List<Vinil> getTodosVinil();
 }
