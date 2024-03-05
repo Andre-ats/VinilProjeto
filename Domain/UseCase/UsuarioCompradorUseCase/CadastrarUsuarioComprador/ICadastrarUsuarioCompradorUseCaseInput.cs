@@ -1,3 +1,4 @@
+using VinilProjeto.Entity.Usuario;
 using VinilProjeto.Repository.DTO.ValueObject;
 using VinilProjeto.UseCase.UseCaseInterfaces;
 using VinilProjeto.ValueObject.Endereco;
@@ -9,6 +10,7 @@ public class ICadastrarUsuarioCompradorUseCaseInput : IUseCaseInput
 {
     public string email;
     public string senha;
+    public StatusUsuarioComprador statusUsuarioComprador;
     public TelefoneDTO telefone;
     public EnderecoDTO endereco;
 }

@@ -1,3 +1,4 @@
+using VinilProjeto.Entity.Usuario;
 using VinilProjeto.Entity.VinilVenda;
 
 namespace VinilProjeto.Factory.Entity.VinilVenda;
@@ -9,6 +10,7 @@ public class VinilVendaFactory
     public string _precoVinil { get; set; }
     public string _quantiaVinil { get; set; }
     public EstiloMusical _estiloMusical { get; set; }
+    public StatusVinil _statusVinil { get; set; }
 
     private void init()
     {
@@ -17,6 +19,7 @@ public class VinilVendaFactory
         _precoVinil = null;
         _quantiaVinil = null;
         _estiloMusical = EstiloMusical.Vazio;
+        _statusVinil = StatusVinil.Vazio;
     }
 
     public VinilVendaFactory setNomeVinil(string nomeVinil)
@@ -48,6 +51,12 @@ public class VinilVendaFactory
         return this;
     }
 
+    public VinilVendaFactory setStatusVinil(StatusVinil statusVinil)
+    {
+        this._statusVinil = statusVinil;
+        return this;
+    }
+
     public bool validar()
     {
         _ = _nomeVinil == null ? throw new Exception() : true;
@@ -55,6 +64,7 @@ public class VinilVendaFactory
         _ = _precoVinil == null ? throw new Exception() : true;
         _ = _quantiaVinil == null ? throw new Exception() : true;
         _ = _estiloMusical == EstiloMusical.Vazio ? throw new Exception() : true;
+        _ = _statusVinil == StatusVinil.Vazio ? throw new Exception() : true;
 
         return true;
     }
@@ -68,7 +78,8 @@ public class VinilVendaFactory
             _descricaoVinil,
             _precoVinil,
             _quantiaVinil,
-            _estiloMusical
+            _estiloMusical,
+            _statusVinil
         );
         
         this.init();
