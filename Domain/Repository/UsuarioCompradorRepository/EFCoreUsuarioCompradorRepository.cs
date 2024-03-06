@@ -23,5 +23,9 @@ public class EFCoreUsuarioCompradorRepository : IUsuarioCompradorRepository
     {
        return _dataBaseContext.UsuarioCompradorDB.ToList();
     }
-    
+
+    public UsuarioComprador GetUsuarioCompradorByEmail(string email)
+    {
+        return _dataBaseContext.UsuarioCompradorDB.SingleOrDefault(x => x.email.Equals(email));
+    }
 }
