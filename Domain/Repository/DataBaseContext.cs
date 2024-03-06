@@ -11,7 +11,7 @@ public class DataBaseContext : DbContext
     {
         base.OnConfiguring(optionsBuilder);
 
-        optionsBuilder.UseNpgsql("User ID=andre;Host=localhost;Port=5432;DataBase=vinilTesteDB;Password=andre;Include Error Detail=True");
+        optionsBuilder.UseNpgsql("User ID=andre;Host=localhost;Port=5432;DataBase=vinilTestedb;Password=andre;Include Error Detail=True");
         
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
