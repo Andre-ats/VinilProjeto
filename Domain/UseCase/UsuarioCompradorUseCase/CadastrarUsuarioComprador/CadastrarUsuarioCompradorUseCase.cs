@@ -22,6 +22,7 @@ public class CadastrarUsuarioCompradorUseCase : ICadastrarUsuarioCompradorUseCas
             UsuarioComprador user = new UsuarioCompradorFactory()
                 .setEmail(_useCaseInput.email)
                 .setSenha(_useCaseInput.senha)
+                .setStatusUsuarioComprador(_useCaseInput.statusUsuarioComprador)
                 .setTelefone(new TelefoneFactory()
                     .setCodigo(_useCaseInput.telefone.codigo)
                     .setNumero(_useCaseInput.telefone.numero)

@@ -10,6 +10,7 @@ public class UsuarioCompradorFactory
     private string _senha { get; set; }
     private Telefone _telefone { get; set; }
     private Endereco _endereco { get; set; }
+    private StatusUsuarioComprador _status { get; set; }
 
     private void init()
     {
@@ -17,6 +18,7 @@ public class UsuarioCompradorFactory
         _senha = null;
         _telefone = null;
         _endereco = null;
+        _status = StatusUsuarioComprador.Vazio;
     }
 
     public UsuarioCompradorFactory setEmail(string email)
@@ -43,12 +45,19 @@ public class UsuarioCompradorFactory
         return this;
     }
 
+    public UsuarioCompradorFactory setStatusUsuarioComprador(StatusUsuarioComprador status)
+    {
+        this._status = status;
+        return this;
+    }
+
     public bool validar()
     {
         _ = _email == null ? throw new Exception() : true;
         _ = _senha == null ? throw new Exception() : true;
         _ = _telefone == null ? throw new Exception() : true;
         _ = _endereco == null ? throw new Exception() : true;
+        _ = _status == StatusUsuarioComprador.Vazio ? throw new Exception() : true;
 
         return true;
     }
@@ -62,7 +71,8 @@ public class UsuarioCompradorFactory
             _email,
             _senha,
             _telefone,
-            _endereco
+            _endereco,
+            _status
         );
         
         this.init();

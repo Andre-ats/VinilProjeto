@@ -318,9 +318,9 @@
 /home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.WebAPIs.props
 /home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/obj/Debug/net8.0/staticwebassets.pack.json
 /home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/obj/Debug/net8.0/scopedcss/bundle/WebAPIs.styles.css
-/home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/obj/Debug/net8.0/WebAPIs.csproj.CopyComplete
 /home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/obj/Debug/net8.0/WebAPIs.dll
 /home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/obj/Debug/net8.0/refint/WebAPIs.dll
 /home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/obj/Debug/net8.0/WebAPIs.pdb
 /home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/obj/Debug/net8.0/WebAPIs.genruntimeconfig.cache
 /home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/obj/Debug/net8.0/ref/WebAPIs.dll
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/obj/Debug/net8.0/WebAPIs.csproj.Up2Date

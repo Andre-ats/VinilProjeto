@@ -55,6 +55,9 @@ namespace VinilProjeto.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("status")
+                        .HasColumnType("integer");
+
                     b.HasKey("id");
 
                     b.ToTable("UsuarioComprador", (string)null);
@@ -65,6 +68,9 @@ namespace VinilProjeto.Migrations
                     b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<int>("StatusVinil")
+                        .HasColumnType("integer");
 
                     b.Property<string>("descricaoVinil")
                         .IsRequired()

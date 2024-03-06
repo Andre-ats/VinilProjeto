@@ -10,8 +10,8 @@ public class DataBaseContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
-
-        optionsBuilder.UseNpgsql("User ID=andre;Host=localhost;Port=5432;DataBase=vinilTestedb;Password=andre;Include Error Detail=True");
+        
+        optionsBuilder.UseNpgsql("User ID=andre;Host=localhost;Port=5432;DataBase=VinilDB;Password=andre;Include Error Detail=True");
         
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);

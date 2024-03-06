@@ -5750,7 +5750,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/andre/.dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

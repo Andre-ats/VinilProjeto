@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using VinilProjeto.Entity.Usuario;
+using VinilProjeto.ValueObject.Telefone;
 
 namespace VinilProjeto.Repository.UsuarioCompradorRepository;
 
@@ -23,5 +24,20 @@ public class EFCoreUsuarioCompradorRepository : IUsuarioCompradorRepository
     {
        return _dataBaseContext.UsuarioCompradorDB.ToList();
     }
-    
+
+    public UsuarioComprador GetUsuarioCompradorByEmail(string email)
+    {
+        return _dataBaseContext.UsuarioCompradorDB.SingleOrDefault(x => x.email.Equals(email));
+    }
+
+    public void PutUsuarioCompradorTelefone(Telefone telefone)
+    {
+        _dataBaseContext.Update(telefone);
+        _dataBaseContext.SaveChanges();
+    }
+
+    public UsuarioComprador GetUsuarioCompradorById(Guid id)
+    {
+        return _dataBaseContext.UsuarioCompradorDB.SingleOrDefault(x => x.id.Equals(id));
+    }
 }

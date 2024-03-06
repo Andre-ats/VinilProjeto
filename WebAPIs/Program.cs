@@ -12,10 +12,13 @@ using VinilProjeto.UseCase.AdminUseCase.GetAdmin;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.CadastrarUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetAdminPerfil;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetUsuarioComprador;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarTelefone;
 using VinilProjeto.UseCase.VinilUseCase.CadastrarVinil;
 using VinilProjeto.UseCase.VinilUseCase.GetTodosVinil;
 using WebAPIs.Config;
 using WebAPIs.Service.LoginServiceAdmin;
+using WebAPIs.Service.LoginServiceUsuarioComprador;
+using LoginService = WebAPIs.Service.LoginServiceAdmin.LoginService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +48,8 @@ builder.Services.AddScoped<IGetAdminPerfilUseCase, GetAdminPerfilUseCase>();
 builder.Services.AddScoped<IUsuarioCompradorRepository, EFCoreUsuarioCompradorRepository>();
 builder.Services.AddScoped<ICadastrarUsuarioCompradorUseCase, CadastrarUsuarioCompradorUseCase>();
 builder.Services.AddScoped<IGetUsuarioCompradorUseCase, GetUsuarioCompradorUseCase>();
+builder.Services.AddScoped<ILoginServiceUsuarioComprador, LoginServiceUsuarioComprador>();
+builder.Services.AddScoped<IPutUsuarioCompradorTelefoneUseCase, PutUsuarioCompradorTelefoneUseCase>();
 
 builder.Services.AddScoped<IVinilRespository, EFCoreVinilRepository>();
 builder.Services.AddScoped<ICadastrarVinilUseCase, CadastrarVinilUseCase>();

@@ -12,8 +12,8 @@ using VinilProjeto.Repository;
 namespace VinilProjeto.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20240301061802_Migration01")]
-    partial class Migration01
+    [Migration("20240306034502_migration0001")]
+    partial class migration0001
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,6 +58,9 @@ namespace VinilProjeto.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("status")
+                        .HasColumnType("integer");
+
                     b.HasKey("id");
 
                     b.ToTable("UsuarioComprador", (string)null);
@@ -68,6 +71,9 @@ namespace VinilProjeto.Migrations
                     b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<int>("StatusVinil")
+                        .HasColumnType("integer");
 
                     b.Property<string>("descricaoVinil")
                         .IsRequired()

@@ -20,6 +20,7 @@ public class CadastrarVinilUseCase : ICadastrarVinilUseCase
                 .setPrecoVinil(_useCaseInput.precoVinil)
                 .setQuantiaVinil(_useCaseInput.quantiaVinil)
                 .setEstiloMusical(_useCaseInput.estiloMusical)
+                .setStatusVinil(_useCaseInput.statusVinil)
                 .build();
             
             Console.WriteLine("AAAA" + vinil);

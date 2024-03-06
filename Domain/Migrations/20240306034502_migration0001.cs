@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace VinilProjeto.Migrations
 {
     /// <inheritdoc />
-    public partial class Migration01 : Migration
+    public partial class migration0001 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,6 +31,7 @@ namespace VinilProjeto.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     email = table.Column<string>(type: "text", nullable: false),
                     senha = table.Column<string>(type: "text", nullable: false),
+                    status = table.Column<int>(type: "integer", nullable: false),
                     telefone_codigo = table.Column<string>(type: "text", nullable: false),
                     telefone_ddd = table.Column<string>(type: "text", nullable: false),
                     telefone_numero = table.Column<string>(type: "text", nullable: false),
@@ -57,7 +58,8 @@ namespace VinilProjeto.Migrations
                     descricaoVinil = table.Column<string>(type: "text", nullable: false),
                     precoVinil = table.Column<string>(type: "text", nullable: false),
                     quantiaVinil = table.Column<string>(type: "text", nullable: false),
-                    EstiloMusical = table.Column<string>(type: "text", nullable: false)
+                    EstiloMusical = table.Column<string>(type: "text", nullable: false),
+                    StatusVinil = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -10,4 +10,5 @@ public class ICadastrarVinilUseCaseInput : IUseCaseInput
     public string precoVinil;
     public string quantiaVinil;
     public EstiloMusical estiloMusical;
+    public StatusVinil statusVinil;
 }
