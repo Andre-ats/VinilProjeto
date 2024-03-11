@@ -14,7 +14,7 @@ public class PutUsuarioCompradorTelefoneUseCase : IPutUsuarioCompradorTelefoneUs
     {
         
         var usuarioComprador = _usuarioCompradorRepository.GetUsuarioCompradorById(_useCaseInput.getUsuarioId()) 
-                     ?? throw new Exception("Id nao encontrado" + _useCaseInput.getUsuarioId());
+                     ?? throw new Exception("Id nao encontrado");
 
         Telefone novoTelefone = new TelefoneFactory()
             .setNumero(_useCaseInput.numero)

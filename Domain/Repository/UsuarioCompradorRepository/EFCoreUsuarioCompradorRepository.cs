@@ -38,6 +38,6 @@ public class EFCoreUsuarioCompradorRepository : IUsuarioCompradorRepository
 
     public UsuarioComprador GetUsuarioCompradorById(Guid id)
     {
-        return _dataBaseContext.UsuarioCompradorDB.SingleOrDefault(x => x.id.Equals(id));
+        return _dataBaseContext.UsuarioCompradorDB.SingleOrDefault(x => x.id.Equals(id)) ?? null;
     }
 }
