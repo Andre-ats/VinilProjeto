@@ -13,16 +13,12 @@ public class PutUsuarioCompradorTelefoneUseCase : IPutUsuarioCompradorTelefoneUs
     protected override IPutUsuarioCompradorTelefoneUseCaseOutput executeService(IPutUsuarioCompradorTelefoneUseCaseInput _useCaseInput)
     {
         
-        var usuarioComprador = _usuarioCompradorRepository.GetUsuarioCompradorById(_useCaseInput.getUsuarioId()) 
-                     ?? throw new Exception("Id nao encontrado");
+        var user = _usuarioCompradorRepository.GetUsuarioCompradorById(_useCaseInput.getUsuarioId()) 
+                     ?? throw new Exception("Id nao encontrado" + _useCaseInput.getUsuarioId());
 
-        Telefone novoTelefone = new TelefoneFactory()
-            .setNumero(_useCaseInput.numero)
-            .setCodigo(_useCaseInput.codigo)
-            .setDDD(_useCaseInput.ddd)
-            .build();
-
-        _usuarioCompradorRepository.PutUsuarioCompradorTelefone(novoTelefone);
+        user.TelefoneAtualizar(Telefone.createTelefone(_useCaseInput.codigo, _useCaseInput.ddd, _useCaseInput.numero));
+        
+        _usuarioCompradorRepository.PutUsuarioCompradorTelefone(user);
 
         return new IPutUsuarioCompradorTelefoneUseCaseOutput()
         {

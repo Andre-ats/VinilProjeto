@@ -37,4 +37,9 @@ public class UsuarioComprador : IEntity
         return usuarioComprador;
 
     }
+
+    public void TelefoneAtualizar(Telefone telefone)
+    {
+        this.telefone = telefone;
+    }
 }

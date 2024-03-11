@@ -8,6 +8,6 @@ public interface IUsuarioCompradorRepository
     public bool createUsuario(UsuarioComprador usuarioComprador);
     public List<UsuarioComprador> getUsuarioComprador();
     public UsuarioComprador GetUsuarioCompradorByEmail(string email);
-    public void PutUsuarioCompradorTelefone(Telefone telefone);
+    public void PutUsuarioCompradorTelefone(UsuarioComprador usuarioComprador);
     public UsuarioComprador GetUsuarioCompradorById(Guid id);
 }
