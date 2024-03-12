@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VinilProjeto.Entity.Usuario;
@@ -14,7 +15,7 @@ namespace WebAPIs.Controller.UsuarioCompradorController;
 
 [ApiController]
 [Route("[controller]/[action]")]
-public class UsuarioCompradorController
+public class UsuarioCompradorController : ControllerBase
 {
     private readonly ICadastrarUsuarioCompradorUseCase _cadastrarUsuarioCompradorUseCase;
     private readonly IGetTodosVinilUseCase _getTodosVinilUseCase;
@@ -93,6 +94,7 @@ public class UsuarioCompradorController
 
     public IPutUsuarioCompradorTelefoneUseCaseOutput putTelefone([FromBody] IPutUsuarioCompradorTelefoneUseCaseInput input)
     {
+        input.setUsuarioId((Guid.Parse(User.FindFirstValue("id"))));
         return _putUsuarioCompradorTelefoneUseCase.executeUseCase(input);
     }
 }

@@ -30,14 +30,14 @@ public class EFCoreUsuarioCompradorRepository : IUsuarioCompradorRepository
         return _dataBaseContext.UsuarioCompradorDB.SingleOrDefault(x => x.email.Equals(email));
     }
 
-    public void PutUsuarioCompradorTelefone(Telefone telefone)
+    public void PutUsuarioCompradorTelefone(UsuarioComprador usuarioComprador)
     {
-        _dataBaseContext.Update(telefone);
+        _dataBaseContext.Update(usuarioComprador);
         _dataBaseContext.SaveChanges();
     }
 
     public UsuarioComprador GetUsuarioCompradorById(Guid id)
     {
-        return _dataBaseContext.UsuarioCompradorDB.SingleOrDefault(x => x.id.Equals(id));
+        return _dataBaseContext.UsuarioCompradorDB.SingleOrDefault(x => x.id.Equals(id)) ?? null;
     }
 }
