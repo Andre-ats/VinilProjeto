@@ -18,7 +18,7 @@ public class PutUsuarioCompradorAtivarStatusUseCase : IPutUsuarioCompradorAtivar
             if (user.senha.Equals(useCaseUseCaseInput.senha))
             {
                 user.AtivarUsuario();
-                _usuarioCompradorRepository.PutUsuarioCompradorAtivarStatus(user);
+                _usuarioCompradorRepository.PutUsuarioCompradorStatus(user);
             }
             else
             {

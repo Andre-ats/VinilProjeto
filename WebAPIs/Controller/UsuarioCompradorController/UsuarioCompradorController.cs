@@ -5,6 +5,7 @@ using VinilProjeto.Entity.Usuario;
 using VinilProjeto.Entity.VinilVenda;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.CadastrarUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetPerfilUsuarioComprador;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarDesativarStatusUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarStatusUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarTelefone;
 using VinilProjeto.UseCase.VinilUseCase.GetTodosVinil;
@@ -25,13 +26,15 @@ public class UsuarioCompradorController : ControllerBase
     private readonly IPutUsuarioCompradorTelefoneUseCase _putUsuarioCompradorTelefoneUseCase;
     private readonly IGetPerfilUsuarioCompradorUseCase _getPerfilUsuarioCompradorUseCase;
     private readonly IPutUsuarioCompradorAtivarStatusUseCase _putUsuarioCompradorAtivarStatusUseCase;
+    private readonly IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase;
 
     public UsuarioCompradorController(ICadastrarUsuarioCompradorUseCase usuarioCompradorUseCase, 
         IGetTodosVinilUseCase getTodosVinilUseCase, 
         ILoginServiceUsuarioComprador usuarioCompradorLogin,
         IPutUsuarioCompradorTelefoneUseCase _putUsuarioCompradorTelefoneUseCase,
         IGetPerfilUsuarioCompradorUseCase _getPerfilUsuarioCompradorUseCase,
-        IPutUsuarioCompradorAtivarStatusUseCase _putUsuarioCompradorAtivarStatusUseCase
+        IPutUsuarioCompradorAtivarStatusUseCase _putUsuarioCompradorAtivarStatusUseCase,
+        IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase
         )
     {
         _cadastrarUsuarioCompradorUseCase = usuarioCompradorUseCase;
@@ -40,6 +43,7 @@ public class UsuarioCompradorController : ControllerBase
         this._putUsuarioCompradorTelefoneUseCase = _putUsuarioCompradorTelefoneUseCase;
         this._getPerfilUsuarioCompradorUseCase = _getPerfilUsuarioCompradorUseCase;
         this._putUsuarioCompradorAtivarStatusUseCase = _putUsuarioCompradorAtivarStatusUseCase;
+        this._putUsuarioCompradorDesativarStatusUseCase = _putUsuarioCompradorDesativarStatusUseCase;
     }
     
     [AllowAnonymous]
@@ -119,10 +123,21 @@ public class UsuarioCompradorController : ControllerBase
     [ProducesResponseType(401)]
     [ProducesResponseType(400)]
     [Produces("application/json")]
-    [HttpPut(Name = "putStatusAtivoUsuarioComprador")]
-    public IPutUsuarioCompradorAtivarStatusUseCaseOutput putStatusAtivoUsuarioComprador([FromBody] IPutUsuarioCompradorAtivarStatusUseCaseInput useCaseInput)
+    [HttpPut(Name = "putStatusAtivarUsuarioComprador")]
+    public IPutUsuarioCompradorAtivarStatusUseCaseOutput putStatusAtivarUsuarioComprador([FromBody] IPutUsuarioCompradorAtivarStatusUseCaseInput useCaseInput)
     {
         return _putUsuarioCompradorAtivarStatusUseCase.executeUseCase(useCaseInput);
+    }
+    [Authorize(Roles = "UsuarioComprador")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpPut(Name = "putStatusDesativarUsuarioComprador")]
+    public IPutUsuarioCompradorDesativarStatusUseCaseOutput putStatusDesativarUsuarioComprador([FromBody] IPutUsuarioCompradorDesativarStatusUseCaseInput useCaseInput)
+    {
+        useCaseInput.setUsuarioId((Guid.Parse(User.FindFirstValue("id"))));
+        return _putUsuarioCompradorDesativarStatusUseCase.executeUseCase(useCaseInput);
     }
     
 }

@@ -47,4 +47,9 @@ public class UsuarioComprador : IEntity
     {
         this.status = StatusUsuarioComprador.Ativo;
     }
+
+    public void DesativarUsuario()
+    {
+        this.status = StatusUsuarioComprador.Inativo;
+    }
 }

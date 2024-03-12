@@ -54,5 +54,4 @@ public class TokenGenerator
         return tkn;
     }
     
-    
 }
