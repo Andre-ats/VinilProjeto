@@ -10,4 +10,5 @@ public interface IUsuarioCompradorRepository
     public UsuarioComprador GetUsuarioCompradorByEmail(string email);
     public void PutUsuarioCompradorTelefone(UsuarioComprador usuarioComprador);
     public UsuarioComprador GetUsuarioCompradorById(Guid id);
+    public void PutUsuarioCompradorAtivarStatus(UsuarioComprador usuarioComprador);
 }
