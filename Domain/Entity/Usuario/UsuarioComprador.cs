@@ -42,4 +42,14 @@ public class UsuarioComprador : IEntity
     {
         this.telefone = telefone;
     }
+
+    public void AtivarUsuario()
+    {
+        this.status = StatusUsuarioComprador.Ativo;
+    }
+
+    public void DesativarUsuario()
+    {
+        this.status = StatusUsuarioComprador.Inativo;
+    }
 }

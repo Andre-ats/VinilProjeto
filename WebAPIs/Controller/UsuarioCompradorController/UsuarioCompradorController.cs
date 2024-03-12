@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using VinilProjeto.Entity.Usuario;
 using VinilProjeto.Entity.VinilVenda;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.CadastrarUsuarioComprador;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetPerfilUsuarioComprador;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarDesativarStatusUsuarioComprador;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarStatusUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarTelefone;
 using VinilProjeto.UseCase.VinilUseCase.GetTodosVinil;
 using WebApi.Services;
@@ -21,17 +24,26 @@ public class UsuarioCompradorController : ControllerBase
     private readonly IGetTodosVinilUseCase _getTodosVinilUseCase;
     private readonly ILoginServiceUsuarioComprador _serviceUsuarioComprador;
     private readonly IPutUsuarioCompradorTelefoneUseCase _putUsuarioCompradorTelefoneUseCase;
+    private readonly IGetPerfilUsuarioCompradorUseCase _getPerfilUsuarioCompradorUseCase;
+    private readonly IPutUsuarioCompradorAtivarStatusUseCase _putUsuarioCompradorAtivarStatusUseCase;
+    private readonly IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase;
 
     public UsuarioCompradorController(ICadastrarUsuarioCompradorUseCase usuarioCompradorUseCase, 
         IGetTodosVinilUseCase getTodosVinilUseCase, 
         ILoginServiceUsuarioComprador usuarioCompradorLogin,
-        IPutUsuarioCompradorTelefoneUseCase _putUsuarioCompradorTelefoneUseCase
+        IPutUsuarioCompradorTelefoneUseCase _putUsuarioCompradorTelefoneUseCase,
+        IGetPerfilUsuarioCompradorUseCase _getPerfilUsuarioCompradorUseCase,
+        IPutUsuarioCompradorAtivarStatusUseCase _putUsuarioCompradorAtivarStatusUseCase,
+        IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase
         )
     {
         _cadastrarUsuarioCompradorUseCase = usuarioCompradorUseCase;
         _getTodosVinilUseCase = getTodosVinilUseCase;
         _serviceUsuarioComprador = usuarioCompradorLogin;
         this._putUsuarioCompradorTelefoneUseCase = _putUsuarioCompradorTelefoneUseCase;
+        this._getPerfilUsuarioCompradorUseCase = _getPerfilUsuarioCompradorUseCase;
+        this._putUsuarioCompradorAtivarStatusUseCase = _putUsuarioCompradorAtivarStatusUseCase;
+        this._putUsuarioCompradorDesativarStatusUseCase = _putUsuarioCompradorDesativarStatusUseCase;
     }
     
     [AllowAnonymous]
@@ -67,7 +79,6 @@ public class UsuarioCompradorController : ControllerBase
     [ProducesResponseType(400)]
     [Produces("application/json")]
     [HttpPost(Name = "PostCadastrarUsuarioComprador")]
-
     public ICadastrarUsuarioCompradorUseCaseOutput postCadastrarUsuarioComprador([FromBody] ICadastrarUsuarioCompradorUseCaseInput input)
     {
         return _cadastrarUsuarioCompradorUseCase.executeUseCase(input);
@@ -79,10 +90,32 @@ public class UsuarioCompradorController : ControllerBase
     [ProducesResponseType(400)]
     [Produces("application/json")]
     [HttpGet(Name = "GetTodosVinil")]
-
     public IGetTodosVinilUseCaseOutput getTodosVinil()
     {
         return _getTodosVinilUseCase.executeUseCase(new IGetTodosVinilUseCaseInput());
+    }
+    
+    [Authorize(Roles = "UsuarioComprador")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpGet(Name = "getUsuarioCompradorPerfil")]
+    public IGetPerfilUsuarioCompradorUseCaseOutput getUsuarioCompradorPerfil()
+    {
+        return _getPerfilUsuarioCompradorUseCase.executeUseCase(new IGetPerfilUsuarioCompradorUseCaseInput(Guid.Parse(User.FindFirstValue("id"))));
+    }
+    
+    [Authorize(Roles = "UsuarioComprador")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpPut(Name = "putTelefone")]
+    public IPutUsuarioCompradorTelefoneUseCaseOutput putTelefone([FromBody] IPutUsuarioCompradorTelefoneUseCaseInput input)
+    {
+        input.setUsuarioId((Guid.Parse(User.FindFirstValue("id"))));
+        return _putUsuarioCompradorTelefoneUseCase.executeUseCase(input);
     }
     
     [AllowAnonymous]
@@ -90,11 +123,21 @@ public class UsuarioCompradorController : ControllerBase
     [ProducesResponseType(401)]
     [ProducesResponseType(400)]
     [Produces("application/json")]
-    [HttpPut(Name = "putTelefone")]
-
-    public IPutUsuarioCompradorTelefoneUseCaseOutput putTelefone([FromBody] IPutUsuarioCompradorTelefoneUseCaseInput input)
+    [HttpPut(Name = "putStatusAtivarUsuarioComprador")]
+    public IPutUsuarioCompradorAtivarStatusUseCaseOutput putStatusAtivarUsuarioComprador([FromBody] IPutUsuarioCompradorAtivarStatusUseCaseInput useCaseInput)
     {
-        input.setUsuarioId((Guid.Parse(User.FindFirstValue("id"))));
-        return _putUsuarioCompradorTelefoneUseCase.executeUseCase(input);
+        return _putUsuarioCompradorAtivarStatusUseCase.executeUseCase(useCaseInput);
     }
+    [Authorize(Roles = "UsuarioComprador")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpPut(Name = "putStatusDesativarUsuarioComprador")]
+    public IPutUsuarioCompradorDesativarStatusUseCaseOutput putStatusDesativarUsuarioComprador([FromBody] IPutUsuarioCompradorDesativarStatusUseCaseInput useCaseInput)
+    {
+        useCaseInput.setUsuarioId((Guid.Parse(User.FindFirstValue("id"))));
+        return _putUsuarioCompradorDesativarStatusUseCase.executeUseCase(useCaseInput);
+    }
+    
 }
