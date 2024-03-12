@@ -33,6 +33,10 @@ public class TokenGenerator
         {
             claims.Add(new Claim(ClaimTypes.Role, "Admin"));
         }
+        else if (userToken.role.Equals("UsuarioComprador"))
+        {
+            claims.Add(new Claim(ClaimTypes.Role, "UsuarioComprador"));
+        }
 
 
         var claim = new Claim[claims.Capacity];
