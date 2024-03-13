@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "a0SkrcN+T1lamHf165+78NlMb0dVTByEwy8hBimKzhopwQm198rqnxrwxnj7dctW42cnyuMcu6//4lRRanoSxQ==",
+  "dgSpecHash": "0AqxEkDEJJ850p4lrrGjNKTQNMNBul5GmKAQvqPgRd7M3hqnhAyKoj9FA33d8U/zHaLWFLnYCJthF+MAM8/THw==",
   "success": true,
   "projectFilePath": "/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/Domain.csproj",
   "expectedPackageFiles": [
@@ -19,6 +19,7 @@
     "/home/andre/.nuget/packages/microsoft.codeanalysis.csharp/4.5.0/microsoft.codeanalysis.csharp.4.5.0.nupkg.sha512",
     "/home/andre/.nuget/packages/microsoft.codeanalysis.csharp.workspaces/4.5.0/microsoft.codeanalysis.csharp.workspaces.4.5.0.nupkg.sha512",
     "/home/andre/.nuget/packages/microsoft.codeanalysis.workspaces.common/4.5.0/microsoft.codeanalysis.workspaces.common.4.5.0.nupkg.sha512",
+    "/home/andre/.nuget/packages/microsoft.codecoverage/17.10.0-preview-24080-01/microsoft.codecoverage.17.10.0-preview-24080-01.nupkg.sha512",
     "/home/andre/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/home/andre/.nuget/packages/microsoft.data.sqlclient/5.2.0-preview5.24024.3/microsoft.data.sqlclient.5.2.0-preview5.24024.3.nupkg.sha512",
     "/home/andre/.nuget/packages/microsoft.data.sqlclient.sni.runtime/5.2.0/microsoft.data.sqlclient.sni.runtime.5.2.0.nupkg.sha512",

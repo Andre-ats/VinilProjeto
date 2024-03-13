@@ -42,6 +42,10 @@
               "target": "Package",
               "version": "[6.4.4, )"
             },
+            "Microsoft.CodeCoverage": {
+              "target": "Package",
+              "version": "[17.10.0-preview-24080-01, )"
+            },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[5.2.0-preview5.24024.3, )"

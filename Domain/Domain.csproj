@@ -14,6 +14,7 @@
 
     <ItemGroup>
         <PackageReference Include="EntityFramework" Version="6.4.4" />
+        <PackageReference Include="Microsoft.CodeCoverage" Version="17.10.0-preview-24080-01" />
         <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0-preview5.24024.3" />
         <PackageReference Include="Microsoft.Data.SqlClient.SNI.runtime" Version="5.2.0" />
         <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="9.0.0-preview.1.24081.2" />

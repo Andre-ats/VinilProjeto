@@ -324,3 +324,5 @@
 /home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/obj/Debug/net8.0/WebAPIs.genruntimeconfig.cache
 /home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/obj/Debug/net8.0/ref/WebAPIs.dll
 /home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/obj/Debug/net8.0/WebAPIs.csproj.Up2Date
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/bin/Debug/net8.0/.msCoverageSourceRootsMapping_WebAPIs
+/home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/bin/Debug/net8.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll

@@ -9,11 +9,12 @@
       "Testes/1.0.0": {
         "dependencies": {
           "Domain": "1.0.0",
+          "Microsoft.CodeCoverage": "17.10.0-preview-24080-01",
           "Microsoft.NET.Test.Sdk": "17.8.0",
           "NUnit": "3.14.0",
           "NUnit.Analyzers": "3.9.0",
           "NUnit3TestAdapter": "4.5.0",
-          "coverlet.collector": "6.0.0"
+          "coverlet.collector": "6.0.2"
         },
         "runtime": {
           "Testes.dll": {}
@@ -61,7 +62,7 @@
           }
         }
       },
-      "coverlet.collector/6.0.0": {},
+      "coverlet.collector/6.0.2": {},
       "EntityFramework/6.4.4": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
@@ -126,11 +127,11 @@
           }
         }
       },
-      "Microsoft.CodeCoverage/17.8.0": {
+      "Microsoft.CodeCoverage/17.10.0-preview-24080-01": {
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {
             "assemblyVersion": "15.0.0.0",
-            "fileVersion": "17.800.623.45702"
+            "fileVersion": "17.1000.224.7903"
           }
         }
       },
@@ -509,7 +510,7 @@
       },
       "Microsoft.NET.Test.Sdk/17.8.0": {
         "dependencies": {
-          "Microsoft.CodeCoverage": "17.8.0",
+          "Microsoft.CodeCoverage": "17.10.0-preview-24080-01",
           "Microsoft.TestPlatform.TestHost": "17.8.0"
         }
       },
@@ -1439,6 +1440,7 @@
       "Domain/1.0.0": {
         "dependencies": {
           "EntityFramework": "6.4.4",
+          "Microsoft.CodeCoverage": "17.10.0-preview-24080-01",
           "Microsoft.Data.SqlClient": "5.2.0-preview5.24024.3",
           "Microsoft.Data.SqlClient.SNI.runtime": "5.2.0",
           "Microsoft.Data.Sqlite.Core": "9.0.0-preview.1.24081.2",
@@ -1487,12 +1489,12 @@
       "path": "bouncycastle.cryptography/2.2.1",
       "hashPath": "bouncycastle.cryptography.2.2.1.nupkg.sha512"
     },
-    "coverlet.collector/6.0.0": {
+    "coverlet.collector/6.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-tW3lsNS+dAEII6YGUX/VMoJjBS1QvsxqJeqLaJXub08y1FSjasFPtQ4UBUsudE9PNrzLjooClMsPtY2cZLdXpQ==",
-      "path": "coverlet.collector/6.0.0",
-      "hashPath": "coverlet.collector.6.0.0.nupkg.sha512"
+      "sha512": "sha512-bJShQ6uWRTQ100ZeyiMqcFlhP7WJ+bCuabUs885dJiBEzMsJMSFr7BOyeCw4rgvQokteGi5rKQTlkhfQPUXg2A==",
+      "path": "coverlet.collector/6.0.2",
+      "hashPath": "coverlet.collector.6.0.2.nupkg.sha512"
     },
     "EntityFramework/6.4.4": {
       "type": "package",
@@ -1536,12 +1538,12 @@
       "path": "microsoft.bcl.asyncinterfaces/1.1.1",
       "hashPath": "microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512"
     },
-    "Microsoft.CodeCoverage/17.8.0": {
+    "Microsoft.CodeCoverage/17.10.0-preview-24080-01": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-KC8SXWbGIdoFVdlxKk9WHccm0llm9HypcHMLUUFabRiTS3SO2fQXNZfdiF3qkEdTJhbRrxhdRxjL4jbtwPq4Ew==",
-      "path": "microsoft.codecoverage/17.8.0",
-      "hashPath": "microsoft.codecoverage.17.8.0.nupkg.sha512"
+      "sha512": "sha512-GL66nih/QwuyUFUYv76kkojvqvDaVvi3G9K9dQopWFFcVWmisIDIavVek8eBUpxsp4YrMI3dTg6mc5WjsuJYlQ==",
+      "path": "microsoft.codecoverage/17.10.0-preview-24080-01",
+      "hashPath": "microsoft.codecoverage.17.10.0-preview-24080-01.nupkg.sha512"
     },
     "Microsoft.CSharp/4.7.0": {
       "type": "package",

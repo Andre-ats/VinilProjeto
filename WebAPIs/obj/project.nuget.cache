@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IRXwuKyFreEIRtk/7igANxlCbQVP8RK2ViBM1CKgWCq1UZ/Vm/fRz1U8m64QTJp2IMX8friS265+aCyI1TPpRg==",
+  "dgSpecHash": "qsFKp4vg4U5sYRJnskcH2y4GkQSp6Ui0ExdZMSSPOgXR0FsFVsB4hhWewVd7/Keq7en8qGStk0WFp6UuinX43Q==",
   "success": true,
   "projectFilePath": "/home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/WebAPIs.csproj",
   "expectedPackageFiles": [
@@ -19,6 +19,7 @@
     "/home/andre/.nuget/packages/microsoft.aspnetcore.jsonpatch/7.0.0/microsoft.aspnetcore.jsonpatch.7.0.0.nupkg.sha512",
     "/home/andre/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/7.0.0/microsoft.aspnetcore.mvc.newtonsoftjson.7.0.0.nupkg.sha512",
     "/home/andre/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
+    "/home/andre/.nuget/packages/microsoft.codecoverage/17.10.0-preview-24080-01/microsoft.codecoverage.17.10.0-preview-24080-01.nupkg.sha512",
     "/home/andre/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/home/andre/.nuget/packages/microsoft.data.sqlclient/5.2.0-preview5.24024.3/microsoft.data.sqlclient.5.2.0-preview5.24024.3.nupkg.sha512",
     "/home/andre/.nuget/packages/microsoft.data.sqlclient.sni.runtime/5.2.0/microsoft.data.sqlclient.sni.runtime.5.2.0.nupkg.sha512",
