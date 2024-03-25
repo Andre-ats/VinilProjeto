@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using VinilProjeto.Entity.VinilVenda;
 
 namespace VinilProjeto.Repository.VinilRepository;
@@ -21,5 +22,28 @@ public class EFCoreVinilRepository : IVinilRespository
     public List<Vinil> getTodosVinil()
     {
         return _dataBaseContext.VinilDB.ToList();
+    }
+
+    public Vinil getVinilByID(Guid vinilId)
+    {
+        return _dataBaseContext.VinilDB.SingleOrDefault(x => x.id.Equals(vinilId)) ?? null;
+    }
+
+    public void postImagemVinil(VinilImagem vinilImagem)
+    {
+        _dataBaseContext.VinilImagemDB.Add(vinilImagem);
+    }
+
+    public void updateVinil(Vinil vinil)
+    {
+        _dataBaseContext.VinilDB.Update(vinil);
+        _dataBaseContext.SaveChanges();
+    }
+
+    public VinilImagem getImagemByID(Guid imagemId)
+    {
+        return _dataBaseContext.VinilImagemDB
+            .AsTracking()
+            .SingleOrDefault(x => x.vinilId.Equals(imagemId)) ?? throw new Exception("Id nao encontrado " + imagemId);
     }
 }

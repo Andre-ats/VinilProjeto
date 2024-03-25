@@ -21,10 +21,9 @@ public class CadastrarVinilUseCase : ICadastrarVinilUseCase
                 .setQuantiaVinil(_useCaseInput.quantiaVinil)
                 .setEstiloMusical(_useCaseInput.estiloMusical)
                 .setStatusVinil(_useCaseInput.statusVinil)
+                .setVinilImagem(new List<VinilImagem>())
                 .build();
-            
-            Console.WriteLine("AAAA" + vinil);
-            
+
             _ = _vinilRespository.createVinil(vinil)
                 ? true
                 : throw new Exception("Erro na criacao do vinil");

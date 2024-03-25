@@ -25,6 +25,7 @@ public class AdminController : ControllerBase
     private readonly ILoginServiceAdmin _login;
     private readonly IGetUsuarioCompradorUseCase _getUsuarioCompradorUseCase;
     private readonly IGetAdminPerfilUseCase _getAdminPerfilUseCase;
+    private readonly IPostImagemVinilUseCase _postImagemVinilUseCase;
 
     public AdminController(
             ICadastrarAdminUseCase cadastrarAdminUseCase, 
@@ -32,7 +33,8 @@ public class AdminController : ControllerBase
             ICadastrarVinilUseCase cadastrarVinilUseCase, 
             ILoginServiceAdmin login, 
             IGetUsuarioCompradorUseCase getUsuarioCompradorUseCase, 
-            IGetAdminPerfilUseCase getAdminPerfilUseCase
+            IGetAdminPerfilUseCase getAdminPerfilUseCase,
+            IPostImagemVinilUseCase postImagemVinilUseCase
         )
     {
         _cadastrarAdminUseCase = cadastrarAdminUseCase;
@@ -41,6 +43,7 @@ public class AdminController : ControllerBase
         _vinilUseCase = cadastrarVinilUseCase;
         _login = login;
         _getAdminPerfilUseCase = getAdminPerfilUseCase;
+        _postImagemVinilUseCase = postImagemVinilUseCase;
     }
     [AllowAnonymous]
     [ProducesResponseType(201)]
@@ -84,6 +87,17 @@ public class AdminController : ControllerBase
     public ICadastrarVinilUseCaseOutput postCadastrarVinil([FromBody] ICadastrarVinilUseCaseInput input)
     {
         return _vinilUseCase.executeUseCase(input);
+    }
+    
+    [Authorize(Roles = "Admin")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpPost(Name = "PostVinilImagem")]
+    public IPostImagemVinilUseCaseOutput postVinilImagem([FromBody] IPostImagemVinilUseCaseInput input)
+    {
+        return _postImagemVinilUseCase.executeUseCase(input);
     }
 
     [Authorize(Roles = "Admin")]
