@@ -89,6 +89,7 @@ public class AdminController : ControllerBase
         return _vinilUseCase.executeUseCase(input);
     }
     
+    
     [Authorize(Roles = "Admin")]
     [ProducesResponseType(201)]
     [ProducesResponseType(401)]
@@ -99,6 +100,32 @@ public class AdminController : ControllerBase
     {
         return _postImagemVinilUseCase.executeUseCase(input);
     }
+    
+    [Authorize(Roles = "Admin")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpPost(Name = "PostImagemVinil")]
+    public async Task<IPostImagemVinilUseCaseOutput> postImagemVinil([FromForm] ICollection<PostImagemAdaptor> input)
+    {
+        IPostImagemVinilUseCaseInput inputPostImagem = new IPostImagemVinilUseCaseInput();
+        
+        MemoryStream memoryStream = new MemoryStream();
+        
+        foreach (var img in input)
+        {
+            img.file.OpenReadStream().CopyTo(memoryStream);
+            inputPostImagem.nome = img.nome;
+            inputPostImagem.path = Path.Combine(inputPostImagem.path, img.nome);
+            inputPostImagem.Stream = memoryStream;
+            inputPostImagem.vinilId = img.vinilID;
+            return _postImagemVinilUseCase.executeUseCase(inputPostImagem);
+        }
+
+        return _postImagemVinilUseCase.executeUseCase(inputPostImagem);
+    }
+
 
     [Authorize(Roles = "Admin")]
     [ProducesResponseType(201)]

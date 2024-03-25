@@ -20,7 +20,7 @@ public class GetTodosVinilUseCase : IGetTodosVinilUseCase
 
             foreach (var vinilImagem in output)
             {
-                var outputImg = _vinilRespository.getImagemByID(vinilImagem.id);
+                _vinilRespository.getImagemByID(vinilImagem.id);
             }
 
             return new IGetTodosVinilUseCaseOutput()
