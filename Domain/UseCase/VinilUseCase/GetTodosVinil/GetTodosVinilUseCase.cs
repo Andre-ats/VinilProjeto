@@ -1,5 +1,6 @@
 using VinilProjeto.Entity.VinilVenda;
 using VinilProjeto.Repository.VinilRepository;
+using VinilProjeto.Service.FileService;
 
 namespace VinilProjeto.UseCase.VinilUseCase.GetTodosVinil;
 
@@ -20,7 +21,8 @@ public class GetTodosVinilUseCase : IGetTodosVinilUseCase
 
             foreach (var vinilImagem in output)
             {
-                _vinilRespository.getImagemByID(vinilImagem.id);
+                var arquivo = new FileService().loadDocContent($"/home/andre/VinilSistema/vinil/{vinilImagem.id}/{vinilImagem.nomeVinil}");
+                
             }
 
             return new IGetTodosVinilUseCaseOutput()
