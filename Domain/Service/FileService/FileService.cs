@@ -19,8 +19,6 @@ public class FileService
     
     public Stream loadDocContent(string path)
     {
-        if (!File.Exists(path))
-            throw new Exception($"Missed file");
                 
         using FileStream fileStream = new FileStream(path, FileMode.Open);
 

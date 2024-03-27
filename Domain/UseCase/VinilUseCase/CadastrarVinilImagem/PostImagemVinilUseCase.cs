@@ -19,6 +19,7 @@ public class PostImagemVinilUseCase : IPostImagemVinilUseCase
             .setHashName("Hash" + _useCaseInput.nome)
             .build();
         
+        
         new FileService().saveImagemService($"{_useCaseInput.path}/vinil/{_useCaseInput.vinilId}/{_useCaseInput.nome}", _useCaseInput.Stream);
    
         _vinilRespository.postImagemVinil(vinilImagem);
