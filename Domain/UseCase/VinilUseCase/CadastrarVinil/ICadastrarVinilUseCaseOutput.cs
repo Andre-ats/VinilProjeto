@@ -4,5 +4,5 @@ namespace VinilProjeto.UseCase.VinilUseCase.CadastrarVinil;
 
 public class ICadastrarVinilUseCaseOutput : IUseCaseOutput
 {
-    public string resposta;
+    public Guid vinilId;
 }

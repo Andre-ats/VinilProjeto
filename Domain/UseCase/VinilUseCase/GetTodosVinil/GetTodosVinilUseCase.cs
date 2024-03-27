@@ -21,8 +21,7 @@ public class GetTodosVinilUseCase : IGetTodosVinilUseCase
 
             foreach (var vinilImagem in output)
             {
-                var arquivo = new FileService().loadDocContent($"/home/andre/VinilSistema/vinil/{vinilImagem.id}/{vinilImagem.nomeVinil}");
-                
+                _vinilRespository.getImagemByID(vinilImagem.id);
             }
 
             return new IGetTodosVinilUseCaseOutput()

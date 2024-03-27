@@ -32,6 +32,7 @@ public class EFCoreVinilRepository : IVinilRespository
     public void postImagemVinil(VinilImagem vinilImagem)
     {
         _dataBaseContext.VinilImagemDB.Add(vinilImagem);
+        _dataBaseContext.SaveChanges();
     }
 
     public void updateVinil(Vinil vinil)

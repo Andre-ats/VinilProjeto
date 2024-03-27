@@ -20,9 +20,10 @@ public class PostImagemVinilUseCase : IPostImagemVinilUseCase
             .build();
         
         
+        _vinilRespository.postImagemVinil(vinilImagem);
+        
         new FileService().saveImagemService($"{_useCaseInput.path}/vinil/{_useCaseInput.vinilId}/{_useCaseInput.nome}", _useCaseInput.Stream);
    
-        _vinilRespository.postImagemVinil(vinilImagem);
 
         return new IPostImagemVinilUseCaseOutput()
         {
