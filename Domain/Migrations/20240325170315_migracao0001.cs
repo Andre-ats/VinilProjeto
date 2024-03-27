@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace VinilProjeto.Migrations
 {
     /// <inheritdoc />
-    public partial class migration0001 : Migration
+    public partial class migracao0001 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -65,6 +65,31 @@ namespace VinilProjeto.Migrations
                 {
                     table.PrimaryKey("PK_Vinil", x => x.id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "VinilImagem",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    fileName = table.Column<string>(type: "text", nullable: false),
+                    hashName = table.Column<string>(type: "text", nullable: false),
+                    vinilId = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VinilImagem", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_VinilImagem_Vinil_vinilId",
+                        column: x => x.vinilId,
+                        principalTable: "Vinil",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VinilImagem_vinilId",
+                table: "VinilImagem",
+                column: "vinilId");
         }
 
         /// <inheritdoc />
@@ -75,6 +100,9 @@ namespace VinilProjeto.Migrations
 
             migrationBuilder.DropTable(
                 name: "UsuarioComprador");
+
+            migrationBuilder.DropTable(
+                name: "VinilImagem");
 
             migrationBuilder.DropTable(
                 name: "Vinil");

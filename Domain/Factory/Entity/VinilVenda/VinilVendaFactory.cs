@@ -11,6 +11,7 @@ public class VinilVendaFactory
     public string _quantiaVinil { get; set; }
     public EstiloMusical _estiloMusical { get; set; }
     public StatusVinil _statusVinil { get; set; }
+    public ICollection<VinilImagem> _VinilImagems { get; set; }
 
     private void init()
     {
@@ -20,6 +21,7 @@ public class VinilVendaFactory
         _quantiaVinil = null;
         _estiloMusical = EstiloMusical.Vazio;
         _statusVinil = StatusVinil.Vazio;
+        _VinilImagems = null;
     }
 
     public VinilVendaFactory setNomeVinil(string nomeVinil)
@@ -57,14 +59,21 @@ public class VinilVendaFactory
         return this;
     }
 
+    public VinilVendaFactory setVinilImagem(ICollection<VinilImagem> vinilImagem)
+    {
+        this._VinilImagems = vinilImagem;
+        return this;
+    }
+
     public bool validar()
     {
         _ = _nomeVinil == null ? throw new Exception() : true;
         _ = _descricaoVinil == null ? throw new Exception() : true;
         _ = _precoVinil == null ? throw new Exception() : true;
         _ = _quantiaVinil == null ? throw new Exception() : true;
-        _ = _estiloMusical == EstiloMusical.Vazio ? throw new Exception() : true;
-        _ = _statusVinil == StatusVinil.Vazio ? throw new Exception() : true;
+        _ = _estiloMusical.Equals(EstiloMusical.Vazio) ? throw new Exception() : true;
+        _ = _statusVinil.Equals(StatusVinil.Vazio) ? throw new Exception() : true;
+        _ = _VinilImagems == null ? throw new Exception() : true;
 
         return true;
     }
@@ -79,7 +88,8 @@ public class VinilVendaFactory
             _precoVinil,
             _quantiaVinil,
             _estiloMusical,
-            _statusVinil
+            _statusVinil,
+            _VinilImagems
         );
         
         this.init();

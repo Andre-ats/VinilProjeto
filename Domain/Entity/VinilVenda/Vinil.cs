@@ -32,11 +32,11 @@ public class Vinil : IEntity
     public string quantiaVinil { get; protected set; }
     public EstiloMusical estiloMusical { get; protected set; }
     public StatusVinil StatusVinil { get; protected set; }
-    
+    public ICollection<VinilImagem> VinilImagem { get; protected set; } = new List<VinilImagem>();
     public Vinil(){}
 
     public static Vinil createVinilEntity(string nome, string descricao, string preco, string quantia,
-        EstiloMusical estiloMusical, StatusVinil status)
+        EstiloMusical estiloMusical, StatusVinil status, ICollection<VinilImagem> vinilImagem)
     {
         
         Vinil vinil = new Vinil()
@@ -46,10 +46,12 @@ public class Vinil : IEntity
             precoVinil = preco,
             quantiaVinil = quantia,
             estiloMusical = estiloMusical,
-            StatusVinil = status
+            StatusVinil = status,
+            VinilImagem = vinilImagem
         };
         
         return vinil;
         
     }
+    
 }

@@ -18,6 +18,11 @@ public class GetTodosVinilUseCase : IGetTodosVinilUseCase
             output = _vinilRespository.getTodosVinil() ??
                      throw new Exception("Erro ao buscar");
 
+            foreach (var vinilImagem in output)
+            {
+                _vinilRespository.getImagemByID(vinilImagem.id);
+            }
+
             return new IGetTodosVinilUseCaseOutput()
             {
                 vinilList = output

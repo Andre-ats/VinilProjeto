@@ -11,7 +11,7 @@ public class DataBaseContext : DbContext
     {
         base.OnConfiguring(optionsBuilder);
         
-        optionsBuilder.UseNpgsql("User ID=andre;Host=localhost;Port=5432;DataBase=VinilDB;Password=andre;Include Error Detail=True");
+        optionsBuilder.UseNpgsql("User ID=andre;Host=localhost;Port=5432;DataBase=VinilDBTeste01;Password=andre;Include Error Detail=True");
         
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
@@ -44,6 +44,10 @@ public class DataBaseContext : DbContext
         {
             user.ToTable("Vinil");
         });
+        modelBuilder.Entity<VinilImagem>(user =>
+        {
+            user.ToTable("VinilImagem");
+        });
         modelBuilder.Entity<Vinil>()
             .Property(x => x.estiloMusical)
             .HasConversion(x => x.ToString(),
@@ -54,4 +58,5 @@ public class DataBaseContext : DbContext
     public DbSet<Admin> adminDB { get; set; }
     public DbSet<UsuarioComprador> UsuarioCompradorDB { get; set; }
     public DbSet<Vinil> VinilDB { get; set; }
+    public DbSet<VinilImagem> VinilImagemDB { get; set; }
 }

@@ -60,6 +60,7 @@ builder.Services.AddScoped<IPutUsuarioCompradorDesativarStatusUseCase, PutUsuari
 builder.Services.AddScoped<IVinilRespository, EFCoreVinilRepository>();
 builder.Services.AddScoped<ICadastrarVinilUseCase, CadastrarVinilUseCase>();
 builder.Services.AddScoped<IGetTodosVinilUseCase, GetTodosVinilUseCase>();
+builder.Services.AddScoped<IPostImagemVinilUseCase, PostImagemVinilUseCase>();
 
 // Add services to the container.
 builder.Services.AddControllers();

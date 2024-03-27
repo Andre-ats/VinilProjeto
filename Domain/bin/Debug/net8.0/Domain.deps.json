@@ -9,7 +9,6 @@
       "Domain/1.0.0": {
         "dependencies": {
           "EntityFramework": "6.4.4",
-          "Microsoft.CodeCoverage": "17.10.0-preview-24080-01",
           "Microsoft.Data.SqlClient": "5.2.0-preview5.24024.3",
           "Microsoft.Data.SqlClient.SNI.runtime": "5.2.0",
           "Microsoft.Data.Sqlite.Core": "9.0.0-preview.1.24081.2",
@@ -362,14 +361,6 @@
           },
           "lib/netcoreapp3.1/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll": {
             "locale": "zh-Hant"
-          }
-        }
-      },
-      "Microsoft.CodeCoverage/17.10.0-preview-24080-01": {
-        "runtime": {
-          "lib/netcoreapp3.1/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {
-            "assemblyVersion": "15.0.0.0",
-            "fileVersion": "17.1000.224.7903"
           }
         }
       },
@@ -1596,13 +1587,6 @@
       "sha512": "sha512-l4dDRmGELXG72XZaonnOeORyD/T5RpEu5LGHOUIhnv+MmUWDY/m1kWXGwtcgQ5CJ5ynkFiRnIYzTKXYjUs7rbw==",
       "path": "microsoft.codeanalysis.workspaces.common/4.5.0",
       "hashPath": "microsoft.codeanalysis.workspaces.common.4.5.0.nupkg.sha512"
-    },
-    "Microsoft.CodeCoverage/17.10.0-preview-24080-01": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-GL66nih/QwuyUFUYv76kkojvqvDaVvi3G9K9dQopWFFcVWmisIDIavVek8eBUpxsp4YrMI3dTg6mc5WjsuJYlQ==",
-      "path": "microsoft.codecoverage/17.10.0-preview-24080-01",
-      "hashPath": "microsoft.codecoverage.17.10.0-preview-24080-01.nupkg.sha512"
     },
     "Microsoft.CSharp/4.7.0": {
       "type": "package",
