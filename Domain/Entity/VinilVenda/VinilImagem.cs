@@ -22,4 +22,6 @@ public class VinilImagem : IEntity
 
         return vinilImagem;
     }
+
+    
 }

@@ -7,7 +7,6 @@ public class IPostImagemVinilUseCaseInput: IUseCaseInput
 {
     public string nome { get; set; }
     public Guid vinilId { get; set; }
-    public string hash { get; set; }
     public MemoryStream Stream { get; set; }
     public string path { get; set; }
     

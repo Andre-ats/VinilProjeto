@@ -44,6 +44,9 @@ public class AdminController : ControllerBase
         _login = login;
         _getAdminPerfilUseCase = getAdminPerfilUseCase;
         _postImagemVinilUseCase = postImagemVinilUseCase;
+        
+        
+        
     }
     [AllowAnonymous]
     [ProducesResponseType(201)]
@@ -89,39 +92,29 @@ public class AdminController : ControllerBase
         return _vinilUseCase.executeUseCase(input);
     }
     
-    
-    [Authorize(Roles = "Admin")]
-    [ProducesResponseType(201)]
-    [ProducesResponseType(401)]
-    [ProducesResponseType(400)]
-    [Produces("application/json")]
-    [HttpPost(Name = "PostVinilImagem")]
-    public IPostImagemVinilUseCaseOutput postVinilImagem([FromBody] IPostImagemVinilUseCaseInput input)
-    {
-        return _postImagemVinilUseCase.executeUseCase(input);
-    }
-    
     [Authorize(Roles = "Admin")]
     [ProducesResponseType(201)]
     [ProducesResponseType(401)]
     [ProducesResponseType(400)]
     [Produces("application/json")]
     [HttpPost(Name = "PostImagemVinil")]
-    public async Task<IPostImagemVinilUseCaseOutput> postImagemVinil([FromForm] ICollection<PostImagemAdaptor> input)
+    public IPostImagemVinilUseCaseOutput postImagemVinil([FromForm] PostImagemAdaptor input)
     {
         IPostImagemVinilUseCaseInput inputPostImagem = new IPostImagemVinilUseCaseInput();
         
-        MemoryStream memoryStream = new MemoryStream();
+        IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json",optional:false,reloadOnChange:false).Build();
+        var pathfolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
+               configuration.GetValue<string>("System:UsersDocBasePath");
         
-        foreach (var img in input)
-        {
-            img.file.OpenReadStream().CopyTo(memoryStream);
-            inputPostImagem.nome = img.nome;
-            inputPostImagem.path = Path.Combine(inputPostImagem.path, img.nome);
-            inputPostImagem.Stream = memoryStream;
-            inputPostImagem.vinilId = img.vinilID;
-            return _postImagemVinilUseCase.executeUseCase(inputPostImagem);
-        }
+        MemoryStream memoryStream = new MemoryStream();
+        input.file.OpenReadStream().CopyTo(memoryStream);
+        
+        inputPostImagem.vinilId = input.vinilID;
+        inputPostImagem.nome = input.nome;
+        inputPostImagem.Stream = memoryStream;
+        memoryStream.Flush();
+        memoryStream.Position = 0;
+        inputPostImagem.path = pathfolder;
 
         return _postImagemVinilUseCase.executeUseCase(inputPostImagem);
     }

@@ -4,7 +4,7 @@ namespace WebAPIs.DTO;
 
 public class PostImagemAdaptor
 {
-    [Required] public Guid vinilID;
-    [Required] public IFormFile file;
-    [Required] public string nome;
+    [Required] public Guid vinilID{ get; set; }
+    [Required] public IFormFile file { get; set; }
+    [Required] public string nome{ get; set; }
 }
