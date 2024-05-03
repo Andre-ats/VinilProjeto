@@ -1,12 +1,13 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace VinilProjeto.Migrations
 {
     /// <inheritdoc />
-    public partial class Migration030524 : Migration
+    public partial class migracao0001 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -67,28 +68,24 @@ namespace VinilProjeto.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VinilImagem",
+                name: "VinilImagemDB",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uuid", nullable: false),
-                    fileName = table.Column<string>(type: "text", nullable: false),
-                    vinilId = table.Column<Guid>(type: "uuid", nullable: false)
+                    vinilId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    fileName = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VinilImagem", x => x.id);
+                    table.PrimaryKey("PK_VinilImagemDB", x => new { x.vinilId, x.Id });
                     table.ForeignKey(
-                        name: "FK_VinilImagem_Vinil_vinilId",
+                        name: "FK_VinilImagemDB_Vinil_vinilId",
                         column: x => x.vinilId,
                         principalTable: "Vinil",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_VinilImagem_vinilId",
-                table: "VinilImagem",
-                column: "vinilId");
         }
 
         /// <inheritdoc />
@@ -101,7 +98,7 @@ namespace VinilProjeto.Migrations
                 name: "UsuarioComprador");
 
             migrationBuilder.DropTable(
-                name: "VinilImagem");
+                name: "VinilImagemDB");
 
             migrationBuilder.DropTable(
                 name: "Vinil");

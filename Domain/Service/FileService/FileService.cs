@@ -16,19 +16,31 @@ public class FileService
         
         return File.Exists(path);
     }
-    
-    public Stream loadDocContent(string path)
+
+    public bool deleteImage(string path)
     {
-                
-        using FileStream fileStream = new FileStream(path, FileMode.Open);
-
-        MemoryStream memoryStream = new MemoryStream();
-        fileStream.CopyTo(memoryStream);
         
-        fileStream.Flush();
-        memoryStream.Position = 0;
-
-        return memoryStream;
+        if(File.Exists(path))
+            File.Delete(path);
+        else
+        {
+            throw new Exception("Arquivo não encontrado!");
+        }
+        
+        return true;
     }
     
+    public bool deleteDiretorio(string path)
+    {
+        string directoryName = Path.GetDirectoryName(path) ??
+                               throw new Exception("Diretório {path} não encontrado ou nulo!");
+
+        if (!Directory.Exists(directoryName))
+        {
+            Directory.Delete(path);
+        }
+
+        return true;
+    }
+
 }

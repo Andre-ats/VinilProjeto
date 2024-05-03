@@ -1,6 +1,6 @@
 namespace VinilProjeto.Entity.VinilVenda;
 
-public class VinilImagem : IEntity
+public class VinilImagem
 {
     public string fileName { get; private set; }
     public Guid vinilId { get; private set; }

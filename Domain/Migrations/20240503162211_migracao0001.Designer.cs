@@ -12,8 +12,8 @@ using VinilProjeto.Repository;
 namespace VinilProjeto.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20240503053211_Migration030524")]
-    partial class Migration030524
+    [Migration("20240503162211_migracao0001")]
+    partial class migracao0001
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,26 +101,6 @@ namespace VinilProjeto.Migrations
                     b.ToTable("Vinil", (string)null);
                 });
 
-            modelBuilder.Entity("VinilProjeto.Entity.VinilVenda.VinilImagem", b =>
-                {
-                    b.Property<Guid>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("fileName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<Guid>("vinilId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("vinilId");
-
-                    b.ToTable("VinilImagem", (string)null);
-                });
-
             modelBuilder.Entity("VinilProjeto.Entity.Usuario.UsuarioComprador", b =>
                 {
                     b.OwnsOne("VinilProjeto.ValueObject.Endereco.Endereco", "endereco", b1 =>
@@ -200,17 +180,31 @@ namespace VinilProjeto.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("VinilProjeto.Entity.VinilVenda.VinilImagem", b =>
-                {
-                    b.HasOne("VinilProjeto.Entity.VinilVenda.Vinil", null)
-                        .WithMany("VinilImagem")
-                        .HasForeignKey("vinilId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("VinilProjeto.Entity.VinilVenda.Vinil", b =>
                 {
+                    b.OwnsMany("VinilProjeto.Entity.VinilVenda.VinilImagem", "VinilImagem", b1 =>
+                        {
+                            b1.Property<Guid>("vinilId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("integer");
+
+                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
+
+                            b1.Property<string>("fileName")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.HasKey("vinilId", "Id");
+
+                            b1.ToTable("VinilImagemDB");
+
+                            b1.WithOwner()
+                                .HasForeignKey("vinilId");
+                        });
+
                     b.Navigation("VinilImagem");
                 });
 #pragma warning restore 612, 618
