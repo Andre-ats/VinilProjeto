@@ -17,8 +17,8 @@ using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.Atuali
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarStatusUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarTelefone;
 using VinilProjeto.UseCase.VinilUseCase.CadastrarVinil;
+using VinilProjeto.UseCase.VinilUseCase.DeleteImagem;
 using VinilProjeto.UseCase.VinilUseCase.GetTodosVinil;
-using VinilProjeto.UseCase.VinilUseCase.GetVinilImagem;
 using WebAPIs.Config;
 using WebAPIs.Service.LoginServiceAdmin;
 using WebAPIs.Service.LoginServiceUsuarioComprador;
@@ -62,7 +62,7 @@ builder.Services.AddScoped<IVinilRespository, EFCoreVinilRepository>();
 builder.Services.AddScoped<ICadastrarVinilUseCase, CadastrarVinilUseCase>();
 builder.Services.AddScoped<IGetTodosVinilUseCase, GetTodosVinilUseCase>();
 builder.Services.AddScoped<IPostImagemVinilUseCase, PostImagemVinilUseCase>();
-builder.Services.AddScoped<IGetImagemVinilUseCase, GetImagemVinilUseCase>();
+builder.Services.AddScoped<IDeleteImagemVinilUseCase, DeleteImagemVinilUseCase>();
 
 
 // Add services to the container.

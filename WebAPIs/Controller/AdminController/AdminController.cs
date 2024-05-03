@@ -7,7 +7,7 @@ using VinilProjeto.UseCase.AdminUseCase.GetAdmin;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetAdminPerfil;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetUsuarioComprador;
 using VinilProjeto.UseCase.VinilUseCase.CadastrarVinil;
-using VinilProjeto.UseCase.VinilUseCase.GetVinilImagem;
+using VinilProjeto.UseCase.VinilUseCase.DeleteImagem;
 using WebApi.Services;
 using WebAPIs.DTO;
 using WebAPIs.Service.LoginService;
@@ -27,6 +27,7 @@ public class AdminController : ControllerBase
     private readonly IGetUsuarioCompradorUseCase _getUsuarioCompradorUseCase;
     private readonly IGetAdminPerfilUseCase _getAdminPerfilUseCase;
     private readonly IPostImagemVinilUseCase _postImagemVinilUseCase;
+    private readonly IDeleteImagemVinilUseCase _deleteImagemVinilUseCase;
 
     public AdminController(
             ICadastrarAdminUseCase cadastrarAdminUseCase, 
@@ -35,7 +36,8 @@ public class AdminController : ControllerBase
             ILoginServiceAdmin login, 
             IGetUsuarioCompradorUseCase getUsuarioCompradorUseCase, 
             IGetAdminPerfilUseCase getAdminPerfilUseCase,
-            IPostImagemVinilUseCase postImagemVinilUseCase
+            IPostImagemVinilUseCase postImagemVinilUseCase,
+            IDeleteImagemVinilUseCase deleteIamgemVinilUseCase
             
         )
     {
@@ -46,9 +48,10 @@ public class AdminController : ControllerBase
         _login = login;
         _getAdminPerfilUseCase = getAdminPerfilUseCase;
         _postImagemVinilUseCase = postImagemVinilUseCase;
-        
-        
-        
+        _deleteImagemVinilUseCase = deleteIamgemVinilUseCase;
+
+
+
     }
     [AllowAnonymous]
     [ProducesResponseType(201)]
@@ -112,7 +115,7 @@ public class AdminController : ControllerBase
         input.file.OpenReadStream().CopyTo(memoryStream);
         
         inputPostImagem.vinilId = input.vinilID;
-        inputPostImagem.nome = input.nome;
+        inputPostImagem.nome = input.file.FileName;
         inputPostImagem.Stream = memoryStream;
         memoryStream.Flush();
         memoryStream.Position = 0;
@@ -121,6 +124,28 @@ public class AdminController : ControllerBase
         return _postImagemVinilUseCase.executeUseCase(inputPostImagem);
     }
     
+    [Authorize(Roles = "Admin")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpDelete(Name = "DeleteImagemVinil")]
+    public IDeleteImagemUseCaseOutput deleteImagemVinil([FromForm] string fileName, [FromForm]Guid fileID)
+    {
+
+        IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json",optional:false,reloadOnChange:false).Build();
+        var pathfolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
+                         configuration.GetValue<string>("System:UsersDocBasePath");
+
+        var input = new IDeleteImagemUseCaseInput()
+        {
+            id = fileID,
+            fileName = fileName,
+            path = pathfolder
+        };
+
+        return _deleteImagemVinilUseCase.executeUseCase(input);
+    }
     
     [Authorize(Roles = "Admin")]
     [ProducesResponseType(201)]

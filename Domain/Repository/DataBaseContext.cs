@@ -44,15 +44,15 @@ public class DataBaseContext : DbContext
         {
             user.ToTable("Vinil");
         });
-        modelBuilder.Entity<VinilImagem>(user =>
-        {
-            user.ToTable("VinilImagem");
-        });
+        
         modelBuilder.Entity<Vinil>()
             .Property(x => x.estiloMusical)
             .HasConversion(x => x.ToString(),
                 x => (EstiloMusical)Enum.Parse(typeof(EstiloMusical), x))
             .HasColumnName("EstiloMusical");
+
+        modelBuilder.Entity<Vinil>()
+            .OwnsMany(x => x.VinilImagem);
     }
     
     public DbSet<Admin> adminDB { get; set; }

@@ -45,6 +45,6 @@ public class EFCoreVinilRepository : IVinilRespository
     {
         return _dataBaseContext.VinilImagemDB
             .AsTracking()
-            .SingleOrDefault(x => x.vinilId.Equals(imagemId)) ?? throw new Exception("Id nao encontrado " + imagemId);
+            .SingleOrDefault(x => x.vinilId.Equals(imagemId));
     }
 }
