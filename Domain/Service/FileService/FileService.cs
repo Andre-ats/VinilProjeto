@@ -31,14 +31,4 @@ public class FileService
         return memoryStream;
     }
     
-    public bool IsImage(Stream content)
-    {
-        byte[] buffer = new byte[512]; 
-        content.Read(buffer, 0, 512);
-
-        string[] imageFormats = { "FFD8FF", "89504E47", "47494638", "424D" }; 
-        string hexSignature = BitConverter.ToString(buffer.Take(4).ToArray()).Replace("-", "");
-
-        return imageFormats.Any(signature => hexSignature.StartsWith(signature));
-    }
 }
