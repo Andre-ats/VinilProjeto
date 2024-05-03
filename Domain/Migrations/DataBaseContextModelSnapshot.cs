@@ -108,10 +108,6 @@ namespace VinilProjeto.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("hashName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<Guid>("vinilId")
                         .HasColumnType("uuid");
 

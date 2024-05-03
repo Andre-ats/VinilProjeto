@@ -12,8 +12,8 @@ using VinilProjeto.Repository;
 namespace VinilProjeto.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20240327155414_migracao0001")]
-    partial class migracao0001
+    [Migration("20240503053211_Migration030524")]
+    partial class Migration030524
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -108,10 +108,6 @@ namespace VinilProjeto.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("fileName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("hashName")
                         .IsRequired()
                         .HasColumnType("text");
 

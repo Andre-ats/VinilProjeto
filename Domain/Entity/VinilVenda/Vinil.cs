@@ -53,10 +53,11 @@ public class Vinil : IEntity
         return vinil;
         
     }
-    /*
-    public void adicionarVinil(Stream arquivo)
+
+    public Vinil adicionarVinilImagem(VinilImagem vinilImagem)
     {
-        VinilImagem.Add(arquivo);
+        this.VinilImagem.Add(vinilImagem);
+        return this;
     }
-    */
+    
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace VinilProjeto.Migrations
 {
     /// <inheritdoc />
-    public partial class migracao0001 : Migration
+    public partial class Migration030524 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -72,7 +72,6 @@ namespace VinilProjeto.Migrations
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     fileName = table.Column<string>(type: "text", nullable: false),
-                    hashName = table.Column<string>(type: "text", nullable: false),
                     vinilId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
