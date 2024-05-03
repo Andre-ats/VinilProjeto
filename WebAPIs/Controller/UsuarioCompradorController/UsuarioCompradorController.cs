@@ -9,6 +9,7 @@ using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.Atuali
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarStatusUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarTelefone;
 using VinilProjeto.UseCase.VinilUseCase.GetTodosVinil;
+using VinilProjeto.UseCase.VinilUseCase.GetVinilImagem;
 using WebApi.Services;
 using WebAPIs.DTO;
 using WebAPIs.Service.LoginService;
@@ -27,6 +28,7 @@ public class UsuarioCompradorController : ControllerBase
     private readonly IGetPerfilUsuarioCompradorUseCase _getPerfilUsuarioCompradorUseCase;
     private readonly IPutUsuarioCompradorAtivarStatusUseCase _putUsuarioCompradorAtivarStatusUseCase;
     private readonly IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase;
+    private readonly IGetImagemVinilUseCase _getImagemVinilUseCase;
 
     public UsuarioCompradorController(ICadastrarUsuarioCompradorUseCase usuarioCompradorUseCase, 
         IGetTodosVinilUseCase getTodosVinilUseCase, 
@@ -34,7 +36,8 @@ public class UsuarioCompradorController : ControllerBase
         IPutUsuarioCompradorTelefoneUseCase _putUsuarioCompradorTelefoneUseCase,
         IGetPerfilUsuarioCompradorUseCase _getPerfilUsuarioCompradorUseCase,
         IPutUsuarioCompradorAtivarStatusUseCase _putUsuarioCompradorAtivarStatusUseCase,
-        IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase
+        IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase,
+        IGetImagemVinilUseCase getImagemVinilUseCase
         )
     {
         _cadastrarUsuarioCompradorUseCase = usuarioCompradorUseCase;
@@ -44,6 +47,8 @@ public class UsuarioCompradorController : ControllerBase
         this._getPerfilUsuarioCompradorUseCase = _getPerfilUsuarioCompradorUseCase;
         this._putUsuarioCompradorAtivarStatusUseCase = _putUsuarioCompradorAtivarStatusUseCase;
         this._putUsuarioCompradorDesativarStatusUseCase = _putUsuarioCompradorDesativarStatusUseCase;
+        _getImagemVinilUseCase = getImagemVinilUseCase;
+
     }
     
     [AllowAnonymous]
@@ -93,6 +98,35 @@ public class UsuarioCompradorController : ControllerBase
     public IGetTodosVinilUseCaseOutput getTodosVinil()
     {
         return _getTodosVinilUseCase.executeUseCase(new IGetTodosVinilUseCaseInput());
+    }
+    
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpGet(Name = "getImagemVinil")]
+    public IActionResult getImagemVinil([FromQuery] Guid vinilId, [FromQuery] string fileName)
+    {
+        
+        IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json",optional:false,reloadOnChange:false).Build();
+        var pathfolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
+                         configuration.GetValue<string>("System:UsersDocBasePath");
+
+        IGetImagemVinilUseCaseInput imagemInput = new IGetImagemVinilUseCaseInput
+        {
+            vinilId = vinilId,
+            nomeVinil = fileName,
+            path = pathfolder
+        };
+
+        IGetImagemVinilUseCaseOutput file = _getImagemVinilUseCase.executeUseCase(imagemInput);
+        
+        file.fileMemory.Flush();
+        file.fileMemory.Position = 0;
+        byte[] content = file.fileMemory.ToArray();
+
+        return File(content, $"application/{file.getFileExtension()}");
+
     }
     
     [Authorize(Roles = "UsuarioComprador")]

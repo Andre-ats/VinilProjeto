@@ -30,7 +30,7 @@ public class CadastrarVinilUseCase : ICadastrarVinilUseCase
             
             return new ICadastrarVinilUseCaseOutput()
             {
-                resposta = $"Vinil {vinil.nomeVinil} criado!"
+                vinilId = vinil.id
             };
         }
         catch (Exception e)

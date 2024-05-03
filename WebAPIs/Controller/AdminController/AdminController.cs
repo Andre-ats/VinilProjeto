@@ -7,6 +7,7 @@ using VinilProjeto.UseCase.AdminUseCase.GetAdmin;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetAdminPerfil;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetUsuarioComprador;
 using VinilProjeto.UseCase.VinilUseCase.CadastrarVinil;
+using VinilProjeto.UseCase.VinilUseCase.GetVinilImagem;
 using WebApi.Services;
 using WebAPIs.DTO;
 using WebAPIs.Service.LoginService;
@@ -35,6 +36,7 @@ public class AdminController : ControllerBase
             IGetUsuarioCompradorUseCase getUsuarioCompradorUseCase, 
             IGetAdminPerfilUseCase getAdminPerfilUseCase,
             IPostImagemVinilUseCase postImagemVinilUseCase
+            
         )
     {
         _cadastrarAdminUseCase = cadastrarAdminUseCase;
@@ -118,8 +120,8 @@ public class AdminController : ControllerBase
 
         return _postImagemVinilUseCase.executeUseCase(inputPostImagem);
     }
-
-
+    
+    
     [Authorize(Roles = "Admin")]
     [ProducesResponseType(201)]
     [ProducesResponseType(401)]
