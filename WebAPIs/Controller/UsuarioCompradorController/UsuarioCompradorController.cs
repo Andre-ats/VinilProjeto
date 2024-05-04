@@ -2,7 +2,6 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VinilProjeto.Entity.Usuario;
-using VinilProjeto.Entity.VinilVenda;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.CadastrarUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetPerfilUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarDesativarStatusUsuarioComprador;
@@ -13,6 +12,8 @@ using WebApi.Services;
 using WebAPIs.DTO;
 using WebAPIs.Service.LoginService;
 using WebAPIs.Service.LoginServiceUsuarioComprador;
+using System;
+using System.IO;
 
 namespace WebAPIs.Controller.UsuarioCompradorController;
 
@@ -96,21 +97,38 @@ public class UsuarioCompradorController : ControllerBase
         return _getTodosVinilUseCase.executeUseCase(new IGetTodosVinilUseCaseInput());
     }
     
-    [ProducesResponseType(201)]
+    [AllowAnonymous]
+    [ProducesResponseType(200)]
     [ProducesResponseType(401)]
     [ProducesResponseType(400)]
     [Produces("application/json")]
-    [HttpGet(Name = "getImagemVinil")]
-    public string getImagemVinil([FromQuery] Guid vinilId)
+    [HttpGet(Name = "GetImagemVinil")]
+    public IActionResult getImagemVinil([FromQuery] Guid vinilId, [FromQuery] string fileName)
     {
-        
-        IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json",optional:false,reloadOnChange:false).Build();
-        var pathfolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
-                         configuration.GetValue<string>("System:UsersDocBasePath");
+        try
+        {
+            IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json",optional:false,reloadOnChange:false).Build();
+            var pathfolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
+                             configuration.GetValue<string>("System:UsersDocBasePath");
 
-        return $"{pathfolder}/vinil/{vinilId}";
+            var path = $"{pathfolder}/vinil/{vinilId}/{fileName}";
 
+            if (!System.IO.File.Exists(path))
+            {
+                return NotFound();
+            }
+
+            byte[] imagemBytes = System.IO.File.ReadAllBytes(path);
+            string base64String = Convert.ToBase64String(imagemBytes);
+
+            return Ok(new { ImageBase64 = base64String });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+        }
     }
+
     
     [Authorize(Roles = "UsuarioComprador")]
     [ProducesResponseType(201)]
