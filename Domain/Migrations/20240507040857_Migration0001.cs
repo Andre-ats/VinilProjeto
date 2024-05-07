@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace VinilProjeto.Migrations
 {
     /// <inheritdoc />
-    public partial class migracao0001 : Migration
+    public partial class Migration0001 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -74,7 +74,8 @@ namespace VinilProjeto.Migrations
                     vinilId = table.Column<Guid>(type: "uuid", nullable: false),
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    fileName = table.Column<string>(type: "text", nullable: false)
+                    fileName = table.Column<string>(type: "text", nullable: false),
+                    rotaImagemVinil = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -102,36 +102,6 @@ public class AdminController : ControllerBase
     [ProducesResponseType(401)]
     [ProducesResponseType(400)]
     [Produces("application/json")]
-    [HttpPost(Name = "PostImagemVinil")]
-    public IPostImagemVinilUseCaseOutput postImagemVinil([FromForm] PostImagemAdaptor input)
-    {
-        IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json",optional:false,reloadOnChange:false).Build();
-        var pathfolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
-               configuration.GetValue<string>("System:UsersDocBasePath");
-        
-        MemoryStream memoryStream = new MemoryStream();
-        
-        input.file.OpenReadStream().CopyTo(memoryStream);
-        
-        IPostImagemVinilUseCaseInput inputPostImagem = new IPostImagemVinilUseCaseInput();
-        {
-            inputPostImagem.vinilId = input.vinilID;
-            inputPostImagem.nome = input.file.FileName;
-            inputPostImagem.Stream = memoryStream;
-        }
-        
-        memoryStream.Flush();
-        memoryStream.Position = 0;
-        inputPostImagem.path = pathfolder;
-
-        return _postImagemVinilUseCase.executeUseCase(inputPostImagem);
-    }
-    
-    [Authorize(Roles = "Admin")]
-    [ProducesResponseType(201)]
-    [ProducesResponseType(401)]
-    [ProducesResponseType(400)]
-    [Produces("application/json")]
     [HttpDelete(Name = "DeleteImagemVinil")]
     public IDeleteImagemUseCaseOutput deleteImagemVinil([FromForm] string fileName, [FromForm]Guid fileID)
     {

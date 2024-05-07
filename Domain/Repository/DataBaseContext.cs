@@ -32,6 +32,7 @@ public class DataBaseContext : DbContext
         {
             user.ToTable("UsuarioComprador");
         });
+    
 
         modelBuilder.Entity<UsuarioComprador>()
             .OwnsOne(x => x.telefone);

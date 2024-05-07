@@ -18,17 +18,15 @@ public class PostImagemVinilUseCase : IPostImagemVinilUseCase
         var vinilImagem = new VinilImagemFactory()
             .setFileName(_useCaseInput.nome)
             .setVinilId(_useCaseInput.vinilId)
+            .setRotaImagemVinil(_useCaseInput.path)
             .build();
 
         var adicionarImagemVinil = vinil.adicionarVinilImagem(vinilImagem);
         _vinilRespository.updateVinil(adicionarImagemVinil);
-        
-        new FileService().saveImagemService($"{_useCaseInput.path}/vinil/{_useCaseInput.vinilId}/{_useCaseInput.nome}", _useCaseInput.Stream);
-   
 
         return new IPostImagemVinilUseCaseOutput()
         {
-            mensagem = $"Sucesso! {_useCaseInput.path} {_useCaseInput.Stream}"
+            mensagem = $"Sucesso!"
         };
 
     }

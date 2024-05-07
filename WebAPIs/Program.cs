@@ -20,6 +20,8 @@ using VinilProjeto.UseCase.VinilUseCase.CadastrarVinil;
 using VinilProjeto.UseCase.VinilUseCase.DeleteImagem;
 using VinilProjeto.UseCase.VinilUseCase.GetTodosVinil;
 using WebAPIs.Config;
+using WebAPIs.Controller.VinilController;
+using WebAPIs.Service.GoogleCloudStorageService;
 using WebAPIs.Service.LoginServiceAdmin;
 using WebAPIs.Service.LoginServiceUsuarioComprador;
 using LoginService = WebAPIs.Service.LoginServiceAdmin.LoginService;
@@ -65,8 +67,11 @@ builder.Services.AddScoped<IPostImagemVinilUseCase, PostImagemVinilUseCase>();
 builder.Services.AddScoped<IDeleteImagemVinilUseCase, DeleteImagemVinilUseCase>();
 
 
+
 // Add services to the container.
 builder.Services.AddControllers();
+
+builder.Services.Configure<GCSConfigOptions>(builder.Configuration);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -141,6 +146,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//Google Service
 
 app.UseHttpsRedirection();
 app.UseAuthentication();

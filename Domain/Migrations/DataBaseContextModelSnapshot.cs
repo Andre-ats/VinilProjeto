@@ -194,6 +194,10 @@ namespace VinilProjeto.Migrations
                                 .IsRequired()
                                 .HasColumnType("text");
 
+                            b1.Property<string>("rotaImagemVinil")
+                                .IsRequired()
+                                .HasColumnType("text");
+
                             b1.HasKey("vinilId", "Id");
 
                             b1.ToTable("VinilImagemDB");

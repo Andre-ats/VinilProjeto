@@ -12,8 +12,8 @@ using VinilProjeto.Repository;
 namespace VinilProjeto.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20240503162211_migracao0001")]
-    partial class migracao0001
+    [Migration("20240507040857_Migration0001")]
+    partial class Migration0001
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -194,6 +194,10 @@ namespace VinilProjeto.Migrations
                             NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
 
                             b1.Property<string>("fileName")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.Property<string>("rotaImagemVinil")
                                 .IsRequired()
                                 .HasColumnType("text");
 
