@@ -200,7 +200,7 @@ namespace VinilProjeto.Migrations
 
                             b1.HasKey("vinilId", "Id");
 
-                            b1.ToTable("VinilImagemDB");
+                            b1.ToTable("VinilImagem");
 
                             b1.WithOwner()
                                 .HasForeignKey("vinilId");

@@ -22,33 +22,24 @@ public class AdminController : ControllerBase
 {
     private readonly ICadastrarAdminUseCase _cadastrarAdminUseCase;
     private readonly IGetAdminUseCase _getAdminUseCase;
-    private readonly ICadastrarVinilUseCase _vinilUseCase;
     private readonly ILoginServiceAdmin _login;
     private readonly IGetUsuarioCompradorUseCase _getUsuarioCompradorUseCase;
     private readonly IGetAdminPerfilUseCase _getAdminPerfilUseCase;
-    private readonly IPostImagemVinilUseCase _postImagemVinilUseCase;
-    private readonly IDeleteImagemVinilUseCase _deleteImagemVinilUseCase;
 
     public AdminController(
             ICadastrarAdminUseCase cadastrarAdminUseCase, 
-            IGetAdminUseCase GetAdminUseCase, 
-            ICadastrarVinilUseCase cadastrarVinilUseCase, 
+            IGetAdminUseCase GetAdminUseCase,  
             ILoginServiceAdmin login, 
             IGetUsuarioCompradorUseCase getUsuarioCompradorUseCase, 
-            IGetAdminPerfilUseCase getAdminPerfilUseCase,
-            IPostImagemVinilUseCase postImagemVinilUseCase,
-            IDeleteImagemVinilUseCase deleteIamgemVinilUseCase
+            IGetAdminPerfilUseCase getAdminPerfilUseCase
             
         )
     {
         _cadastrarAdminUseCase = cadastrarAdminUseCase;
         _getAdminUseCase = GetAdminUseCase;
         _getUsuarioCompradorUseCase = getUsuarioCompradorUseCase;
-        _vinilUseCase = cadastrarVinilUseCase;
         _login = login;
         _getAdminPerfilUseCase = getAdminPerfilUseCase;
-        _postImagemVinilUseCase = postImagemVinilUseCase;
-        _deleteImagemVinilUseCase = deleteIamgemVinilUseCase;
 
 
 

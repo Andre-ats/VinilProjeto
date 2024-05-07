@@ -12,7 +12,7 @@ using VinilProjeto.Repository;
 namespace VinilProjeto.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20240507153848_migracao0001")]
+    [Migration("20240507183008_migracao0001")]
     partial class migracao0001
     {
         /// <inheritdoc />
@@ -203,7 +203,7 @@ namespace VinilProjeto.Migrations
 
                             b1.HasKey("vinilId", "Id");
 
-                            b1.ToTable("VinilImagemDB");
+                            b1.ToTable("VinilImagem");
 
                             b1.WithOwner()
                                 .HasForeignKey("vinilId");

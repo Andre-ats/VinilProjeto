@@ -64,7 +64,7 @@ public class VinilController : ControllerBase
     [ProducesResponseType(401)]
     [ProducesResponseType(400)]
     [Produces("application/json")]
-    [HttpPost(Name = "postImagemGoogleStorage")]
+    [HttpPost(Name = "PostImagemVinil")]
     public async Task<IPostImagemVinilUseCaseOutput> UploadFileAsync([FromForm]PostImagemAdaptor input)
     {
         try
@@ -91,10 +91,11 @@ public class VinilController : ControllerBase
                     );
                     memoryStream.Flush();
                     memoryStream.Position = 0;
-                    
-                    return _postImagemVinilUseCase.executeUseCase(inputPostImagem);
-                    
+
                 }
+                
+                return _postImagemVinilUseCase.executeUseCase(inputPostImagem);
+                
             }
         }
         catch (Exception ex)
@@ -113,31 +114,7 @@ public class VinilController : ControllerBase
     {
         return _vinilUseCase.executeUseCase(input);
     }
-    
-    [Authorize(Roles = "Admin")]
-    [ProducesResponseType(201)]
-    [ProducesResponseType(401)]
-    [ProducesResponseType(400)]
-    [Produces("application/json")]
-    [HttpDelete(Name = "DeleteImagemVinil")]
-    public async Task<string> deleteImagemVinil([FromForm] string fileName)
-    {
-        try
-        {
-            using (var storageClient = StorageClient.Create(_googleCredential))
-            {
-                await storageClient.DeleteObjectAsync(_options.GoogleCloudStorageBucketName, fileName);
-                return "";
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-        
-    }
-    
+
     [Authorize(Roles = "Admin")]
     [ProducesResponseType(201)]
     [ProducesResponseType(401)]
@@ -150,7 +127,10 @@ public class VinilController : ControllerBase
         {
             using (var storageClient = StorageClient.Create(_googleCredential))
             {
-                await storageClient.DeleteObjectAsync(_options.GoogleCloudStorageBucketName, input.fileName);
+                foreach (var imagem in input.fileName)
+                {
+                    await storageClient.DeleteObjectAsync(_options.GoogleCloudStorageBucketName, imagem);
+                }
             }
             
             return _deleteVinilUseCase.executeUseCase(input);

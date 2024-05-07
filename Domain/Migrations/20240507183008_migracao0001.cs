@@ -68,7 +68,7 @@ namespace VinilProjeto.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VinilImagemDB",
+                name: "VinilImagem",
                 columns: table => new
                 {
                     vinilId = table.Column<Guid>(type: "uuid", nullable: false),
@@ -79,9 +79,9 @@ namespace VinilProjeto.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VinilImagemDB", x => new { x.vinilId, x.Id });
+                    table.PrimaryKey("PK_VinilImagem", x => new { x.vinilId, x.Id });
                     table.ForeignKey(
-                        name: "FK_VinilImagemDB_Vinil_vinilId",
+                        name: "FK_VinilImagem_Vinil_vinilId",
                         column: x => x.vinilId,
                         principalTable: "Vinil",
                         principalColumn: "id",
@@ -99,7 +99,7 @@ namespace VinilProjeto.Migrations
                 name: "UsuarioComprador");
 
             migrationBuilder.DropTable(
-                name: "VinilImagemDB");
+                name: "VinilImagem");
 
             migrationBuilder.DropTable(
                 name: "Vinil");

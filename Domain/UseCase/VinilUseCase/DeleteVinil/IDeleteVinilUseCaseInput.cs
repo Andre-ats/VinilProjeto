@@ -1,3 +1,4 @@
+using MySqlX.XDevAPI;
 using VinilProjeto.UseCase.UseCaseInterfaces;
 
 namespace VinilProjeto.UseCase.VinilUseCase.DeleteVinil;
@@ -5,5 +6,5 @@ namespace VinilProjeto.UseCase.VinilUseCase.DeleteVinil;
 public class IDeleteVinilUseCaseInput : IUseCaseInput
 {
     public Guid vinilId;
-    public string fileName;
+    public  ICollection<string> fileName;
 }
