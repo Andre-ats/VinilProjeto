@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using VinilProjeto.UseCase.VinilUseCase.CadastrarVinil;
+using VinilProjeto.UseCase.VinilUseCase.DeleteImagem;
+using VinilProjeto.UseCase.VinilUseCase.DeleteVinil;
+using VinilProjeto.UseCase.VinilUseCase.GetTodosVinil;
 using WebAPIs.DTO;
 using WebAPIs.Service.GoogleCloudStorageService;
 
@@ -16,13 +19,27 @@ public class VinilController : ControllerBase
     private readonly GCSConfigOptions _options;
     private readonly GoogleCredential _googleCredential;
     private readonly IPostImagemVinilUseCase _postImagemVinilUseCase;
+    private readonly IDeleteImagemVinilUseCase _deleteImagemVinilUseCase;
+    private readonly ICadastrarVinilUseCase _vinilUseCase;
+    private readonly IGetTodosVinilUseCase _getTodosVinil;
+    private readonly IDeleteVinilUseCase _deleteVinilUseCase;
 
     
-    public VinilController(IOptions<GCSConfigOptions> options, IPostImagemVinilUseCase postImagemVinilUseCase)
+    public VinilController(IOptions<GCSConfigOptions> options, 
+        IPostImagemVinilUseCase postImagemVinilUseCase, 
+        IDeleteImagemVinilUseCase deleteImagemVinilUseCase,
+        ICadastrarVinilUseCase cadastrarVinilUseCase,
+        IGetTodosVinilUseCase getTodosVinilUseCase,
+        IDeleteVinilUseCase deleteVinilUseCase
+    )
     {
         
         _options = options.Value;
         _postImagemVinilUseCase = postImagemVinilUseCase;
+        _deleteImagemVinilUseCase = deleteImagemVinilUseCase;
+        _vinilUseCase = cadastrarVinilUseCase;
+        _getTodosVinil = getTodosVinilUseCase;
+        _deleteVinilUseCase = deleteVinilUseCase;
         
         try
         {
@@ -85,4 +102,75 @@ public class VinilController : ControllerBase
             throw;
         }
     }
+    
+    [Authorize(Roles = "Admin")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpPost(Name = "PostCadastrarVinil")]
+    public ICadastrarVinilUseCaseOutput postCadastrarVinil([FromBody] ICadastrarVinilUseCaseInput input)
+    {
+        return _vinilUseCase.executeUseCase(input);
+    }
+    
+    [Authorize(Roles = "Admin")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpDelete(Name = "DeleteImagemVinil")]
+    public async Task<string> deleteImagemVinil([FromForm] string fileName)
+    {
+        try
+        {
+            using (var storageClient = StorageClient.Create(_googleCredential))
+            {
+                await storageClient.DeleteObjectAsync(_options.GoogleCloudStorageBucketName, fileName);
+                return "";
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        
+    }
+    
+    [Authorize(Roles = "Admin")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpDelete(Name = "DeleteVinil")]
+    public async Task<IDeleteVinilUseCaseOutput> deleteVinil([FromBody] IDeleteVinilUseCaseInput input)
+    {
+        try
+        {
+            using (var storageClient = StorageClient.Create(_googleCredential))
+            {
+                await storageClient.DeleteObjectAsync(_options.GoogleCloudStorageBucketName, input.fileName);
+            }
+            
+            return _deleteVinilUseCase.executeUseCase(input);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    [AllowAnonymous]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpGet(Name = "GetTodosVinil")]
+    public IGetTodosVinilUseCaseOutput getTodosVinil()
+    {
+        return _getTodosVinil.executeUseCase(new IGetTodosVinilUseCaseInput());
+    }
+    
 }

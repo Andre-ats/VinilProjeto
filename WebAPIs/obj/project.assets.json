@@ -5969,19 +5969,19 @@
     ]
   },
   "packageFolders": {
-    "/home/andre/.nuget/packages/": {}
+    "/home/alunos/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/WebAPIs.csproj",
+      "projectUniqueName": "/home/alunos/Desktop/VinilProjeto/WebAPIs/WebAPIs.csproj",
       "projectName": "WebAPIs",
-      "projectPath": "/home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/WebAPIs.csproj",
-      "packagesPath": "/home/andre/.nuget/packages/",
-      "outputPath": "/home/andre/Documentos/Programacao/Vinil/VinilProjeto/WebAPIs/obj/",
+      "projectPath": "/home/alunos/Desktop/VinilProjeto/WebAPIs/WebAPIs.csproj",
+      "packagesPath": "/home/alunos/.nuget/packages/",
+      "outputPath": "/home/alunos/Desktop/VinilProjeto/WebAPIs/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/andre/.nuget/NuGet/NuGet.Config"
+        "/home/alunos/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -5993,8 +5993,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/Domain.csproj": {
-              "projectPath": "/home/andre/Documentos/Programacao/Vinil/VinilProjeto/Domain/Domain.csproj"
+            "/home/alunos/Desktop/VinilProjeto/Domain/Domain.csproj": {
+              "projectPath": "/home/alunos/Desktop/VinilProjeto/Domain/Domain.csproj"
             }
           }
         }
@@ -6003,6 +6003,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -6077,7 +6082,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/andre/.dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/alunos/.dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

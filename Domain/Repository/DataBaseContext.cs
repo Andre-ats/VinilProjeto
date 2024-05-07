@@ -59,5 +59,4 @@ public class DataBaseContext : DbContext
     public DbSet<Admin> adminDB { get; set; }
     public DbSet<UsuarioComprador> UsuarioCompradorDB { get; set; }
     public DbSet<Vinil> VinilDB { get; set; }
-    public DbSet<VinilImagem> VinilImagemDB { get; set; }
 }

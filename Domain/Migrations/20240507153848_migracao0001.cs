@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace VinilProjeto.Migrations
 {
     /// <inheritdoc />
-    public partial class Migration0001 : Migration
+    public partial class migracao0001 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

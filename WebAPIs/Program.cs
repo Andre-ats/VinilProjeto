@@ -18,6 +18,7 @@ using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.Atuali
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarTelefone;
 using VinilProjeto.UseCase.VinilUseCase.CadastrarVinil;
 using VinilProjeto.UseCase.VinilUseCase.DeleteImagem;
+using VinilProjeto.UseCase.VinilUseCase.DeleteVinil;
 using VinilProjeto.UseCase.VinilUseCase.GetTodosVinil;
 using WebAPIs.Config;
 using WebAPIs.Controller.VinilController;
@@ -65,6 +66,7 @@ builder.Services.AddScoped<ICadastrarVinilUseCase, CadastrarVinilUseCase>();
 builder.Services.AddScoped<IGetTodosVinilUseCase, GetTodosVinilUseCase>();
 builder.Services.AddScoped<IPostImagemVinilUseCase, PostImagemVinilUseCase>();
 builder.Services.AddScoped<IDeleteImagemVinilUseCase, DeleteImagemVinilUseCase>();
+builder.Services.AddScoped<IDeleteVinilUseCase, DeleteVinilUseCase>();
 
 
 

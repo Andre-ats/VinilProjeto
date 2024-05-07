@@ -85,51 +85,7 @@ public class UsuarioCompradorController : ControllerBase
     {
         return _cadastrarUsuarioCompradorUseCase.executeUseCase(input);
     }
-    
-    [AllowAnonymous]
-    [ProducesResponseType(201)]
-    [ProducesResponseType(401)]
-    [ProducesResponseType(400)]
-    [Produces("application/json")]
-    [HttpGet(Name = "GetTodosVinil")]
-    public IGetTodosVinilUseCaseOutput getTodosVinil()
-    {
-        return _getTodosVinilUseCase.executeUseCase(new IGetTodosVinilUseCaseInput());
-    }
-    
-    [AllowAnonymous]
-    [ProducesResponseType(200)]
-    [ProducesResponseType(401)]
-    [ProducesResponseType(400)]
-    [Produces("application/json")]
-    [HttpGet(Name = "GetImagemVinil")]
-    public IActionResult getImagemVinil([FromQuery] Guid vinilId, [FromQuery] string fileName)
-    {
-        try
-        {
-            IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json",optional:false,reloadOnChange:false).Build();
-            var pathfolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
-                             configuration.GetValue<string>("System:UsersDocBasePath");
 
-            var path = $"{pathfolder}/vinil/{vinilId}/{fileName}";
-
-            if (!System.IO.File.Exists(path))
-            {
-                return NotFound();
-            }
-
-            byte[] imagemBytes = System.IO.File.ReadAllBytes(path);
-            string base64String = Convert.ToBase64String(imagemBytes);
-
-            return Ok(new { ImageBase64 = base64String });
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
-        }
-    }
-
-    
     [Authorize(Roles = "UsuarioComprador")]
     [ProducesResponseType(201)]
     [ProducesResponseType(401)]

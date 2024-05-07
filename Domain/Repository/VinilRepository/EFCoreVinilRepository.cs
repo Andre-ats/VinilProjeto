@@ -28,23 +28,20 @@ public class EFCoreVinilRepository : IVinilRespository
     {
         return _dataBaseContext.VinilDB.SingleOrDefault(x => x.id.Equals(vinilId)) ?? null;
     }
-
-    public void postImagemVinil(VinilImagem vinilImagem)
-    {
-        _dataBaseContext.VinilImagemDB.Add(vinilImagem);
-        _dataBaseContext.SaveChanges();
-    }
+    
 
     public void updateVinil(Vinil vinil)
     {
         _dataBaseContext.VinilDB.Update(vinil);
         _dataBaseContext.SaveChanges();
     }
+    
 
-    public VinilImagem getImagemByID(Guid imagemId)
+    public void deleteVinilCascade(Vinil vinil)
     {
-        return _dataBaseContext.VinilImagemDB
-            .AsTracking()
-            .SingleOrDefault(x => x.vinilId.Equals(imagemId));
+        
+        _dataBaseContext.VinilDB.Remove(vinil);
+        _dataBaseContext.SaveChanges();
     }
+    
 }

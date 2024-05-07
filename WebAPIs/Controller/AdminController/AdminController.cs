@@ -85,41 +85,8 @@ public class AdminController : ControllerBase
     {
         return _cadastrarAdminUseCase.executeUseCase(input);
     }
-    
-    [Authorize(Roles = "Admin")]
-    [ProducesResponseType(201)]
-    [ProducesResponseType(401)]
-    [ProducesResponseType(400)]
-    [Produces("application/json")]
-    [HttpPost(Name = "PostCadastrarVinil")]
-    public ICadastrarVinilUseCaseOutput postCadastrarVinil([FromBody] ICadastrarVinilUseCaseInput input)
-    {
-        return _vinilUseCase.executeUseCase(input);
-    }
-    
-    [Authorize(Roles = "Admin")]
-    [ProducesResponseType(201)]
-    [ProducesResponseType(401)]
-    [ProducesResponseType(400)]
-    [Produces("application/json")]
-    [HttpDelete(Name = "DeleteImagemVinil")]
-    public IDeleteImagemUseCaseOutput deleteImagemVinil([FromForm] string fileName, [FromForm]Guid fileID)
-    {
 
-        IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json",optional:false,reloadOnChange:false).Build();
-        var pathfolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
-                         configuration.GetValue<string>("System:UsersDocBasePath");
 
-        var input = new IDeleteImagemUseCaseInput()
-        {
-            id = fileID,
-            fileName = fileName,
-            path = pathfolder
-        };
-
-        return _deleteImagemVinilUseCase.executeUseCase(input);
-    }
-    
     [Authorize(Roles = "Admin")]
     [ProducesResponseType(201)]
     [ProducesResponseType(401)]
