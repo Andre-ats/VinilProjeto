@@ -19,7 +19,6 @@ public class VinilController : ControllerBase
     private readonly GCSConfigOptions _options;
     private readonly GoogleCredential _googleCredential;
     private readonly IPostImagemVinilUseCase _postImagemVinilUseCase;
-    private readonly IDeleteImagemVinilUseCase _deleteImagemVinilUseCase;
     private readonly ICadastrarVinilUseCase _vinilUseCase;
     private readonly IGetTodosVinilUseCase _getTodosVinil;
     private readonly IDeleteVinilUseCase _deleteVinilUseCase;
@@ -27,7 +26,6 @@ public class VinilController : ControllerBase
     
     public VinilController(IOptions<GCSConfigOptions> options, 
         IPostImagemVinilUseCase postImagemVinilUseCase, 
-        IDeleteImagemVinilUseCase deleteImagemVinilUseCase,
         ICadastrarVinilUseCase cadastrarVinilUseCase,
         IGetTodosVinilUseCase getTodosVinilUseCase,
         IDeleteVinilUseCase deleteVinilUseCase
@@ -36,7 +34,6 @@ public class VinilController : ControllerBase
         
         _options = options.Value;
         _postImagemVinilUseCase = postImagemVinilUseCase;
-        _deleteImagemVinilUseCase = deleteImagemVinilUseCase;
         _vinilUseCase = cadastrarVinilUseCase;
         _getTodosVinil = getTodosVinilUseCase;
         _deleteVinilUseCase = deleteVinilUseCase;
