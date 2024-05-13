@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace VinilProjeto.Migrations
 {
     /// <inheritdoc />
-    public partial class migracao0001 : Migration
+    public partial class Migration0001 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -57,10 +57,21 @@ namespace VinilProjeto.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     nomeVinil = table.Column<string>(type: "text", nullable: false),
                     descricaoVinil = table.Column<string>(type: "text", nullable: false),
+                    listaMusica = table.Column<string>(type: "text", nullable: false),
                     precoVinil = table.Column<string>(type: "text", nullable: false),
                     quantiaVinil = table.Column<string>(type: "text", nullable: false),
+                    UPC = table.Column<string>(type: "text", nullable: false),
+                    caracteristicasPrincipais_nomeArtista = table.Column<string>(type: "text", nullable: false),
+                    caracteristicasPrincipais_gravadora = table.Column<string>(type: "text", nullable: false),
+                    caracteristicasPrincipais_tipoDeAlbum = table.Column<int>(type: "integer", nullable: false),
+                    caracteristicasPrincipais_anoLancamento = table.Column<string>(type: "text", nullable: false),
+                    caracteristicasPrincipais_tipoDeEmbalagem = table.Column<int>(type: "integer", nullable: false),
+                    outrasCaracteristicas_quantiaCancoes = table.Column<string>(type: "text", nullable: false),
+                    outrasCaracteristicas_estiloMusical = table.Column<int>(type: "integer", nullable: false),
+                    StatusVinil = table.Column<int>(type: "integer", nullable: false),
                     EstiloMusical = table.Column<string>(type: "text", nullable: false),
-                    StatusVinil = table.Column<int>(type: "integer", nullable: false)
+                    TipoDaEmbalagem = table.Column<string>(type: "text", nullable: false),
+                    TipoDoAlbum = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

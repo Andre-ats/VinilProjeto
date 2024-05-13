@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using VinilProjeto.Entity.Usuario;
 using VinilProjeto.Entity.VinilVenda;
+using VinilProjeto.ValueObject.Vinil;
 
 namespace VinilProjeto.Repository;
 
@@ -32,14 +33,6 @@ public class DataBaseContext : DbContext
         {
             user.ToTable("UsuarioComprador");
         });
-    
-
-        modelBuilder.Entity<UsuarioComprador>()
-            .OwnsOne(x => x.telefone);
-
-
-        modelBuilder.Entity<UsuarioComprador>()
-            .OwnsOne(x => x.endereco);
 
         modelBuilder.Entity<Vinil>(user =>
         {
@@ -47,13 +40,43 @@ public class DataBaseContext : DbContext
         });
         
         modelBuilder.Entity<Vinil>()
-            .Property(x => x.estiloMusical)
-            .HasConversion(x => x.ToString(),
-                x => (EstiloMusical)Enum.Parse(typeof(EstiloMusical), x))
-            .HasColumnName("EstiloMusical");
+            .Property<EstiloMusical>("EstiloMusical")
+            .HasConversion(
+                v => v.ToString(),
+                v => (EstiloMusical)Enum.Parse(typeof(EstiloMusical), v)
+            );
+
+        modelBuilder.Entity<Vinil>()
+            .Property<TipoAlbum>("TipoDoAlbum")
+            .HasConversion(
+                v => v.ToString(),
+                v => (TipoAlbum)Enum.Parse(typeof(TipoAlbum), v)
+            );
+
+        modelBuilder.Entity<Vinil>()
+            .Property<TipoDeEmbalagem>("TipoDaEmbalagem")
+            .HasConversion(
+                v => v.ToString(),
+                v => (TipoDeEmbalagem)Enum.Parse(typeof(TipoDeEmbalagem), v)
+            );
+
+
 
         modelBuilder.Entity<Vinil>()
             .OwnsMany(x => x.VinilImagem);
+
+        modelBuilder.Entity<Vinil>()
+            .OwnsOne(x => x.caracteristicasPrincipais);
+        
+        modelBuilder.Entity<Vinil>()
+            .OwnsOne(x => x.outrasCaracteristicas);
+        
+        modelBuilder.Entity<UsuarioComprador>()
+            .OwnsOne(x => x.telefone);
+
+
+        modelBuilder.Entity<UsuarioComprador>()
+            .OwnsOne(x => x.endereco);
     }
     
     public DbSet<Admin> adminDB { get; set; }

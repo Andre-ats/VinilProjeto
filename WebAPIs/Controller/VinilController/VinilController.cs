@@ -65,7 +65,7 @@ public class VinilController : ControllerBase
     [ProducesResponseType(400)]
     [Produces("application/json")]
     [HttpPost(Name = "PostImagemVinil")]
-    public async Task<IPostImagemVinilUseCaseOutput> UploadFileAsync([FromForm]PostImagemAdaptor input)
+    public async Task<IPostImagemVinilUseCaseOutput> postImagemVinil([FromForm]PostImagemAdaptor input)
     {
         try
         {
@@ -78,7 +78,7 @@ public class VinilController : ControllerBase
                     inputPostImagem.vinilId = input.vinilID;
                     inputPostImagem.nome = input.file.FileName;
                     inputPostImagem.Stream = memoryStream;
-                    inputPostImagem.path = "https://storage.googleapis.com/sg-discos/" + input.file.FileName;
+                    inputPostImagem.path = "https://storage.googleapis.com/sgdiscos/" + input.file.FileName;
                 }
                 
                 using (var storageClient = StorageClient.Create(_googleCredential))

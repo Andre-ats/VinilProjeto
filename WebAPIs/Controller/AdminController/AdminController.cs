@@ -42,7 +42,6 @@ public class AdminController : ControllerBase
         _getAdminPerfilUseCase = getAdminPerfilUseCase;
 
 
-
     }
     [AllowAnonymous]
     [ProducesResponseType(201)]

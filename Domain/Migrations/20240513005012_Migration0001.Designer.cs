@@ -12,8 +12,8 @@ using VinilProjeto.Repository;
 namespace VinilProjeto.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20240507183008_migracao0001")]
-    partial class migracao0001
+    [Migration("20240513005012_Migration0001")]
+    partial class Migration0001
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,17 +72,32 @@ namespace VinilProjeto.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("EstiloMusical")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<int>("StatusVinil")
                         .HasColumnType("integer");
+
+                    b.Property<string>("TipoDaEmbalagem")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("TipoDoAlbum")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("UPC")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("descricaoVinil")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("estiloMusical")
+                    b.Property<string>("listaMusica")
                         .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("EstiloMusical");
+                        .HasColumnType("text");
 
                     b.Property<string>("nomeVinil")
                         .IsRequired()
@@ -182,6 +197,57 @@ namespace VinilProjeto.Migrations
 
             modelBuilder.Entity("VinilProjeto.Entity.VinilVenda.Vinil", b =>
                 {
+                    b.OwnsOne("VinilProjeto.ValueObject.Vinil.CaracteristicasPrincipais", "caracteristicasPrincipais", b1 =>
+                        {
+                            b1.Property<Guid>("Vinilid")
+                                .HasColumnType("uuid");
+
+                            b1.Property<string>("anoLancamento")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.Property<string>("gravadora")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.Property<string>("nomeArtista")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.Property<int>("tipoDeAlbum")
+                                .HasColumnType("integer");
+
+                            b1.Property<int>("tipoDeEmbalagem")
+                                .HasColumnType("integer");
+
+                            b1.HasKey("Vinilid");
+
+                            b1.ToTable("Vinil");
+
+                            b1.WithOwner()
+                                .HasForeignKey("Vinilid");
+                        });
+
+                    b.OwnsOne("VinilProjeto.ValueObject.Vinil.OutrasCaracteristicas", "outrasCaracteristicas", b1 =>
+                        {
+                            b1.Property<Guid>("Vinilid")
+                                .HasColumnType("uuid");
+
+                            b1.Property<int>("estiloMusical")
+                                .HasColumnType("integer");
+
+                            b1.Property<string>("quantiaCancoes")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.HasKey("Vinilid");
+
+                            b1.ToTable("Vinil");
+
+                            b1.WithOwner()
+                                .HasForeignKey("Vinilid");
+                        });
+
                     b.OwnsMany("VinilProjeto.Entity.VinilVenda.VinilImagem", "VinilImagem", b1 =>
                         {
                             b1.Property<Guid>("vinilId")
@@ -210,6 +276,12 @@ namespace VinilProjeto.Migrations
                         });
 
                     b.Navigation("VinilImagem");
+
+                    b.Navigation("caracteristicasPrincipais")
+                        .IsRequired();
+
+                    b.Navigation("outrasCaracteristicas")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,6 @@
 using VinilProjeto.Entity.Usuario;
 using VinilProjeto.Entity.VinilVenda;
+using VinilProjeto.ValueObject.Vinil;
 
 namespace VinilProjeto.Factory.Entity.VinilVenda;
 
@@ -7,9 +8,12 @@ public class VinilVendaFactory
 {
     public string _nomeVinil { get; set; }
     public string _descricaoVinil { get; set; }
+    public string _listaMusica { get; set; }
     public string _precoVinil { get; set; }
     public string _quantiaVinil { get; set; }
-    public EstiloMusical _estiloMusical { get; set; }
+    public string _UPC { get; set; }
+    public CaracteristicasPrincipais _caracteristicasPrincipais { get; set; }
+    public OutrasCaracteristicas _outrasCaracteristicas { get; set; }
     public StatusVinil _statusVinil { get; set; }
     public ICollection<VinilImagem> _VinilImagems { get; set; }
 
@@ -17,9 +21,12 @@ public class VinilVendaFactory
     {
         _nomeVinil = null;
         _descricaoVinil = null;
+        _listaMusica = null;
         _precoVinil = null;
         _quantiaVinil = null;
-        _estiloMusical = EstiloMusical.Vazio;
+        _UPC = null;
+        _caracteristicasPrincipais = null;
+        _outrasCaracteristicas = null;
         _statusVinil = StatusVinil.Vazio;
         _VinilImagems = null;
     }
@@ -35,6 +42,12 @@ public class VinilVendaFactory
         this._descricaoVinil = descricaoVinil;
         return this;
     }
+    
+    public VinilVendaFactory setListaMusica(string listaMusica)
+    {
+        this._listaMusica = listaMusica;
+        return this;
+    }
 
     public VinilVendaFactory setPrecoVinil(string precoVinil)
     {
@@ -47,9 +60,19 @@ public class VinilVendaFactory
         this._quantiaVinil = quantiaVinil;
         return this;
     }
-    public VinilVendaFactory setEstiloMusical(EstiloMusical estiloMusical)
+    public VinilVendaFactory setUPC(string UPC)
     {
-        this._estiloMusical = estiloMusical;
+        this._UPC = UPC;
+        return this;
+    }
+    public VinilVendaFactory setCaracteristicasPrincipais(CaracteristicasPrincipais caracteristicasPrincipais)
+    {
+        this._caracteristicasPrincipais = caracteristicasPrincipais;
+        return this;
+    }
+    public VinilVendaFactory setOutrasCaracteristicas(OutrasCaracteristicas outrasCaracteristicas)
+    {
+        this._outrasCaracteristicas = outrasCaracteristicas;
         return this;
     }
 
@@ -69,9 +92,12 @@ public class VinilVendaFactory
     {
         _ = _nomeVinil == null ? throw new Exception() : true;
         _ = _descricaoVinil == null ? throw new Exception() : true;
+        _ = _listaMusica == null ? throw new Exception() : true;
         _ = _precoVinil == null ? throw new Exception() : true;
         _ = _quantiaVinil == null ? throw new Exception() : true;
-        _ = _estiloMusical.Equals(EstiloMusical.Vazio) ? throw new Exception() : true;
+        _ = _UPC == null ? throw new Exception() : true;
+        _ = _caracteristicasPrincipais == null ? throw new Exception() : true;
+        _ = _outrasCaracteristicas == null ? throw new Exception() : true;
         _ = _statusVinil.Equals(StatusVinil.Vazio) ? throw new Exception() : true;
         _ = _VinilImagems == null ? throw new Exception() : true;
 
@@ -87,9 +113,13 @@ public class VinilVendaFactory
             _descricaoVinil,
             _precoVinil,
             _quantiaVinil,
-            _estiloMusical,
+            _UPC,
+            _listaMusica,
+            _caracteristicasPrincipais,
+            _outrasCaracteristicas,
             _statusVinil,
             _VinilImagems
+            
         );
         
         this.init();

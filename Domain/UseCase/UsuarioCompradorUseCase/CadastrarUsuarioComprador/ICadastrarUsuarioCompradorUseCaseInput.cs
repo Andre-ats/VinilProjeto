@@ -1,8 +1,6 @@
 using VinilProjeto.Entity.Usuario;
 using VinilProjeto.Repository.DTO.ValueObject;
 using VinilProjeto.UseCase.UseCaseInterfaces;
-using VinilProjeto.ValueObject.Endereco;
-using VinilProjeto.ValueObject.Telefone;
 
 namespace VinilProjeto.UseCase.UsuarioCompradorUseCase.CadastrarUsuarioComprador;
 
