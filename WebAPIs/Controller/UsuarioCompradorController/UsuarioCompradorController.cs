@@ -14,6 +14,7 @@ using WebAPIs.Service.LoginService;
 using WebAPIs.Service.LoginServiceUsuarioComprador;
 using System;
 using System.IO;
+using VinilProjeto.Helpers.Hash;
 
 namespace WebAPIs.Controller.UsuarioCompradorController;
 
@@ -56,7 +57,11 @@ public class UsuarioCompradorController : ControllerBase
     [HttpPost(Name="Login/UsuarioComprador")]
     public UsuarioLoginOutput loginUsuarioComprador([FromBody] UsuarioLoginInput input)
     {
-        var usuarioComprador = _serviceUsuarioComprador.login(input.email, input.senha);
+        
+        
+        var hash = Hash256.stringHash256(input.senha);
+        
+        var usuarioComprador = _serviceUsuarioComprador.login(input.email, hash);
         if (usuarioComprador == null)
         {
             var resposta = $"Usuario nao encontrado {input.email}";

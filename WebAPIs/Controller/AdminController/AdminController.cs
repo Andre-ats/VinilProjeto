@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VinilProjeto.Entity.Usuario;
+using VinilProjeto.Helpers.Hash;
 using VinilProjeto.UseCase.AdminUseCase.CadastrarAdmin;
 using VinilProjeto.UseCase.AdminUseCase.GetAdmin;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetAdminPerfil;
@@ -51,7 +52,11 @@ public class AdminController : ControllerBase
     [HttpPost(Name="LoginAdmin")]
     public UsuarioLoginOutput loginAdmin([FromBody] UsuarioLoginInput input)
     {
-        var admin = _login.login(input.email, input.senha);
+        
+                
+        var hash = Hash256.stringHash256(input.senha);
+        
+        var admin = _login.login(input.email, hash);
         if (admin == null)
         {
             var resposta = $"Usuario nao encontrado {input.email}";
