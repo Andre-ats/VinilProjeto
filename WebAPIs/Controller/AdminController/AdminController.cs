@@ -65,7 +65,6 @@ public class AdminController : ControllerBase
         return new UsuarioLoginOutput(token, dateTime);
     }
     
-    [Authorize(Roles = "Admin")]
     [ProducesResponseType(201)]
     [ProducesResponseType(401)]
     [ProducesResponseType(400)]

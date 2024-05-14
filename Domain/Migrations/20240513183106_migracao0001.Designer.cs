@@ -12,8 +12,8 @@ using VinilProjeto.Repository;
 namespace VinilProjeto.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20240513005012_Migration0001")]
-    partial class Migration0001
+    [Migration("20240513183106_migracao0001")]
+    partial class migracao0001
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
