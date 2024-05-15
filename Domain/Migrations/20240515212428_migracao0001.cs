@@ -32,6 +32,7 @@ namespace VinilProjeto.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     email = table.Column<string>(type: "text", nullable: false),
                     senha = table.Column<string>(type: "text", nullable: false),
+                    token = table.Column<string>(type: "text", nullable: false),
                     status = table.Column<int>(type: "integer", nullable: false),
                     telefone_codigo = table.Column<string>(type: "text", nullable: false),
                     telefone_ddd = table.Column<string>(type: "text", nullable: false),

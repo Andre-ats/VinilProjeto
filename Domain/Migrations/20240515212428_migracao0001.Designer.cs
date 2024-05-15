@@ -12,7 +12,7 @@ using VinilProjeto.Repository;
 namespace VinilProjeto.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20240513183106_migracao0001")]
+    [Migration("20240515212428_migracao0001")]
     partial class migracao0001
     {
         /// <inheritdoc />
@@ -60,6 +60,10 @@ namespace VinilProjeto.Migrations
 
                     b.Property<int>("status")
                         .HasColumnType("integer");
+
+                    b.Property<string>("token")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("id");
 

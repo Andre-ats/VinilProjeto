@@ -14,6 +14,7 @@ using WebAPIs.Service.LoginService;
 using WebAPIs.Service.LoginServiceUsuarioComprador;
 using System;
 using System.IO;
+using VinilProjeto.Helpers.Email;
 using VinilProjeto.Helpers.Hash;
 
 namespace WebAPIs.Controller.UsuarioCompradorController;
@@ -85,9 +86,24 @@ public class UsuarioCompradorController : ControllerBase
     [ProducesResponseType(401)]
     [ProducesResponseType(400)]
     [Produces("application/json")]
+    [HttpPost(Name = "testeEmail")]
+    public void verificacaoEmail([FromBody] EmailInput input)
+    {
+        new Email().sendEmail(input.emailEnviar);
+    }
+    
+    [AllowAnonymous]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
     [HttpPost(Name = "PostCadastrarUsuarioComprador")]
     public ICadastrarUsuarioCompradorUseCaseOutput postCadastrarUsuarioComprador([FromBody] ICadastrarUsuarioCompradorUseCaseInput input)
     {
+        var token = new Email().sendEmail(input.email);
+
+        input.token = token;
+
         return _cadastrarUsuarioCompradorUseCase.executeUseCase(input);
     }
 

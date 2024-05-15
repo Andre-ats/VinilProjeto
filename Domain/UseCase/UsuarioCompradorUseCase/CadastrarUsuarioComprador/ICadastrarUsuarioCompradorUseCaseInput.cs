@@ -8,7 +8,7 @@ public class ICadastrarUsuarioCompradorUseCaseInput : IUseCaseInput
 {
     public string email;
     public string senha;
-    public StatusUsuarioComprador statusUsuarioComprador;
+    public string token;
     public TelefoneDTO telefone;
     public EnderecoDTO endereco;
 }

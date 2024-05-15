@@ -58,6 +58,10 @@ namespace VinilProjeto.Migrations
                     b.Property<int>("status")
                         .HasColumnType("integer");
 
+                    b.Property<string>("token")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("id");
 
                     b.ToTable("UsuarioComprador", (string)null);
