@@ -20,6 +20,11 @@ public class CadastrarUsuarioCompradorUseCase : ICadastrarUsuarioCompradorUseCas
     {
 
         var hash = Hash256.stringHash256(_useCaseInput.senha);
+
+        if (_compradorRepository.GetUsuarioCompradorByEmail(_useCaseInput.email) != null)
+        {
+            throw new Exception("Usuario com esse endereço de email já existe");
+        }
         
         try
         {
