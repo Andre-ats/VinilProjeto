@@ -12,8 +12,8 @@ using VinilProjeto.Repository;
 namespace VinilProjeto.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20240513005012_Migration0001")]
-    partial class Migration0001
+    [Migration("20240515212428_migracao0001")]
+    partial class migracao0001
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,6 +60,10 @@ namespace VinilProjeto.Migrations
 
                     b.Property<int>("status")
                         .HasColumnType("integer");
+
+                    b.Property<string>("token")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("id");
 

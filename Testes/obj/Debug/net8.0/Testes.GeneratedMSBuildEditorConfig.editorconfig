@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Testes
-build_property.ProjectDir = /home/andre/Documentos/Programacao/Vinil/VinilProjeto/Testes/
+build_property.ProjectDir = /home/alunos/Desktop/VinilProjeto/Testes/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

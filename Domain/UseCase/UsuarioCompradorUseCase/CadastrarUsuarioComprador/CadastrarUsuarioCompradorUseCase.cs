@@ -2,6 +2,7 @@ using VinilProjeto.Entity.Usuario;
 using VinilProjeto.Factory.Entity.Usuario;
 using VinilProjeto.Factory.ValueObject.Endereco;
 using VinilProjeto.Factory.ValueObject.Telefone;
+using VinilProjeto.Helpers.Hash;
 using VinilProjeto.Repository.DTO.ValueObject;
 using VinilProjeto.Repository.UsuarioCompradorRepository;
 using VinilProjeto.UseCase.UseCaseInterfaces;
@@ -17,12 +18,21 @@ public class CadastrarUsuarioCompradorUseCase : ICadastrarUsuarioCompradorUseCas
 
     protected override ICadastrarUsuarioCompradorUseCaseOutput executeService(ICadastrarUsuarioCompradorUseCaseInput _useCaseInput)
     {
+
+        var hash = Hash256.stringHash256(_useCaseInput.senha);
+
+        if (_compradorRepository.GetUsuarioCompradorByEmail(_useCaseInput.email) != null)
+        {
+            throw new Exception("Usuario com esse endereço de email já existe");
+        }
+        
         try
         {
             UsuarioComprador user = new UsuarioCompradorFactory()
                 .setEmail(_useCaseInput.email)
-                .setSenha(_useCaseInput.senha)
-                .setStatusUsuarioComprador(_useCaseInput.statusUsuarioComprador)
+                .setSenha(hash)
+                .setStatusUsuarioComprador(StatusUsuarioComprador.Inativo)
+                .setToken(_useCaseInput.token)
                 .setTelefone(new TelefoneFactory()
                     .setCodigo(_useCaseInput.telefone.codigo)
                     .setNumero(_useCaseInput.telefone.numero)

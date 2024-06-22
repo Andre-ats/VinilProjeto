@@ -8,6 +8,7 @@ public class UsuarioCompradorFactory
 {
     private string _email { get; set; }
     private string _senha { get; set; }
+    private string _token { get; set; }
     private Telefone _telefone { get; set; }
     private Endereco _endereco { get; set; }
     private StatusUsuarioComprador _status { get; set; }
@@ -16,6 +17,7 @@ public class UsuarioCompradorFactory
     {
         _email = null;
         _senha = null;
+        _token = null;
         _telefone = null;
         _endereco = null;
         _status = StatusUsuarioComprador.Vazio;
@@ -30,6 +32,12 @@ public class UsuarioCompradorFactory
     public UsuarioCompradorFactory setSenha(string senha)
     {
         this._senha = senha;
+        return this;
+    }
+
+    public UsuarioCompradorFactory setToken(string token)
+    {
+        this._token = token;
         return this;
     }
     
@@ -55,6 +63,7 @@ public class UsuarioCompradorFactory
     {
         _ = _email == null ? throw new Exception() : true;
         _ = _senha == null ? throw new Exception() : true;
+        _ = _token == null ? throw new Exception() : true;
         _ = _telefone == null ? throw new Exception() : true;
         _ = _endereco == null ? throw new Exception() : true;
         _ = _status == StatusUsuarioComprador.Vazio ? throw new Exception() : true;
@@ -70,6 +79,7 @@ public class UsuarioCompradorFactory
         UsuarioComprador usuarioComprador = UsuarioComprador.createUsuarioComprador(
             _email,
             _senha,
+            _token,
             _telefone,
             _endereco,
             _status
