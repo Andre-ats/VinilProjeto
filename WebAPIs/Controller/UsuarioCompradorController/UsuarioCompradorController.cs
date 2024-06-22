@@ -12,11 +12,10 @@ using WebApi.Services;
 using WebAPIs.DTO;
 using WebAPIs.Service.LoginService;
 using WebAPIs.Service.LoginServiceUsuarioComprador;
-using System;
-using System.IO;
 using Microsoft.Extensions.Caching.Memory;
 using VinilProjeto.Helpers.Email;
 using VinilProjeto.Helpers.Hash;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.AtivarContaUsuarioComprador;
 
 namespace WebAPIs.Controller.UsuarioCompradorController;
 
@@ -25,31 +24,34 @@ namespace WebAPIs.Controller.UsuarioCompradorController;
 public class UsuarioCompradorController : ControllerBase
 {
     private readonly ICadastrarUsuarioCompradorUseCase _cadastrarUsuarioCompradorUseCase;
-    private readonly IGetTodosVinilUseCase _getTodosVinilUseCase;
     private readonly ILoginServiceUsuarioComprador _serviceUsuarioComprador;
     private readonly IPutUsuarioCompradorTelefoneUseCase _putUsuarioCompradorTelefoneUseCase;
     private readonly IGetPerfilUsuarioCompradorUseCase _getPerfilUsuarioCompradorUseCase;
     private readonly IPutUsuarioCompradorAtivarStatusUseCase _putUsuarioCompradorAtivarStatusUseCase;
     private readonly IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase;
+    private readonly IAtivarUsuarioCompradorUseCase _ativarUsuarioCompradorUseCase;
+    
     private readonly IMemoryCache _memoryCache;
 
     public UsuarioCompradorController(ICadastrarUsuarioCompradorUseCase usuarioCompradorUseCase, 
-        IGetTodosVinilUseCase getTodosVinilUseCase, 
         ILoginServiceUsuarioComprador usuarioCompradorLogin,
         IPutUsuarioCompradorTelefoneUseCase _putUsuarioCompradorTelefoneUseCase,
         IGetPerfilUsuarioCompradorUseCase _getPerfilUsuarioCompradorUseCase,
         IPutUsuarioCompradorAtivarStatusUseCase _putUsuarioCompradorAtivarStatusUseCase,
         IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase,
+        IAtivarUsuarioCompradorUseCase _ativarUsuarioCompradorUseCase,
+        
         IMemoryCache memoryCache
         )
     {
         _cadastrarUsuarioCompradorUseCase = usuarioCompradorUseCase;
-        _getTodosVinilUseCase = getTodosVinilUseCase;
         _serviceUsuarioComprador = usuarioCompradorLogin;
         this._putUsuarioCompradorTelefoneUseCase = _putUsuarioCompradorTelefoneUseCase;
         this._getPerfilUsuarioCompradorUseCase = _getPerfilUsuarioCompradorUseCase;
         this._putUsuarioCompradorAtivarStatusUseCase = _putUsuarioCompradorAtivarStatusUseCase;
         this._putUsuarioCompradorDesativarStatusUseCase = _putUsuarioCompradorDesativarStatusUseCase;
+        this._ativarUsuarioCompradorUseCase = _ativarUsuarioCompradorUseCase;
+        
         this._memoryCache = memoryCache;
     }
     
@@ -89,17 +91,6 @@ public class UsuarioCompradorController : ControllerBase
     [ProducesResponseType(401)]
     [ProducesResponseType(400)]
     [Produces("application/json")]
-    [HttpPost(Name = "testeEmail")]
-    public void verificacaoEmail([FromBody] EmailInput input)
-    {
-        new Email().sendEmail(input.emailEnviar);
-    }
-    
-    [AllowAnonymous]
-    [ProducesResponseType(201)]
-    [ProducesResponseType(401)]
-    [ProducesResponseType(400)]
-    [Produces("application/json")]
     [HttpPost(Name = "PostCadastrarUsuarioComprador")]
     public ICadastrarUsuarioCompradorUseCaseOutput postCadastrarUsuarioComprador([FromBody] ICadastrarUsuarioCompradorUseCaseInput input)
     {
@@ -113,10 +104,18 @@ public class UsuarioCompradorController : ControllerBase
     [ProducesResponseType(400)]
     [Produces("application/json")]
     [HttpPost(Name = "PostTokenVerificacao")]
-    public bool verificarEmailToken([FromBody] EmailInputVerificacao input)
+    public IAtivarUsuarioCompradorUseCaseOutput verificarEmailToken([FromBody] IAtivarUsuarioCompradorUseCaseInput input)
     {
         var retorno = new EmailVerifyToken(_memoryCache).verificarToken(input.email, input.codigo);
-        return retorno;
+        
+        if (retorno)
+        {
+            return _ativarUsuarioCompradorUseCase.executeUseCase(input); 
+        }
+        else
+        {
+            throw new Exception("" + retorno);
+        }
     }
 
     [Authorize(Roles = "UsuarioComprador")]

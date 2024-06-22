@@ -9,6 +9,7 @@ using VinilProjeto.Repository.UsuarioCompradorRepository;
 using VinilProjeto.Repository.VinilRepository;
 using VinilProjeto.UseCase.AdminUseCase.CadastrarAdmin;
 using VinilProjeto.UseCase.AdminUseCase.GetAdmin;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.AtivarContaUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.CadastrarUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetAdminPerfil;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetPerfilUsuarioComprador;
@@ -60,6 +61,7 @@ builder.Services.AddScoped<IPutUsuarioCompradorTelefoneUseCase, PutUsuarioCompra
 builder.Services.AddScoped<IGetPerfilUsuarioCompradorUseCase, GetPerfilUsuarioCompradorUseCase>();
 builder.Services.AddScoped<IPutUsuarioCompradorAtivarStatusUseCase, PutUsuarioCompradorAtivarStatusUseCase>();
 builder.Services.AddScoped<IPutUsuarioCompradorDesativarStatusUseCase, PutUsuarioCompradorDesativarStatusUseCase>();
+builder.Services.AddScoped<IAtivarUsuarioCompradorUseCase, AtivarUsuarioCompradorUseCase>();
 
 builder.Services.AddScoped<IVinilRespository, EFCoreVinilRepository>();
 builder.Services.AddScoped<ICadastrarVinilUseCase, CadastrarVinilUseCase>();

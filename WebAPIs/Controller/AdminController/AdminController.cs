@@ -52,11 +52,10 @@ public class AdminController : ControllerBase
     [HttpPost(Name="LoginAdmin")]
     public UsuarioLoginOutput loginAdmin([FromBody] UsuarioLoginInput input)
     {
-        
                 
-        var hash = Hash256.stringHash256(input.senha);
+        //var hash = Hash256.stringHash256(input.senha);
         
-        var admin = _login.login(input.email, hash);
+        var admin = _login.login(input.email, input.senha);
         if (admin == null)
         {
             var resposta = $"Usuario nao encontrado {input.email}";

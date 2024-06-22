@@ -18,7 +18,7 @@ public class EmailVerifyToken
         var config = new EmailConfig();
         Random random = new Random();
         int numeroAleatorio = random.Next(1000, 10000);
-        var cacheEntryOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(1));
+        var cacheEntryOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(45));
         _cache.Set(emailEnviar, numeroAleatorio.ToString(), cacheEntryOptions);
 
         try

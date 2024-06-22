@@ -6,7 +6,7 @@
 	
 	<s:Boolean x:Key="/Default/Environment/Hierarchy/Build/BuildTool/RecentBuildToolPaths/=_002Fhome_002Falunos_002Fdotnet_002Fdotnet_002Fsdk_002F7_002E0_002E406_002FMSBuild_002Edll/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/Hierarchy/Build/BuildTool/RecentDotNetCliExePaths/=_002Fhome_002Falunos_002Fdotnet_002Fdotnet/@EntryIndexedValue">True</s:Boolean>
-	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">/home/alunos/.cache/JetBrains/Rider2022.3/resharper-host/temp/Rider/vAny/CoverageData/_VinilProjeto.226143792/Snapshot/snapshot.utdcvr</s:String>
+	
 	
 	
 	
