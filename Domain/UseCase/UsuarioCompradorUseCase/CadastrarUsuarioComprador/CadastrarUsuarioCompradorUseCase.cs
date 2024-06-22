@@ -32,7 +32,6 @@ public class CadastrarUsuarioCompradorUseCase : ICadastrarUsuarioCompradorUseCas
                 .setEmail(_useCaseInput.email)
                 .setSenha(hash)
                 .setStatusUsuarioComprador(StatusUsuarioComprador.Inativo)
-                .setToken(_useCaseInput.token)
                 .setTelefone(new TelefoneFactory()
                     .setCodigo(_useCaseInput.telefone.codigo)
                     .setNumero(_useCaseInput.telefone.numero)

@@ -14,6 +14,7 @@ using WebAPIs.Service.LoginService;
 using WebAPIs.Service.LoginServiceUsuarioComprador;
 using System;
 using System.IO;
+using Microsoft.Extensions.Caching.Memory;
 using VinilProjeto.Helpers.Email;
 using VinilProjeto.Helpers.Hash;
 
@@ -30,6 +31,7 @@ public class UsuarioCompradorController : ControllerBase
     private readonly IGetPerfilUsuarioCompradorUseCase _getPerfilUsuarioCompradorUseCase;
     private readonly IPutUsuarioCompradorAtivarStatusUseCase _putUsuarioCompradorAtivarStatusUseCase;
     private readonly IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase;
+    private readonly IMemoryCache _memoryCache;
 
     public UsuarioCompradorController(ICadastrarUsuarioCompradorUseCase usuarioCompradorUseCase, 
         IGetTodosVinilUseCase getTodosVinilUseCase, 
@@ -37,7 +39,8 @@ public class UsuarioCompradorController : ControllerBase
         IPutUsuarioCompradorTelefoneUseCase _putUsuarioCompradorTelefoneUseCase,
         IGetPerfilUsuarioCompradorUseCase _getPerfilUsuarioCompradorUseCase,
         IPutUsuarioCompradorAtivarStatusUseCase _putUsuarioCompradorAtivarStatusUseCase,
-        IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase
+        IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase,
+        IMemoryCache memoryCache
         )
     {
         _cadastrarUsuarioCompradorUseCase = usuarioCompradorUseCase;
@@ -47,7 +50,7 @@ public class UsuarioCompradorController : ControllerBase
         this._getPerfilUsuarioCompradorUseCase = _getPerfilUsuarioCompradorUseCase;
         this._putUsuarioCompradorAtivarStatusUseCase = _putUsuarioCompradorAtivarStatusUseCase;
         this._putUsuarioCompradorDesativarStatusUseCase = _putUsuarioCompradorDesativarStatusUseCase;
-
+        this._memoryCache = memoryCache;
     }
     
     [AllowAnonymous]
@@ -100,11 +103,20 @@ public class UsuarioCompradorController : ControllerBase
     [HttpPost(Name = "PostCadastrarUsuarioComprador")]
     public ICadastrarUsuarioCompradorUseCaseOutput postCadastrarUsuarioComprador([FromBody] ICadastrarUsuarioCompradorUseCaseInput input)
     {
-        var token = new Email().sendEmail(input.email);
-
-        input.token = token;
-
+        new EmailVerifyToken(_memoryCache).emailVerificacao(input.email);
         return _cadastrarUsuarioCompradorUseCase.executeUseCase(input);
+    }
+    
+    [AllowAnonymous]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpPost(Name = "PostTokenVerificacao")]
+    public bool verificarEmailToken([FromBody] EmailInputVerificacao input)
+    {
+        var retorno = new EmailVerifyToken(_memoryCache).verificarToken(input.email, input.codigo);
+        return retorno;
     }
 
     [Authorize(Roles = "UsuarioComprador")]

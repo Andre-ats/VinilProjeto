@@ -8,7 +8,6 @@ public class ICadastrarUsuarioCompradorUseCaseInput : IUseCaseInput
 {
     public string email;
     public string senha;
-    public string token;
     public TelefoneDTO telefone;
     public EnderecoDTO endereco;
 }
