@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Mail;
 using Microsoft.Extensions.Caching.Memory;
+using VinilProjeto.Helpers.Email.EmailHTML;
 
 namespace VinilProjeto.Helpers.Email;
 
@@ -27,7 +28,8 @@ public class EmailVerifyToken
             email.From = new MailAddress(config.email);
             email.To.Add(new MailAddress(emailEnviar));
             email.Subject = "Código de verificação";
-            email.Body = numeroAleatorio.ToString();
+            email.Body = EmailVerificacaoBody.EmailVerificacao(numeroAleatorio.ToString());
+            email.IsBodyHtml = true;
 
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com")
             {
