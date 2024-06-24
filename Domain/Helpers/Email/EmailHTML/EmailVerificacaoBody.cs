@@ -4,7 +4,7 @@ public class EmailVerificacaoBody
 {
     public static string EmailVerificacao(string numeroAleatorio)
     {
-        string imagePath = "SgDiscos.png";
+        string imagePath = "https://storage.googleapis.com/sgdiscos/Icone/";
 
         return $@"
             <html>
@@ -15,7 +15,7 @@ public class EmailVerificacaoBody
                                 <table width='100%' cellpadding='0' cellspacing='0' border='0' style='width: 100%;'>
                                     <tr>
                                         <td style='text-align: left; width: 50px;'>
-                                            <img src=""https://storage.googleapis.com/sgdiscos/Icone/SgDiscosIcone.png"" alt=""Logo"" style='width: 75px; height: 75px;'>
+                                            <img src=""{imagePath}SgDiscosIcone.png"" alt=""Logo"" style='width: 75px; height: 75px;'>
                                         </td>
                                         <td style='text-align: right;'>
                                             <h2 style='margin: 0; font-size: 24px;'>Código de Verificação</h2>

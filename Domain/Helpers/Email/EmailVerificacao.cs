@@ -5,16 +5,16 @@ using VinilProjeto.Helpers.Email.EmailHTML;
 
 namespace VinilProjeto.Helpers.Email;
 
-public class EmailVerifyToken
+public class EmailVerificacao
 {
     private readonly IMemoryCache _cache;
 
-    public EmailVerifyToken(IMemoryCache cache)
+    public EmailVerificacao(IMemoryCache cache)
     {
         _cache = cache;
     }
 
-    public string emailVerificacao(string emailEnviar)
+    public void emailToken(string emailEnviar)
     {
         var config = new EmailConfig();
         Random random = new Random();
@@ -39,8 +39,6 @@ public class EmailVerifyToken
             };
 
             smtpClient.Send(email);
-
-            return numeroAleatorio.ToString();
         }
         catch (Exception ex)
         {

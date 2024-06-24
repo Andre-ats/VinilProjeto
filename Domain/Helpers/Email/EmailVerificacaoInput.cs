@@ -1,6 +1,6 @@
 namespace VinilProjeto.Helpers.Email;
 
-public class EmailInputVerificacao
+public class EmailVerificacaoInput
 {
     public string codigo;
     public string email;

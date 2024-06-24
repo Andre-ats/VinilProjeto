@@ -1,6 +1,5 @@
 using VinilProjeto.Entity.VinilVenda;
 using VinilProjeto.Repository.VinilRepository;
-using VinilProjeto.Service.FileService;
 
 namespace VinilProjeto.UseCase.VinilUseCase.GetTodosVinil;
 

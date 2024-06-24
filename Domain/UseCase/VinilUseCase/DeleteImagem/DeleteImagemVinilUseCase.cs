@@ -1,6 +1,5 @@
 using VinilProjeto.Entity.VinilVenda;
 using VinilProjeto.Repository.VinilRepository;
-using VinilProjeto.Service.FileService;
 
 namespace VinilProjeto.UseCase.VinilUseCase.DeleteImagem;
 
@@ -29,7 +28,6 @@ public class DeleteImagemVinilUseCase : IDeleteImagemVinilUseCase
             var path = $"{_useCaseInput.path}/vinil/{_useCaseInput.id}/{_useCaseInput.fileName}";
             
             _vinilRespository.updateVinil(vinil);
-            new FileService().deleteImage(path);
 
             return new IDeleteImagemUseCaseOutput()
             {

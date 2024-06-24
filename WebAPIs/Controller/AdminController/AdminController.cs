@@ -53,9 +53,9 @@ public class AdminController : ControllerBase
     public UsuarioLoginOutput loginAdmin([FromBody] UsuarioLoginInput input)
     {
                 
-        //var hash = Hash256.stringHash256(input.senha);
+        var hash = Hash256.stringHash256(input.senha);
         
-        var admin = _login.login(input.email, input.senha);
+        var admin = _login.login(input.email, hash);
         if (admin == null)
         {
             var resposta = $"Usuario nao encontrado {input.email}";
@@ -63,7 +63,7 @@ public class AdminController : ControllerBase
         }
 
         TokenGenerator gerar = new TokenGenerator();
-        string token = gerar.generate(new UsuarioToken { email = input.email, senha = input.senha, role = "Admin", id = admin.id});
+        string token = gerar.generate(new UsuarioToken { email = input.email, senha = hash, role = "Admin", id = admin.id});
         DateTime dateTime = gerar.getExpiration();
 
         return new UsuarioLoginOutput(token, dateTime);
@@ -77,6 +77,7 @@ public class AdminController : ControllerBase
     [HttpPost(Name="PostCadastrarAdmin")]
     public ICadastrarAdminUseCaseOutput postCadastrarAdmin([FromBody] ICadastrarAdminUseCaseInput input)
     {
+        
         return _cadastrarAdminUseCase.executeUseCase(input);
     }
 

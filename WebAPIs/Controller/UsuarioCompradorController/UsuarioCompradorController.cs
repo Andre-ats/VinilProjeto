@@ -80,7 +80,7 @@ public class UsuarioCompradorController : ControllerBase
         }
 
         TokenGenerator gerar = new TokenGenerator();
-        string token = gerar.generate(new UsuarioToken() { email = input.email, senha = input.senha, role = "UsuarioComprador", id = usuarioComprador.id});
+        string token = gerar.generate(new UsuarioToken() { email = input.email, senha = hash, role = "UsuarioComprador", id = usuarioComprador.id});
         DateTime dateTime = gerar.getExpiration();
 
         return new UsuarioLoginOutput(token, dateTime);
@@ -94,7 +94,7 @@ public class UsuarioCompradorController : ControllerBase
     [HttpPost(Name = "PostCadastrarUsuarioComprador")]
     public ICadastrarUsuarioCompradorUseCaseOutput postCadastrarUsuarioComprador([FromBody] ICadastrarUsuarioCompradorUseCaseInput input)
     {
-        new EmailVerifyToken(_memoryCache).emailVerificacao(input.email);
+        new EmailVerificacao(_memoryCache).emailToken(input.email);
         return _cadastrarUsuarioCompradorUseCase.executeUseCase(input);
     }
     
@@ -106,7 +106,7 @@ public class UsuarioCompradorController : ControllerBase
     [HttpPost(Name = "PostTokenVerificacao")]
     public IAtivarUsuarioCompradorUseCaseOutput verificarEmailToken([FromBody] IAtivarUsuarioCompradorUseCaseInput input)
     {
-        var retorno = new EmailVerifyToken(_memoryCache).verificarToken(input.email, input.codigo);
+        var retorno = new EmailVerificacao(_memoryCache).verificarToken(input.email, input.codigo);
         
         if (retorno)
         {
