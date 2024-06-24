@@ -16,6 +16,7 @@ using Microsoft.Extensions.Caching.Memory;
 using VinilProjeto.Helpers.Email;
 using VinilProjeto.Helpers.Hash;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.AtivarContaUsuarioComprador;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.MandarEmailPergunta;
 
 namespace WebAPIs.Controller.UsuarioCompradorController;
 
@@ -30,6 +31,7 @@ public class UsuarioCompradorController : ControllerBase
     private readonly IPutUsuarioCompradorAtivarStatusUseCase _putUsuarioCompradorAtivarStatusUseCase;
     private readonly IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase;
     private readonly IAtivarUsuarioCompradorUseCase _ativarUsuarioCompradorUseCase;
+    private readonly IMandarEmailPerguntaUseCase _mandarEmailPerguntaUseCase;
     
     private readonly IMemoryCache _memoryCache;
 
@@ -40,6 +42,7 @@ public class UsuarioCompradorController : ControllerBase
         IPutUsuarioCompradorAtivarStatusUseCase _putUsuarioCompradorAtivarStatusUseCase,
         IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase,
         IAtivarUsuarioCompradorUseCase _ativarUsuarioCompradorUseCase,
+        IMandarEmailPerguntaUseCase _mandarEmailPerguntaUseCase,
         
         IMemoryCache memoryCache
         )
@@ -51,6 +54,7 @@ public class UsuarioCompradorController : ControllerBase
         this._putUsuarioCompradorAtivarStatusUseCase = _putUsuarioCompradorAtivarStatusUseCase;
         this._putUsuarioCompradorDesativarStatusUseCase = _putUsuarioCompradorDesativarStatusUseCase;
         this._ativarUsuarioCompradorUseCase = _ativarUsuarioCompradorUseCase;
+        this._mandarEmailPerguntaUseCase = _mandarEmailPerguntaUseCase;
         
         this._memoryCache = memoryCache;
     }
@@ -96,6 +100,19 @@ public class UsuarioCompradorController : ControllerBase
     {
         new EmailVerificacao(_memoryCache).emailToken(input.email);
         return _cadastrarUsuarioCompradorUseCase.executeUseCase(input);
+    }
+    
+    
+    [Authorize(Roles = "UsuarioComprador")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpPost(Name = "PostMandarEmailPergunta")]
+    public IMandarEmailPerguntaUseCaseOutput postEmailDuvida([FromBody] IMandarEmailPerguntaUseCaseInput input)
+    {
+        input.setUsuarioId((Guid.Parse(User.FindFirstValue("id"))));
+        return _mandarEmailPerguntaUseCase.executeUseCase(input);
     }
     
     [AllowAnonymous]

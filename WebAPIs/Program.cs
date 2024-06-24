@@ -14,6 +14,7 @@ using VinilProjeto.UseCase.UsuarioCompradorUseCase.CadastrarUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetAdminPerfil;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetPerfilUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetUsuarioComprador;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.MandarEmailPergunta;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarDesativarStatusUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarStatusUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.AtualizarTelefone;
@@ -62,6 +63,7 @@ builder.Services.AddScoped<IGetPerfilUsuarioCompradorUseCase, GetPerfilUsuarioCo
 builder.Services.AddScoped<IPutUsuarioCompradorAtivarStatusUseCase, PutUsuarioCompradorAtivarStatusUseCase>();
 builder.Services.AddScoped<IPutUsuarioCompradorDesativarStatusUseCase, PutUsuarioCompradorDesativarStatusUseCase>();
 builder.Services.AddScoped<IAtivarUsuarioCompradorUseCase, AtivarUsuarioCompradorUseCase>();
+builder.Services.AddScoped<IMandarEmailPerguntaUseCase, MandarEmailPerguntaUseCase>();
 
 builder.Services.AddScoped<IVinilRespository, EFCoreVinilRepository>();
 builder.Services.AddScoped<ICadastrarVinilUseCase, CadastrarVinilUseCase>();
