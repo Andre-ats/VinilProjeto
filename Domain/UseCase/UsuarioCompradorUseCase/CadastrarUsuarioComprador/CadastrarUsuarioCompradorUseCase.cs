@@ -31,7 +31,6 @@ public class CadastrarUsuarioCompradorUseCase : ICadastrarUsuarioCompradorUseCas
             UsuarioComprador user = new UsuarioCompradorFactory()
                 .setEmail(_useCaseInput.email)
                 .setSenha(hash)
-                .setStatusUsuarioComprador(StatusUsuarioComprador.Inativo)
                 .setTelefone(new TelefoneFactory()
                     .setCodigo(_useCaseInput.telefone.codigo)
                     .setNumero(_useCaseInput.telefone.numero)
@@ -50,6 +49,8 @@ public class CadastrarUsuarioCompradorUseCase : ICadastrarUsuarioCompradorUseCas
                     .build()
                 )
                 .build();
+            
+            user.DesativarUsuario();
 
             _ = _compradorRepository.createUsuario(user) ? true : throw new Exception($"Erro ao criar Usuario");
             return new ICadastrarUsuarioCompradorUseCaseOutput()

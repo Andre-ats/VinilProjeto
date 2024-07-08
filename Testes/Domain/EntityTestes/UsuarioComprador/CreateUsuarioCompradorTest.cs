@@ -30,7 +30,6 @@ public class CreateUsuarioCompradorTest
                 .setDDD("11111")
                 .build()
             )
-            .setStatusUsuarioComprador(StatusUsuarioComprador.Ativo)
             .build();
         
         var usuarioComprador02 = new UsuarioCompradorFactory()
@@ -53,7 +52,6 @@ public class CreateUsuarioCompradorTest
                 .setDDD("213123")
                 .build()
             )
-            .setStatusUsuarioComprador(StatusUsuarioComprador.Ativo)
             .build();
         
         Assert.AreNotSame(usuarioComprador01.email, usuarioComprador02.email);
