@@ -41,7 +41,7 @@ public class EFCoreUsuarioCompradorRepository : IUsuarioCompradorRepository
         return _dataBaseContext.UsuarioCompradorDB.SingleOrDefault(x => x.id.Equals(id)) ?? null;
     }
 
-    public void PutUsuarioCompradorStatus(UsuarioComprador usuarioComprador)
+    public void PutUsuarioComprador(UsuarioComprador usuarioComprador)
     {
         _dataBaseContext.Update(usuarioComprador);
         _dataBaseContext.SaveChanges();

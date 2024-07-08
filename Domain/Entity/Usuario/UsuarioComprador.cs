@@ -17,7 +17,7 @@ public class UsuarioComprador : IEntity
     public string email { get; protected set; }
     public string senha { get; protected set; }
     public StatusUsuarioComprador status { get; protected set; }
-    public List<Vinil> listaVinisFavoritos { get; protected set; }
+    public List<Guid> listaVinisFavoritos { get; protected set; }
     public Telefone telefone { get; protected set; }
     public Endereco endereco { get; protected set; }
     
@@ -52,5 +52,10 @@ public class UsuarioComprador : IEntity
     public void DesativarUsuario()
     {
         this.status = StatusUsuarioComprador.Inativo;
+    }
+
+    public void AdicionarVinilFavorito(Guid vinilID)
+    {
+        this.listaVinisFavoritos.Add(vinilID);
     }
 }

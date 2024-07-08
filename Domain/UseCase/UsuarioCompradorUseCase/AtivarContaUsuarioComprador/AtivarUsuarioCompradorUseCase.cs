@@ -16,7 +16,7 @@ public class AtivarUsuarioCompradorUseCase : IAtivarUsuarioCompradorUseCase
         {
             var usuarioComprador = _compradorRepository.GetUsuarioCompradorByEmail(_useCaseInput.email);
             usuarioComprador.AtivarUsuario();
-            _compradorRepository.PutUsuarioCompradorStatus(usuarioComprador);
+            _compradorRepository.PutUsuarioComprador(usuarioComprador);
 
             return new IAtivarUsuarioCompradorUseCaseOutput()
             {
