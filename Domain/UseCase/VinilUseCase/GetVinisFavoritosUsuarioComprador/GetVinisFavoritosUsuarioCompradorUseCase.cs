@@ -12,7 +12,8 @@ public class GetVinisFavoritosUsuarioCompradorUseCase : IGetVinisFavoritosUsuari
 
     protected override IGetVinisFavoritosUsuarioCompradorUseCaseOutput executeService(IGetVinisFavoritosUsuarioCompradorUseCaseInput _useCaseInput)
     {
-        List<Vinil> vinilsList = new List<Vinil>();
+        List<Vinil> vinisList = new List<Vinil>();
+        List<Guid> vinisNaoExistentes = new List<Guid>();
 
         var usuarioConsumidor = _usuarioCompradorRepository.GetUsuarioCompradorById(_useCaseInput.getUsuarioId())
                                 ?? throw new Exception("Usuario nao encontrado!");
@@ -20,12 +21,25 @@ public class GetVinisFavoritosUsuarioCompradorUseCase : IGetVinisFavoritosUsuari
         foreach (var i in usuarioConsumidor.listaVinisFavoritos)
         {
             var vinilbyid = _vinilRespository.getVinilByID(i);
-            vinilsList.Add(vinilbyid);
+            if (vinilbyid != null)
+            {
+                vinisList.Add(vinilbyid);
+            }
+            else
+            {
+                vinisNaoExistentes.Add(i);
+            }
+        }
+
+        foreach (var i in vinisNaoExistentes)
+        {
+            usuarioConsumidor.RemoverVinilFavorito(i);
+            _usuarioCompradorRepository.PutUsuarioComprador(usuarioConsumidor);
         }
 
         return new IGetVinisFavoritosUsuarioCompradorUseCaseOutput()
         {
-            listaVinisFavoritos = vinilsList
+            listaVinisFavoritos = vinisList
         };
     }
 }

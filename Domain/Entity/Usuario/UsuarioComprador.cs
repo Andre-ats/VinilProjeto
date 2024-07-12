@@ -58,4 +58,9 @@ public class UsuarioComprador : IEntity
     {
         this.listaVinisFavoritos.Add(vinilID);
     }
+
+    public void RemoverVinilFavorito(Guid vinilID)
+    {
+        this.listaVinisFavoritos.Remove(vinilID);
+    }
 }
