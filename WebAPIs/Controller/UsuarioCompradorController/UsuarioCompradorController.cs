@@ -15,8 +15,10 @@ using WebAPIs.Service.LoginServiceUsuarioComprador;
 using Microsoft.Extensions.Caching.Memory;
 using VinilProjeto.Helpers.Email;
 using VinilProjeto.Helpers.Hash;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.AdicionarVinilFavorito;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.AtivarContaUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.MandarEmailPergunta;
+using VinilProjeto.UseCase.VinilUseCase.GetVinisFavoritosUsuarioComprador;
 
 namespace WebAPIs.Controller.UsuarioCompradorController;
 
@@ -32,6 +34,8 @@ public class UsuarioCompradorController : ControllerBase
     private readonly IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase;
     private readonly IAtivarUsuarioCompradorUseCase _ativarUsuarioCompradorUseCase;
     private readonly IMandarEmailPerguntaUseCase _mandarEmailPerguntaUseCase;
+    private readonly IAdicionarVinilFavoritoUseCase _adicionarVinilFavoritoUseCase;
+    private readonly IGetVinisFavoritosUsuarioCompradorUseCase _getVinisFavoritosUsuarioCompradorUseCase;
     
     private readonly IMemoryCache _memoryCache;
 
@@ -43,6 +47,8 @@ public class UsuarioCompradorController : ControllerBase
         IPutUsuarioCompradorDesativarStatusUseCase _putUsuarioCompradorDesativarStatusUseCase,
         IAtivarUsuarioCompradorUseCase _ativarUsuarioCompradorUseCase,
         IMandarEmailPerguntaUseCase _mandarEmailPerguntaUseCase,
+        IAdicionarVinilFavoritoUseCase _adicionarVinilFavoritoUseCase,
+        IGetVinisFavoritosUsuarioCompradorUseCase _getVinisFavoritosUsuarioCompradorUseCase,
         
         IMemoryCache memoryCache
         )
@@ -55,6 +61,8 @@ public class UsuarioCompradorController : ControllerBase
         this._putUsuarioCompradorDesativarStatusUseCase = _putUsuarioCompradorDesativarStatusUseCase;
         this._ativarUsuarioCompradorUseCase = _ativarUsuarioCompradorUseCase;
         this._mandarEmailPerguntaUseCase = _mandarEmailPerguntaUseCase;
+        this._adicionarVinilFavoritoUseCase = _adicionarVinilFavoritoUseCase;
+        this._getVinisFavoritosUsuarioCompradorUseCase = _getVinisFavoritosUsuarioCompradorUseCase;
         
         this._memoryCache = memoryCache;
     }
@@ -89,7 +97,7 @@ public class UsuarioCompradorController : ControllerBase
 
         return new UsuarioLoginOutput(token, dateTime);
     }
-    
+
     [AllowAnonymous]
     [ProducesResponseType(201)]
     [ProducesResponseType(401)]
@@ -102,6 +110,17 @@ public class UsuarioCompradorController : ControllerBase
         return _cadastrarUsuarioCompradorUseCase.executeUseCase(input);
     }
     
+    [Authorize(Roles = "UsuarioComprador")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpPost(Name = "PostAdicionarVinilFavorito")]
+    public IAdicionarVinilFavoritoUseCaseOutput postAdicionarVinilFavorito([FromBody] IAdicionarVinilFavoritoUseCaseInput input)
+    {
+        input.setUsuarioId((Guid.Parse(User.FindFirstValue("id"))));
+        return _adicionarVinilFavoritoUseCase.executeUseCase(input);
+    }
     
     [Authorize(Roles = "UsuarioComprador")]
     [ProducesResponseType(201)]
@@ -144,6 +163,17 @@ public class UsuarioCompradorController : ControllerBase
     public IGetPerfilUsuarioCompradorUseCaseOutput getUsuarioCompradorPerfil()
     {
         return _getPerfilUsuarioCompradorUseCase.executeUseCase(new IGetPerfilUsuarioCompradorUseCaseInput(Guid.Parse(User.FindFirstValue("id"))));
+    }
+    
+    [Authorize(Roles = "UsuarioComprador")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpGet(Name = "getVinisFavoritos")]
+    public IGetVinisFavoritosUsuarioCompradorUseCaseOutput getVinisFavoritos()
+    {
+        return _getVinisFavoritosUsuarioCompradorUseCase.executeUseCase(new IGetVinisFavoritosUsuarioCompradorUseCaseInput(Guid.Parse(User.FindFirstValue("id"))));
     }
     
     [Authorize(Roles = "UsuarioComprador")]

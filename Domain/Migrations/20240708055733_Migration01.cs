@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -7,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace VinilProjeto.Migrations
 {
     /// <inheritdoc />
-    public partial class migracao0001 : Migration
+    public partial class Migration01 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,8 +33,8 @@ namespace VinilProjeto.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     email = table.Column<string>(type: "text", nullable: false),
                     senha = table.Column<string>(type: "text", nullable: false),
-                    token = table.Column<string>(type: "text", nullable: false),
                     status = table.Column<int>(type: "integer", nullable: false),
+                    listaVinisFavoritos = table.Column<List<Guid>>(type: "uuid[]", nullable: false),
                     telefone_codigo = table.Column<string>(type: "text", nullable: false),
                     telefone_ddd = table.Column<string>(type: "text", nullable: false),
                     telefone_numero = table.Column<string>(type: "text", nullable: false),

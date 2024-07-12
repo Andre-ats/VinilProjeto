@@ -9,6 +9,7 @@ using VinilProjeto.Repository.UsuarioCompradorRepository;
 using VinilProjeto.Repository.VinilRepository;
 using VinilProjeto.UseCase.AdminUseCase.CadastrarAdmin;
 using VinilProjeto.UseCase.AdminUseCase.GetAdmin;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.AdicionarVinilFavorito;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.AtivarContaUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.CadastrarUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.GetAdminPerfil;
@@ -22,6 +23,7 @@ using VinilProjeto.UseCase.VinilUseCase.CadastrarVinil;
 using VinilProjeto.UseCase.VinilUseCase.DeleteImagem;
 using VinilProjeto.UseCase.VinilUseCase.DeleteVinil;
 using VinilProjeto.UseCase.VinilUseCase.GetTodosVinil;
+using VinilProjeto.UseCase.VinilUseCase.GetVinisFavoritosUsuarioComprador;
 using WebAPIs.Config;
 using WebAPIs.Controller.VinilController;
 using WebAPIs.Service.GoogleCloudStorageService;
@@ -64,6 +66,8 @@ builder.Services.AddScoped<IPutUsuarioCompradorAtivarStatusUseCase, PutUsuarioCo
 builder.Services.AddScoped<IPutUsuarioCompradorDesativarStatusUseCase, PutUsuarioCompradorDesativarStatusUseCase>();
 builder.Services.AddScoped<IAtivarUsuarioCompradorUseCase, AtivarUsuarioCompradorUseCase>();
 builder.Services.AddScoped<IMandarEmailPerguntaUseCase, MandarEmailPerguntaUseCase>();
+builder.Services.AddScoped<IAdicionarVinilFavoritoUseCase, AdicionarVinilFavoritoUseCase>();
+builder.Services.AddScoped<IGetVinisFavoritosUsuarioCompradorUseCase, GetVinisFavoritosUsuarioCompradorUseCase>();
 
 builder.Services.AddScoped<IVinilRespository, EFCoreVinilRepository>();
 builder.Services.AddScoped<ICadastrarVinilUseCase, CadastrarVinilUseCase>();

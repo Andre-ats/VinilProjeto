@@ -3,6 +3,7 @@ using Google.Cloud.Storage.V1;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using VinilProjeto.UseCase.UsuarioCompradorUseCase.AdicionarVinilFavorito;
 using VinilProjeto.UseCase.VinilUseCase.CadastrarVinil;
 using VinilProjeto.UseCase.VinilUseCase.DeleteImagem;
 using VinilProjeto.UseCase.VinilUseCase.DeleteVinil;
@@ -149,5 +150,6 @@ public class VinilController : ControllerBase
     {
         return _getTodosVinil.executeUseCase(new IGetTodosVinilUseCaseInput());
     }
+    
     
 }
