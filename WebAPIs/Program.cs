@@ -22,6 +22,7 @@ using VinilProjeto.UseCase.UsuarioCompradorUseCase.UpdateUsuarioComprador.Atuali
 using VinilProjeto.UseCase.VinilUseCase.CadastrarVinil;
 using VinilProjeto.UseCase.VinilUseCase.DeleteImagem;
 using VinilProjeto.UseCase.VinilUseCase.DeleteVinil;
+using VinilProjeto.UseCase.VinilUseCase.DeleteVinisFavoritosUsuarioComprador;
 using VinilProjeto.UseCase.VinilUseCase.GetTodosVinil;
 using VinilProjeto.UseCase.VinilUseCase.GetVinisFavoritosUsuarioComprador;
 using WebAPIs.Config;
@@ -68,6 +69,7 @@ builder.Services.AddScoped<IAtivarUsuarioCompradorUseCase, AtivarUsuarioComprado
 builder.Services.AddScoped<IMandarEmailPerguntaUseCase, MandarEmailPerguntaUseCase>();
 builder.Services.AddScoped<IAdicionarVinilFavoritoUseCase, AdicionarVinilFavoritoUseCase>();
 builder.Services.AddScoped<IGetVinisFavoritosUsuarioCompradorUseCase, GetVinisFavoritosUsuarioCompradorUseCase>();
+builder.Services.AddScoped<IDeleteVinisFavoritosUsuarioCompradorUseCase, DeleteVinisFavoritosUsuarioCompradorUseCase>();
 
 builder.Services.AddScoped<IVinilRespository, EFCoreVinilRepository>();
 builder.Services.AddScoped<ICadastrarVinilUseCase, CadastrarVinilUseCase>();

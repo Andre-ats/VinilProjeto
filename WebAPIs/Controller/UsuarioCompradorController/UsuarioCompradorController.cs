@@ -18,6 +18,7 @@ using VinilProjeto.Helpers.Hash;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.AdicionarVinilFavorito;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.AtivarContaUsuarioComprador;
 using VinilProjeto.UseCase.UsuarioCompradorUseCase.MandarEmailPergunta;
+using VinilProjeto.UseCase.VinilUseCase.DeleteVinisFavoritosUsuarioComprador;
 using VinilProjeto.UseCase.VinilUseCase.GetVinisFavoritosUsuarioComprador;
 
 namespace WebAPIs.Controller.UsuarioCompradorController;
@@ -36,6 +37,7 @@ public class UsuarioCompradorController : ControllerBase
     private readonly IMandarEmailPerguntaUseCase _mandarEmailPerguntaUseCase;
     private readonly IAdicionarVinilFavoritoUseCase _adicionarVinilFavoritoUseCase;
     private readonly IGetVinisFavoritosUsuarioCompradorUseCase _getVinisFavoritosUsuarioCompradorUseCase;
+    private readonly IDeleteVinisFavoritosUsuarioCompradorUseCase _deleteVinisFavoritosUsuarioCompradorUseCase;
     
     private readonly IMemoryCache _memoryCache;
 
@@ -49,6 +51,7 @@ public class UsuarioCompradorController : ControllerBase
         IMandarEmailPerguntaUseCase _mandarEmailPerguntaUseCase,
         IAdicionarVinilFavoritoUseCase _adicionarVinilFavoritoUseCase,
         IGetVinisFavoritosUsuarioCompradorUseCase _getVinisFavoritosUsuarioCompradorUseCase,
+        IDeleteVinisFavoritosUsuarioCompradorUseCase _deleteVinisFavoritosUsuarioCompradorUseCase,
         
         IMemoryCache memoryCache
         )
@@ -63,6 +66,7 @@ public class UsuarioCompradorController : ControllerBase
         this._mandarEmailPerguntaUseCase = _mandarEmailPerguntaUseCase;
         this._adicionarVinilFavoritoUseCase = _adicionarVinilFavoritoUseCase;
         this._getVinisFavoritosUsuarioCompradorUseCase = _getVinisFavoritosUsuarioCompradorUseCase;
+        this._deleteVinisFavoritosUsuarioCompradorUseCase = _deleteVinisFavoritosUsuarioCompradorUseCase;
         
         this._memoryCache = memoryCache;
     }
@@ -208,6 +212,18 @@ public class UsuarioCompradorController : ControllerBase
     {
         useCaseInput.setUsuarioId((Guid.Parse(User.FindFirstValue("id"))));
         return _putUsuarioCompradorDesativarStatusUseCase.executeUseCase(useCaseInput);
+    }
+    
+    [Authorize(Roles = "UsuarioComprador")]
+    [ProducesResponseType(201)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [Produces("application/json")]
+    [HttpDelete(Name = "deleteVinilFavorito")]
+    public IDeleteVinisFavoritosUsuarioCompradorUseCaseOutput deleteVinilFavorito([FromBody] IDeleteVinisFavoritosUsuarioCompradorUseCaseInput useCaseInput)
+    {
+        useCaseInput.setUsuarioId((Guid.Parse(User.FindFirstValue("id"))));
+        return _deleteVinisFavoritosUsuarioCompradorUseCase.executeUseCase(useCaseInput);
     }
     
 }
